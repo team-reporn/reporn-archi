@@ -14,8 +14,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 })
 
 async function loadResourcesAndDataAsync() {
@@ -32,7 +32,7 @@ async function loadResourcesAndDataAsync() {
       percolate: require('./assets/icon/percolate.ttf'),
       'NunitoSans-Bold': require('./assets/font/NunitoSans-Bold.ttf'),
       'NunitoSans-Italic': require('./assets/font/NunitoSans-Italic.ttf'),
-      NunitoSans: require('./assets/font/NunitoSans-Regular.ttf')
+      NunitoSans: require('./assets/font/NunitoSans-Regular.ttf'),
     })
   } catch (e) {
     // We might want to provide this error information to an error reporting service
