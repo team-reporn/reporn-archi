@@ -19,32 +19,28 @@ const client = new ApolloClient({
   link: ApolloLink.from([
     stateLink,
     new HttpLink({
-      uri: "https://swapi-graphql-api.now.sh/"
-    })
+      uri: "http://192.168.1.37:8000/graphql",
+    }),
   ]),
-  cache
+  cache,
 });
 
-const GetCharacters = gql`
-  query GetCharacters {
-    allPeople {
-      people {
-        id
-        name
-        gender
-        birthYear
-      }
+const getUsers = gql`
+  query getUsers {
+    users {
+      email
+      id
     }
   }
 `;
 
-const Home = graphql(GetCharacters, {
-  props: ({ data: { loading, allPeople, error } }) => ({
+const Home = graphql(getUsers, {
+  props: ({ data: { loading, users, error } }) => ({
     loading,
-    allPeople,
-    error
-  })
-})(({ loading, allPeople }) => {
+    users,
+    error,
+  }),
+})(({ loading, error, users }) => {
   if (loading) {
     return <Text>Loading</Text>;
   }
@@ -52,31 +48,18 @@ const Home = graphql(GetCharacters, {
     <View
       style={{
         width: "80%",
-        margin: "auto"
+        margin: "auto",
       }}
     >
-      {allPeople.people &&
-        allPeople.people.map(person => (
-          <View style={styles.person} key={person.id}>
-            <View
-              style={{
-                width: 50,
-                height: 50,
-                marginRight: 20
-              }}
-            />
-            <View>
-              <Text>{person.name}</Text>
-              <Text
-                style={{
-                  fontSize: 10
-                }}
-              >
-                {person.birthYear}
-              </Text>
-            </View>
-          </View>
-        ))}
+      {users ? (
+        <View>
+          {users.map((user) => {
+            return <Text key={user.id}>{user.email}</Text>;
+          })}
+        </View>
+      ) : (
+        <Text>{error}</Text>
+      )}
     </View>
   );
 });
@@ -86,7 +69,6 @@ export default function App() {
     <ApolloProvider client={client}>
       <View style={styles.container}>
         <Text>Open up App.js to start working on your app!</Text>
-        <Text>yolo !</Text>
         <Home />
       </View>
     </ApolloProvider>
@@ -96,33 +78,33 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 
 async function loadResourcesAndDataAsync() {
   try {
-    SplashScreen.preventAutoHide()
+    SplashScreen.preventAutoHide();
 
     // Load our initial navigation state
-    setInitialNavigationState(await getInitialState())
+    setInitialNavigationState(await getInitialState());
 
     // Load fonts
     await Font.loadAsync({
       ...Ionicons.font,
-      'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
-      percolate: require('./assets/icon/percolate.ttf'),
-      'NunitoSans-Bold': require('./assets/font/NunitoSans-Bold.ttf'),
-      'NunitoSans-Italic': require('./assets/font/NunitoSans-Italic.ttf'),
-      NunitoSans: require('./assets/font/NunitoSans-Regular.ttf')
-    })
+      "space-mono": require("./assets/fonts/SpaceMono-Regular.ttf"),
+      percolate: require("./assets/icon/percolate.ttf"),
+      "NunitoSans-Bold": require("./assets/fonts/NunitoSans-Bold.ttf"),
+      "NunitoSans-Italic": require("./assets/fonts/NunitoSans-Italic.ttf"),
+      NunitoSans: require("./assets/fonts/NunitoSans-Regular.ttf"),
+    });
   } catch (e) {
     // We might want to provide this error information to an error reporting service
-    console.warn(e)
+    console.warn(e);
   } finally {
-    setLoadingComplete(true)
-    SplashScreen.hide()
+    setLoadingComplete(true);
+    SplashScreen.hide();
   }
 }
