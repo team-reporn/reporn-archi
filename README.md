@@ -15,6 +15,12 @@ Install packages :
 
     yarn install
     
+Configure IP adresse :
+
+    App.js
+    
+    22. uri: "http://{your ip adresse}:8000/graphql"
+    
 ## Launch the project
 
     yarn start
