@@ -1,5 +1,5 @@
-import React from "react";
-import { Text, View } from "react-native";
+import React, { useState } from "react";
+import { Text, View, Button } from "react-native";
 import { Redirect } from "react-router-native"; // eslint-disable-line
 
 import gql from "graphql-tag";
@@ -14,6 +14,24 @@ const getUsers = gql`
   }
 `;
 let fetchable = null;
+
+const getAppscreen = (appState, setAppState) => {
+  if (appState === "home") {
+    return (
+      <View>
+        <Text>reporn</Text>
+        <Button
+          onPress={() => {
+            setAppState("game");
+          }}
+          title="Play"
+        />
+      </View>
+    );
+  } else if (appState === "game") {
+    return <Redirect to="/wiwaldo" />;
+  }
+};
 const Home = graphql(getUsers, {
   props: ({ data: { loading, users, error, refetch } }) => ({
     loading,
@@ -22,12 +40,13 @@ const Home = graphql(getUsers, {
     refetch,
   }),
   options: { fetchPolicy: "no-cache" },
-})(({ loading, error, users, userToken, refetch }) => {
-  console.log("home", userToken, users);
+})(({ loading, error, users, userToken, refetch, appState, setAppState }) => {
+  console.log("appstate", appState);
   if (fetchable != userToken) {
     refetch();
     fetchable = userToken;
   }
+
   if (loading) {
     return <Text>Loading</Text>;
   }
@@ -38,15 +57,7 @@ const Home = graphql(getUsers, {
         margin: "auto",
       }}
     >
-      {users ? (
-        <View>
-          {users.map((user) => {
-            return <Text key={user.id}>{user.email}</Text>;
-          })}
-        </View>
-      ) : (
-        <Redirect to="/login" />
-      )}
+      {users ? getAppscreen(appState, setAppState) : <Redirect to="/login" />}
     </View>
   );
 });

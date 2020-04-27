@@ -47,8 +47,6 @@ export default ({ setUserToken, userToken }) => {
                 },
               })
                 .then((res) => {
-                  console.log("refreshed  ? ", res.data.login.token);
-                  console.log(res.data.login.token);
                   setUserToken(res.data.login.token);
                   return res;
                 })

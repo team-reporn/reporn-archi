@@ -5,6 +5,7 @@ import { NativeRouter, Route, Redirect } from "react-router-native"; // eslint-d
 import Nav from "./src/components/Nav";
 import Login from "./src/components/Login";
 import Home from "./src/components/Home";
+import Wiwaldo from "./src/components/Wiwaldo";
 
 import { setContext } from "apollo-link-context";
 import { ApolloProvider } from "react-apollo";
@@ -25,6 +26,8 @@ const httpLink = new HttpLink({
 
 export default function App() {
   const [userToken, setUserToken] = useState(null);
+  const [appState, setAppState] = useState("home");
+
   const [client, setClient] = useState(
     new ApolloClient({
       link: ApolloLink.from([stateLink, httpLink]),
@@ -33,8 +36,6 @@ export default function App() {
   );
 
   useEffect(() => {
-    console.log("----------------------------------------------------");
-    console.log(userToken);
     if (userToken) {
       const authLink = setContext((_, { headers }) => {
         // get the authentication token from local storage if it exists
@@ -58,17 +59,22 @@ export default function App() {
       console.log("no usertoken yet");
     }
   }, [userToken]);
-
   return (
     <ApolloProvider client={client}>
       <NativeRouter>
         <View style={styles.container}>
-          <Text>Open up App.js to start working on your app!</Text>
+          {/* <Text>Open up App.js to start working on your app!</Text> */}
           <Nav />
           <Route
             exact
             path="/"
-            component={() => <Home userToken={userToken} />}
+            component={() => (
+              <Home
+                userToken={userToken}
+                appState={appState}
+                setAppState={setAppState}
+              />
+            )}
           />
           <Route
             exact
@@ -76,6 +82,11 @@ export default function App() {
             component={() => (
               <Login userToken={userToken} setUserToken={setUserToken} />
             )}
+          />
+          <Route
+            exact
+            path="/wiwaldo"
+            component={() => <Wiwaldo userToken={userToken} />}
           />
         </View>
       </NativeRouter>
@@ -87,8 +98,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    //justifyContent: "center",
   },
 });
 
