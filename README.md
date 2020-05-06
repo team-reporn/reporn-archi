@@ -1,26 +1,22 @@
-# Reporn React Application
+> GOBELINS DMII - Project Gobelins 2020
 
-## 🏃 Run the project
+# 🔞🧡 REPORN GAME
 
-### Requirements
-Have node.js
+**Designers :** Charlotte Mandinaud / Zohra Mrad
 
-### Clone the repository :
+**Développeurs :** Mélanie Terzic / Emile Roch / Rémi Rucojevic
 
-    git clone https://github.com/team-reporn/reporn.git
-    
-### Setup the project :
+This project is a multiplayer game quiz about pornography.
 
-Install packages :
+---
 
-    yarn install
-    
-Configure IP adresse :
+![home](./assets/home.png) ![quiz](./assets/culture.png) ![quiz](./assets/caresse.png)
 
-    App.js
-    
-    22. uri: "http://{your ip adresse}:8000/graphql"
-    
-## Launch the project
+### Installation
 
-    yarn start
+- `git clone https://github.com/ReactNativeSchool/react-native-quiz`
+- `yarn install`/`npm install`
+
+### Running
+
+- `yarn run ios`/`npm run ios` or `yarn run android`/`npm run android`
