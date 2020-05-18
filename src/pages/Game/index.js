@@ -1,29 +1,29 @@
 // In this, see the question of the quiz if you select answer go to Answer.js
-import React from 'react'
-import { View, StyleSheet, StatusBar, Text, SafeAreaView } from 'react-native'
+import React from "react";
+import { View, StyleSheet, StatusBar, Text, SafeAreaView } from "react-native";
 
-import { Button, ButtonContainer } from '../components/Button'
-import { Alert } from '../components/Alert'
+import { Button, ButtonContainer } from "../../components/Button";
+import { Alert } from "../../components/Alert";
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#36B1F0',
+    backgroundColor: "#36B1F0",
     flex: 1,
     paddingHorizontal: 20,
   },
   text: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 25,
-    textAlign: 'center',
+    textAlign: "center",
     letterSpacing: -0.02,
-    fontWeight: '600',
+    fontWeight: "600",
   },
   safearea: {
     flex: 1,
     marginTop: 100,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
-})
+});
 
 class Quiz extends React.Component {
   state = {
@@ -31,37 +31,37 @@ class Quiz extends React.Component {
     activeQuestionIndex: 0,
     answered: false,
     answerCorrect: false,
-  }
+  };
 
   answer = (correct) => {
     this.setState(
       (state) => {
-        const nextState = { answered: true }
+        const nextState = { answered: true };
 
         if (correct) {
-          nextState.correctCount = state.correctCount + 1
-          nextState.answerCorrect = true
+          nextState.correctCount = state.correctCount + 1;
+          nextState.answerCorrect = true;
         } else {
-          nextState.answerCorrect = false
+          nextState.answerCorrect = false;
         }
 
-        return nextState
+        return nextState;
       },
       () => {
-        return this.props.navigation.popToTop()
+        return this.props.navigation.popToTop();
       }
-    )
-  }
-
+    );
+  };
+  
   render() {
-    const questions = this.props.navigation.getParam('questions', [])
-    const question = questions[this.state.activeQuestionIndex]
+    const questions = this.props.navigation.getParam("questions", []);
+    const question = questions[this.state.activeQuestionIndex];
 
     return (
       <View
         style={[
           styles.container,
-          { backgroundColor: this.props.navigation.getParam('color') },
+          { backgroundColor: this.props.navigation.getParam("color") },
         ]}
       >
         <StatusBar barStyle="light-content" />
@@ -85,8 +85,8 @@ class Quiz extends React.Component {
           visible={this.state.answered}
         />
       </View>
-    )
+    );
   }
 }
 
-export default Quiz
+export default Quiz;
