@@ -13,10 +13,21 @@ let Wait = ({ navigation }) => {
   useEffect(() => {
     ready();
   }, []);
-  console.log("progress : ", progress);
+
+  useEffect(() => {
+    console.log("progress : ", progress);
+    if (progress.start) {
+      navigation.navigate("SelectGame", {
+        title: "SelectGame",
+        questions: culture,
+        color: "#799496",
+      });
+    }
+  }, [progress]);
+  
   return progress.start || false ? (
     <View>
-      <Game navigation={navigation} />
+      <Text>You'r being redirected to the game</Text>
     </View>
   ) : (
     <View>
@@ -47,16 +58,9 @@ export default ({ navigation }) => {
           <Button
             key="rentrer dans le jeu"
             text="rentrer dans le jeu"
-            onPress={() =>
-              // navigation.navigate("SelectGame", {
-              //   title: "SelectGame",
-              //   questions: culture,
-              //   color: "#799496",
-              // })
-              {
-                setPressed(true);
-              }
-            }
+            onPress={() => {
+              setPressed(true);
+            }}
           />
         </ButtonContainer>
       </ImageBackground>

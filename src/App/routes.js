@@ -14,40 +14,14 @@ const Stack = createStackNavigator();
 export default () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={() => (
-            <Socket>
-              <Home />
-            </Socket>
-          )}
-        />
-        <Stack.Screen
-          name="SelectGame"
-          component={() => (
-            <Socket>
-              <SelectGame />
-            </Socket>
-          )}
-        />
-        <Stack.Screen
-          name="Game"
-          component={() => (
-            <Socket>
-              <Game />
-            </Socket>
-          )}
-        />
-        <Stack.Screen
-          name="EndGame"
-          component={() => (
-            <Socket>
-              <EndGame />
-            </Socket>
-          )}
-        />
-      </Stack.Navigator>
+      <Socket>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="SelectGame" component={SelectGame} />
+          <Stack.Screen name="Game" component={Game} />
+          <Stack.Screen name="EndGame" component={EndGame} />
+        </Stack.Navigator>
+      </Socket>
     </NavigationContainer>
   );
 };

@@ -14,8 +14,8 @@ export default ({ navigation }) => (
       key="QUESTION"
       text="QUESTION"
       onPress={() =>
-        navigation.navigate('Quiz', {
-          title: 'Quiz',
+        navigation.navigate('Game', {
+          title: 'Game',
           questions: culture,
           color: '#799496',
         })

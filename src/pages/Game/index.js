@@ -1,7 +1,6 @@
 // In this, see the question of the quiz if you select answer go to Answer.js
 import React from "react";
 import { View, StyleSheet, StatusBar, Text, SafeAreaView } from "react-native";
-import { useNavigation } from '@react-navigation/native';
 
 import { Button, ButtonContainer } from "../../components/Button";
 import { Alert } from "../../components/Alert";
@@ -55,8 +54,8 @@ class Quiz extends React.Component {
   };
 
   render() {
-    let navigation = useNavigation();
-    console.log("meeee", navigation);
+    // let navigation = useNavigation();
+    console.log("meeee", this.props.navigation);
     const questions = this.props.navigation.getParam("questions", []);
     const question = questions[this.state.activeQuestionIndex];
 
