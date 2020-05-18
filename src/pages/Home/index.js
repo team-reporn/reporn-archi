@@ -6,7 +6,7 @@ import useSocket from "../../App/Socket/useSocket";
 import culture from "../../contents/cultureData";
 import Game from "../Game";
 
-let Wait = () => {
+let Wait = ({ navigation }) => {
   let socketReady = false;
   const { progress, ready } = useSocket();
 
@@ -16,7 +16,7 @@ let Wait = () => {
   console.log("progress : ", progress);
   return progress.start || false ? (
     <View>
-      <Game />
+      <Game navigation={navigation} />
     </View>
   ) : (
     <View>
@@ -28,13 +28,13 @@ let Wait = () => {
 export default ({ navigation }) => {
   const [pressed, setPressed] = useState(false);
   const { initializeSocket } = useSocket();
-
+  console.log("yplol", navigation);
   useEffect(() => {
     initializeSocket();
   }, []);
 
   return pressed ? (
-    <Wait />
+    <Wait navigation={navigation} />
   ) : (
     <View style={styles.container}>
       <ImageBackground
@@ -48,8 +48,8 @@ export default ({ navigation }) => {
             key="rentrer dans le jeu"
             text="rentrer dans le jeu"
             onPress={() =>
-              // navigation.navigate("Rule", {
-              //   title: "Rule",
+              // navigation.navigate("SelectGame", {
+              //   title: "SelectGame",
               //   questions: culture,
               //   color: "#799496",
               // })

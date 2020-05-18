@@ -14,9 +14,11 @@ const Socket = ({ children }) => {
       console.log("everyone");
       setProgress({ start: true });
     });
+
     socket.on("created", () => {
       console.log("created");
     });
+    
     socket.on("joined", () => {
       console.log("joined");
     });

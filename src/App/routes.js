@@ -1,9 +1,9 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation'
+import { createStackNavigator, createAppContainer } from '@react-navigation/native'
 
-import Home from './pages/Home'
-import SelectGame from './pages/SelectGame'
-import Game from './pages/Game'
-import EndGame from './pages/EndGame'
+import Home from '../pages/Home'
+import SelectGame from '../pages/SelectGame'
+import Game from '../pages/Game'
+import EndGame from '../pages/EndGame'
 
 export default class Routes extends React.Component {
   render() {
