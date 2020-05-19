@@ -11,7 +11,7 @@ const gamesRoots = [
   {
     key: "QUESTION",
     text: "QUESTION",
-    title: "Game",
+    title: "Quizz",
     question: culture,
     color: "#799496",
   },
@@ -27,8 +27,8 @@ let Wait = ({ navigation }) => {
 
   useEffect(() => {
     if (progress.start) {
-      navigation.navigate("Game", {
-        title: "Game",
+      navigation.navigate("Quizz", {
+        title: "Quizz",
         questions: culture,
         color: "#799496",
       });

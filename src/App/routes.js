@@ -9,6 +9,9 @@ import SelectGame from "../pages/SelectGame";
 import Game from "../pages/Game";
 import EndGame from "../pages/EndGame";
 
+import Tabou from "../pages/Game/Tabou"
+import Shake from "../pages/Game/Shake"
+
 const Stack = createStackNavigator();
 
 export default () => {
@@ -18,7 +21,9 @@ export default () => {
         <Stack.Navigator>
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="SelectGame" component={SelectGame} />
-          <Stack.Screen name="Game" component={Game} />
+          <Stack.Screen name="Quizz" component={Quizz} />
+          <Stack.Screen name="Tabou" component={Tabou} />
+          <Stack.Screen name="Shake" component={Shake} />
           <Stack.Screen name="EndGame" component={EndGame} />
         </Stack.Navigator>
       </Socket>
