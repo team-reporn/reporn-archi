@@ -27,8 +27,8 @@ let Wait = ({ navigation }) => {
 
   useEffect(() => {
     if (progress.start) {
-      navigation.navigate("Quizz", {
-        title: "Quizz",
+      navigation.navigate("Tabou", {
+        title: "Tabou",
         questions: culture,
         color: "#799496",
       });
