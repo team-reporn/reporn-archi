@@ -6,36 +6,6 @@ import useSocket from "../../App/Socket/useSocket";
 import culture from "../../contents/cultureData";
 import Game from "../Game";
 
-let Wait = ({ navigation }) => {
-  let socketReady = false;
-  const { progress, ready } = useSocket();
-
-  useEffect(() => {
-    ready();
-  }, []);
-
-  useEffect(() => {
-    console.log("progress : ", progress);
-    if (progress.start) {
-      navigation.navigate("SelectGame", {
-        title: "SelectGame",
-        questions: culture,
-        color: "#799496",
-      });
-    }
-  }, [progress]);
-  
-  return progress.start || false ? (
-    <View>
-      <Text>You'r being redirected to the game</Text>
-    </View>
-  ) : (
-    <View>
-      <Text>loading ...</Text>
-    </View>
-  );
-};
-
 export default ({ navigation }) => {
   const [pressed, setPressed] = useState(false);
   const { initializeSocket } = useSocket();
@@ -59,7 +29,11 @@ export default ({ navigation }) => {
             key="rentrer dans le jeu"
             text="rentrer dans le jeu"
             onPress={() => {
-              setPressed(true);
+              navigation.navigate("SelectGame", {
+                title: "SelectGame",
+                questions: culture,
+                color: "#799496",
+              });
             }}
           />
         </ButtonContainer>
