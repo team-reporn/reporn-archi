@@ -4,19 +4,15 @@ import { Button, ButtonContainer } from "../../components/Button";
 import { View, StyleSheet, Text, Image, ImageBackground } from "react-native";
 import useSocket from "../../App/Socket/useSocket";
 import culture from "../../contents/cultureData";
-import Game from "../Game";
 
 export default ({ navigation }) => {
-  const [pressed, setPressed] = useState(false);
   const { initializeSocket } = useSocket();
   console.log("yplol", navigation);
   useEffect(() => {
     initializeSocket();
   }, []);
 
-  return pressed ? (
-    <Wait navigation={navigation} />
-  ) : (
+  return (
     <View style={styles.container}>
       <ImageBackground
         source={require("../../assets/backgrounds/Background.png")}
