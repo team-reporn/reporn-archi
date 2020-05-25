@@ -4,6 +4,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Socket from "./Socket";
 
+import Room from "../pages/Room";
+import JoinRoom from "../pages/JoinRoom";
+
 import Home from "../pages/Home";
 import SelectGame from "../pages/SelectGame";
 import EndGame from "../pages/EndGame";
@@ -25,6 +28,8 @@ export default () => {
           <Stack.Screen name="Tabou" component={Tabou} />
           <Stack.Screen name="Shake" component={Shake} />
           <Stack.Screen name="EndGame" component={EndGame} />
+          <Stack.Screen name="Room" component={Room} />
+          <Stack.Screen name="JoinRoom" component={JoinRoom} />
         </Stack.Navigator>
       </Socket>
     </NavigationContainer>

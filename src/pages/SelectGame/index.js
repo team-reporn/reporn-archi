@@ -15,6 +15,20 @@ const gamesRoots = [
     question: culture,
     color: "#799496",
   },
+  {
+    key: "QUESTION",
+    text: "QUESTION",
+    title: "Tabou",
+    question: culture,
+    color: "#799496",
+  },
+  {
+    key: "QUESTION",
+    text: "QUESTION",
+    title: "Shake",
+    question: culture,
+    color: "#799496",
+  }
 ];
 
 let Wait = ({ navigation }) => {
@@ -27,8 +41,8 @@ let Wait = ({ navigation }) => {
 
   useEffect(() => {
     if (progress.start) {
-      navigation.navigate("Tabou", {
-        title: "Tabou",
+      navigation.navigate("Shake", {
+        title: "Shake",
         questions: culture,
         color: "#799496",
       });
@@ -67,14 +81,3 @@ export default ({ navigation }) => {
     </View>
   );
 };
-// <Button
-//   key="QUESTION"
-//   text="QUESTION"
-//   onPress={() =>
-//     navigation.navigate("Game", {
-//       title: "Game",
-//       questions: culture,
-//       color: "#799496",
-//     })
-//   }
-// />

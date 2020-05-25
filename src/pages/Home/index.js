@@ -3,11 +3,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { Button, ButtonContainer } from "../../components/Button";
 import { View, StyleSheet, Text, Image, ImageBackground } from "react-native";
 import useSocket from "../../App/Socket/useSocket";
-import culture from "../../contents/cultureData";
 
 export default ({ navigation }) => {
-  const { initializeSocket } = useSocket();
-  console.log("yplol", navigation);
+  const { initializeSocket, createRoom } = useSocket();
+  // console.log("yplol", navigation);
   useEffect(() => {
     initializeSocket();
   }, []);
@@ -22,13 +21,22 @@ export default ({ navigation }) => {
         <Text>test</Text>
         <ButtonContainer>
           <Button
-            key="rentrer dans le jeu"
-            text="rentrer dans le jeu"
+            key="créer une room"
+            text="créer une room"
             onPress={() => {
-              navigation.navigate("SelectGame", {
-                title: "SelectGame",
-                questions: culture,
-                color: "#799496",
+              createRoom();
+              navigation.navigate("Room", {
+                title: "Room",
+              });
+            }}
+          />
+          <Button
+            key="rejoindre une room"
+            text="rejoindre une room"
+            onPress={() => {
+              createRoom();
+              navigation.navigate("JoinRoom", {
+                title: "JoinRoom",
               });
             }}
           />
