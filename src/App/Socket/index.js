@@ -4,7 +4,7 @@ export const Context = createContext(null);
 
 const Socket = ({ children }) => {
   const [progress, setProgress] = useState({ start: false });
-  const socket = SocketIOClient("http://192.168.1.37:4000");
+  const socket = SocketIOClient("http://192.168.1.4:4000");
 
   const initializeSocket = useCallback(() => {
     socket.emit("channel1", "Hi server");
