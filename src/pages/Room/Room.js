@@ -5,12 +5,12 @@ import useSocket from "../../App/Socket/useSocket";
 
 let Room = ({ navigation }) => {
   const { roomInfo, getRoomInfo } = useSocket();
-  console.log("componentRoom : ", roomInfo);
+  // console.log("componentRoom : ", roomInfo);
   useEffect(() => {
     const roomInterval = setInterval(() => {
       getRoomInfo();
     }, 5000);
-    console.log("setinterval", roomInfo);
+    // console.log("setinterval", roomInfo);
     return () => clearInterval(roomInterval);
   }, [roomInfo]);
   return (

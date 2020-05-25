@@ -47,12 +47,10 @@ const Socket = ({ children }) => {
   const joinARoom = useCallback((roomId) => {
     socket.emit("join a room", roomId);
   }, []);
-
   const ready = useCallback(() => {
     socket.emit("ready", "i'm ready");
     console.log("i'm ready");
   }, []);
-
   return (
     <Context.Provider
       value={{
