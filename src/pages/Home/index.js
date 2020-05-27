@@ -1,26 +1,36 @@
 // In this, create the home page -choose between create a room or PornNews- on button select go to rules
-import React, { useState, useRef, useEffect } from "react";
-import { Button, ButtonContainer } from "../../components/Button";
-import { View, StyleSheet, Text, Image, ImageBackground } from "react-native";
-import useSocket from "../../App/Socket/useSocket";
+import React, { useState, useRef, useEffect } from 'react'
+import { Button, ButtonContainer } from '../../components/Button'
+import { View, StyleSheet, Text, Image, ImageBackground } from 'react-native'
+import useSocket from '../../App/Socket/useSocket'
 
 export default ({ navigation }) => {
-  const { initializeSocket, createRoom } = useSocket();
+  const { initializeSocket, createRoom } = useSocket()
   // console.log("yplol", navigation);
   useEffect(() => {
-    initializeSocket();
-  }, []);
+    initializeSocket()
+  }, [])
 
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../../assets/backgrounds/Background.png")}
+        source={require('../../assets/backgrounds/Background.png')}
         style={styles.background}
       >
-        <Image source={require("../../assets/Logo.png")} style={styles.logo} />
+        <Image source={require('../../assets/Logo.png')} style={styles.logo} />
         <Text>test</Text>
         <ButtonContainer>
           <Button
+            key="QUESTION"
+            text="QUESTION"
+            onPress={() =>
+              navigation.navigate('Quizz', {
+                title: 'Quizz',
+                color: '#799496',
+              })
+            }
+          />
+          {/* <Button
             key="créer une room"
             text="créer une room"
             onPress={() => {
@@ -39,24 +49,24 @@ export default ({ navigation }) => {
                 title: "JoinRoom",
               });
             }}
-          />
+          /> */}
         </ButtonContainer>
       </ImageBackground>
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   background: {
     flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
   logo: {
     width: 256,
   },
-});
+})
