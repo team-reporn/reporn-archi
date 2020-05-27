@@ -11,6 +11,9 @@ import Home from "../pages/Home";
 import SelectGame from "../pages/SelectGame";
 import EndGame from "../pages/EndGame";
 
+import Roles from "../pages/Roles";
+import Theme from "../pages/Theme";
+
 import Quizz from "../pages/Game/Quizz";
 import Tabou from "../pages/Game/Tabou";
 import Shake from "../pages/Game/Shake";
@@ -30,6 +33,8 @@ export default () => {
           <Stack.Screen name="EndGame" component={EndGame} />
           <Stack.Screen name="Room" component={Room} />
           <Stack.Screen name="JoinRoom" component={JoinRoom} />
+          <Stack.Screen name="Roles" component={Roles} />
+          <Stack.Screen name="Theme" component={Theme} />
         </Stack.Navigator>
       </Socket>
     </NavigationContainer>

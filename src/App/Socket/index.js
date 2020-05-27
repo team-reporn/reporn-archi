@@ -5,11 +5,16 @@ export const Context = createContext(null);
 const socket = SocketIOClient("http://192.168.1.37:4000");
 
 const Socket = ({ children }) => {
+  const [game, setGame] = useState({ name: null });
+  const [character, setCharacter] = useState({ cardRole: null, id: null });
   const [progress, setProgress] = useState({ start: false });
-  const [roomInfo, setRoomInfo] = useState({});
+  const [roomInfo, setRoomInfo] = useState({
+    roomId: null,
+    numClients: null,
+    role: null,
+  });
   const initializeSocket = useCallback(() => {
     socket.emit("channel1", "Hi server");
-    socket.emit("create or join");
 
     socket.on("everyone is ready", () => {
       console.log("everyone");
@@ -29,14 +34,22 @@ const Socket = ({ children }) => {
         setRoomInfo(data.roomInfo);
       } else {
         console.log("fail to join the room");
-        setRoomInfo({ roomId: null });
+        setRoomInfo({ roomId: null, numClients: null, role: null });
       }
     });
     socket.on("room info", (data) => {
-      console.log("room info", data);
+      // console.log("room info", data);
       setRoomInfo(data);
     });
+    socket.on("game info", (data) => {
+      console.log("game info", data);
+      setGame(data);
+    });
+    socket.on("game start", (data) => {
+      setCharacter(data);
+    });
     console.log("created room ");
+    setRoomInfo({ roomId: null, numClients: null, role: null });
   }, []);
   let getRoomInfo = useCallback(() => {
     socket.emit("update room info", roomInfo.roomId);
@@ -47,20 +60,30 @@ const Socket = ({ children }) => {
   const joinARoom = useCallback((roomId) => {
     socket.emit("join a room", roomId);
   }, []);
+  const startGame = useCallback(() => {
+    socket.emit("start playing", roomInfo.roomId);
+    console.log("start playing");
+  }, []);
   const ready = useCallback(() => {
     socket.emit("ready", "i'm ready");
     console.log("i'm ready");
   }, []);
+  const getPlayerInfo = useCallback(() => {}, []);
+  const getGameInfo = useCallback(() => {}, []);
   return (
     <Context.Provider
       value={{
+        game,
         initializeSocket,
         createRoom,
         ready,
         progress,
         roomInfo,
         getRoomInfo,
+        setRoomInfo,
         joinARoom,
+        startGame,
+        character,
       }}
     >
       {children}
