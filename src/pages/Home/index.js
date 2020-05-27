@@ -5,8 +5,7 @@ import { View, StyleSheet, Text, Image, ImageBackground } from 'react-native'
 import useSocket from '../../App/Socket/useSocket'
 
 export default ({ navigation }) => {
-  const { initializeSocket, createRoom } = useSocket()
-  // console.log("yplol", navigation);
+  const { initializeSocket, createRoom, setRoomInfo } = useSocket();
   useEffect(() => {
     initializeSocket()
   }, [])
@@ -44,7 +43,6 @@ export default ({ navigation }) => {
             key="rejoindre une room"
             text="rejoindre une room"
             onPress={() => {
-              createRoom();
               navigation.navigate("JoinRoom", {
                 title: "JoinRoom",
               });

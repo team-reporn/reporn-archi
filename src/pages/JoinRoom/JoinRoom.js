@@ -4,8 +4,9 @@ import useSocket from "../../App/Socket/useSocket";
 
 let JoinRoom = ({ navigation }) => {
   const { joinARoom, roomInfo } = useSocket();
-  const [customRoomId, setCustomRoomId] = useState("");
+  const [customRoomId, setCustomRoomId] = useState(null);
   useEffect(() => {
+    console.log("can i join : ", roomInfo.roomId);
     if (roomInfo.roomId) {
       navigation.navigate("Room", {
         title: "Room",
