@@ -6,9 +6,9 @@ export default class Title1 extends React.Component {
         super(props)
         this.state = {}
         if (this.props.dark) {
-            this.bg = require("../../assets/title/title1-dark.png")
+            this.bg = require("../../assets/img/title/title1-dark.png")
         } else {
-            this.bg = require("../../assets/title/title1.png")
+            this.bg = require("../../assets/img/title/title1.png")
         }
     }
 

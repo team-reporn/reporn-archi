@@ -11,7 +11,7 @@ export default class NextBtn extends React.Component {
         return (
             <View>
                 <TouchableOpacity onPress={this.props.onPress}>
-                <Image source={require('../../assets/buttons/arrowright.png')}></Image>
+                <Image source={require('../../assets/img/btn/Next.png')}></Image>
                 </TouchableOpacity>
             </View>
         )
