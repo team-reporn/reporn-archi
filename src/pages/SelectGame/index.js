@@ -28,12 +28,12 @@ const gamesRoots = [
     title: "Shake",
     question: culture,
     color: "#799496",
-  }
+  },
 ];
 
 let Wait = ({ navigation }) => {
   let socketReady = false;
-  const { progress, ready } = useSocket();
+  const { progress, ready, game } = useSocket();
 
   useEffect(() => {
     ready();
