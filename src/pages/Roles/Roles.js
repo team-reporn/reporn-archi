@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { View, Text } from "react-native";
-import useSocket from "../../App/Socket/useSocket";
+import React, { useState } from 'react'
+import { View, Text } from 'react-native'
+import useSocket from '../../App/Socket/useSocket'
 
-import { Button, ButtonContainer } from "../../components/Button";
+import { Button, ButtonContainer } from '../../components/Button'
 
 let Mouchoirs = ({ count, cardRole }) => {
   return (
@@ -23,12 +23,12 @@ let Mouchoirs = ({ count, cardRole }) => {
         </View>
       )}
     </>
-  );
-};
+  )
+}
 let Roles = ({ navigation }) => {
-  const { character } = useSocket();
+  const { getGameInfo, character } = useSocket()
 
-  const [pressCount, setPressCount] = useState(0);
+  const [pressCount, setPressCount] = useState(0)
   return (
     <View>
       {pressCount < 3 ? (
@@ -41,7 +41,7 @@ let Roles = ({ navigation }) => {
               key="tire un mouchoir"
               text="tire un mouchoir"
               onPress={() => {
-                setPressCount(pressCount + 1);
+                setPressCount(pressCount + 1)
               }}
             />
           </ButtonContainer>
@@ -49,16 +49,17 @@ let Roles = ({ navigation }) => {
       ) : (
         <>
           <Text>tu es {character.job}</Text>
-          <ButtonContainer style={{ flex: 1, marginTop: "20px" }}>
+          <ButtonContainer style={{ flex: 1, marginTop: '20px' }}>
             <Button key="sers a r" text="sers a r" onPress={() => {}} />
             <Button
               key="suite"
               text="suite"
               onPress={() => {
-                console.log("pressed");
-                navigation.navigate("Theme", {
-                  title: "Theme",
-                });
+                console.log('pressed')
+                getGameInfo()
+                navigation.navigate('Theme', {
+                  title: 'Theme',
+                })
               }}
             />
           </ButtonContainer>
@@ -69,7 +70,7 @@ let Roles = ({ navigation }) => {
         <Mouchoirs count={pressCount} cardRole={character.cardRole} />
       )}
     </View>
-  );
-};
+  )
+}
 
-export default Roles;
+export default Roles

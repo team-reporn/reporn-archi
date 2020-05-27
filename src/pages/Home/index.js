@@ -5,7 +5,7 @@ import { View, StyleSheet, Text, Image, ImageBackground } from 'react-native'
 import useSocket from '../../App/Socket/useSocket'
 
 export default ({ navigation }) => {
-  const { initializeSocket, createRoom, setRoomInfo } = useSocket();
+  const { initializeSocket, createRoom, setRoomInfo } = useSocket()
   useEffect(() => {
     initializeSocket()
   }, [])
@@ -19,7 +19,7 @@ export default ({ navigation }) => {
         <Image source={require('../../assets/Logo.png')} style={styles.logo} />
         <Text>test</Text>
         <ButtonContainer>
-          <Button
+          {/* <Button
             key="QUESTION"
             text="QUESTION"
             onPress={() =>
@@ -28,26 +28,26 @@ export default ({ navigation }) => {
                 color: '#799496',
               })
             }
-          />
-          {/* <Button
+          /> */}
+          <Button
             key="créer une room"
             text="créer une room"
             onPress={() => {
-              createRoom();
-              navigation.navigate("Room", {
-                title: "Room",
-              });
+              createRoom()
+              navigation.navigate('Room', {
+                title: 'Room',
+              })
             }}
           />
           <Button
             key="rejoindre une room"
             text="rejoindre une room"
             onPress={() => {
-              navigation.navigate("JoinRoom", {
-                title: "JoinRoom",
-              });
+              navigation.navigate('JoinRoom', {
+                title: 'JoinRoom',
+              })
             }}
-          /> */}
+          />
         </ButtonContainer>
       </ImageBackground>
     </View>
