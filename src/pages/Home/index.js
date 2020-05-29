@@ -19,16 +19,6 @@ export default ({ navigation }) => {
         <Image source={require('../../assets/Logo.png')} style={styles.logo} />
         <Text>test</Text>
         <ButtonContainer>
-          {/* <Button
-            key="QUESTION"
-            text="QUESTION"
-            onPress={() =>
-              navigation.navigate('Quizz', {
-                title: 'Quizz',
-                color: '#799496',
-              })
-            }
-          /> */}
           <Button
             key="créer une room"
             text="créer une room"
