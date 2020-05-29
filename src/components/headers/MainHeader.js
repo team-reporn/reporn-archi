@@ -22,45 +22,37 @@ export default class MainHeader extends React.Component {
 const styles = StyleSheet.create({
     main: {
         width: "100%",
-        height:100,
+        height:150,
         flexDirection: "row",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        backgroundColor: "red"
     },
     center: {
-        position: "relative",
         justifyContent: "center",
         alignItems: "center"
     },
     bg: {
-        position: "absolute",
-        right: 0,
-        top: 0,
-        height: 100,
-        width: 200,
+        height: "100%",
+        width: 250,
         resizeMode: 'stretch'
     },
     bg2: {
-        position: "absolute",
-        left: 0,
-        top: 0,
-        height: 100,
+        height: "100%",
         width: 200,
         resizeMode: 'stretch'
     },
     icon: {
         position: "absolute",
         top: 0,
-        right: 0,
-        left: 0,
-        bottom: 0,
-        zIndex: 1
+        zIndex: 1,
+        margin: 10
     }
   });
 
   let BackBtn = ({}) => {
       return (
-          <View>
-              <Image style={styles.bg2} source={require('../../assets/img/headers/retourBg.png')}/>
+          <View style={styles.center}>
+              <Image style={styles.bg} source={require('../../assets/img/headers/retourBg.png')}/>
               <TouchableOpacity style={styles.icon}>
                 <Image source={require('../../assets/img/headers/retourIco.png')}/>
               </TouchableOpacity>
@@ -70,7 +62,7 @@ const styles = StyleSheet.create({
 
   let ParamBtn = ({}) => {
     return (
-        <View>
+        <View style={styles.center}>
             <Image style={styles.bg} source={require('../../assets/img/headers/reglageBg.png')}/>
             <TouchableOpacity style={styles.icon}>
                 <Image source={require('../../assets/img/headers/reglageIco.png')}/>

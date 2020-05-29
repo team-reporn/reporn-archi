@@ -18,7 +18,10 @@ export default class GameHeader extends React.Component {
             <View style={styles.main}>
                 <Image style={styles.bg} source={require('../../assets/img/headers/gameHeaderBg.png')} />
                 <View style={styles.content}>
-                    <UserBtn/>
+                    <View style={{flexDirection: "row"}}>
+                        <BackBtn/>
+                        <UserBtn/>
+                    </View>
                     <Text>Ok</Text>
                     <ParamBtn/>
                 </View>
@@ -30,12 +33,11 @@ export default class GameHeader extends React.Component {
 const styles = StyleSheet.create({
     main: {
         width: "100%",
-        height: 100,
-        justifyContent: "center",
-        alignItems: "center"
+        height: 150,
+        backgroundColor: "red"
     },
     bg: {
-        height: 100,
+        height: "100%",
         width: "100%",
         resizeMode: "stretch"
     },
@@ -43,23 +45,37 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         justifyContent: "space-between",
         position: "absolute",
-        height: 50,
+        top: 0,
         width: "100%"
+    },
+    btnMargin: {
+        margin: 10
+    },
+    iconSize: {
+
     }
   });
 
   let UserBtn = () => {
       return(
-      <TouchableOpacity>
-          <Image source={require('../../assets/img/headers/userIco.png')} />
+      <TouchableOpacity style={styles.btnMargin}>
+          <Image style={styles.iconSize} source={require('../../assets/img/headers/userIco.png')} />
       </TouchableOpacity>
       )
   }
 
+  let BackBtn = () => {
+    return(
+    <TouchableOpacity style={styles.btnMargin}>
+        <Image style={styles.iconSize} source={require('../../assets/img/headers/retourIco.png')} />
+    </TouchableOpacity>
+    )
+}
+
   let ParamBtn = () => {
       return(
-    <TouchableOpacity>
-        <Image source={require('../../assets/img/headers/reglageIco.png')} />
+    <TouchableOpacity style={styles.btnMargin}>
+        <Image style={styles.iconSize} source={require('../../assets/img/headers/reglageIco.png')} />
     </TouchableOpacity>
     )
 }

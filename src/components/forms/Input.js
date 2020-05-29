@@ -20,15 +20,17 @@ export default class Title1 extends React.Component {
 const styles = StyleSheet.create({
     main: {
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        width: 250
     },
     img: {
-        
+        width: "100%",
+        resizeMode: "stretch"
     },
     input: {
         color: 'blue',
         position: "absolute",
-        width: "60%",
-        height: "100%"
+        width: "85%",
+        height: "100%",
     }
   });
