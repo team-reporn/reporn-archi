@@ -18,38 +18,28 @@ const Socket = ({ children }) => {
     socket.emit("channel1", "Hi server");
 
     socket.on("everyone is ready", () => {
-      console.log("everyone");
       setProgress({ start: true });
     });
 
     socket.on("created", () => {
-      console.log("created");
     });
 
     socket.on("joined", (data) => {
-      console.log("==========\n==========\n==========\n==========\n");
-      console.log(data);
-      console.log("==========\n==========\n==========\n==========\n");
       if (data && data.success) {
-        console.log("joined");
         setRoomInfo(data.roomInfo);
       } else {
-        console.log("fail to join the room");
         setRoomInfo({ roomId: null, numClients: null, role: null });
       }
     });
     socket.on("room info", (data) => {
-      // console.log("room info", data);
       setRoomInfo(data);
     });
     socket.on("game info", (data) => {
-      console.log("game info", data);
       setGame(data);
     });
     socket.on("game start", (data) => {
       setCharacter(data);
     });
-    console.log("created room ");
     setRoomInfo({ roomId: null, numClients: null, role: null });
   }, []);
   let getRoomInfo = useCallback(() => {
@@ -63,14 +53,12 @@ const Socket = ({ children }) => {
   }, []);
   const startGame = useCallback(() => {
     socket.emit("start playing", roomInfo.roomId);
-    console.log("start playing");
   }, []);
   const changeGame = useCallback(() => {
     socket.emit("change game");
   });
   const ready = useCallback(() => {
     socket.emit("ready", "i'm ready");
-    console.log("i'm ready");
   }, []);
   const getPlayerInfo = useCallback(() => {}, []);
   const getGameInfo = useCallback(() => {

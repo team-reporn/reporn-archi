@@ -55,7 +55,6 @@ let Roles = ({ navigation }) => {
               key="suite"
               text="suite"
               onPress={() => {
-                console.log('pressed')
                 getGameInfo()
                 navigation.navigate('Theme', {
                   title: 'Theme',

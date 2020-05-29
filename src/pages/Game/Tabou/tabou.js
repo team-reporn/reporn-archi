@@ -143,7 +143,6 @@ export default class Tabou extends React.Component {
               onPress={() =>
                 //this.answer(answer.correct)
                 {
-                  console.log(this.props);
                   this.props.navigation.navigate("EndGame", {
                     title: "EndGame",
                   });

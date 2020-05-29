@@ -62,7 +62,6 @@ let Wait = ({ navigation }) => {
 
   useEffect(() => {
     if (progress.start) {
-      console.log(getRoutesFromGameName({ game: game.game }));
       navigation.navigate(getRoutesFromGameName({ game: game.game }).route, {
         title: getRoutesFromGameName({ game: game.game }).title,
       });

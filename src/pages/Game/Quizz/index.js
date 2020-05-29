@@ -40,12 +40,9 @@ const Quiz = ({ navigation }) => {
   }
 
   const { game } = useSocket()
-  console.log('bonjour', game)
 
-  console.log(game)
   const questions = culture
   const question = questions[activeQuestionIndex]
-  console.log(question.question)
 
   return (
     <View>
