@@ -1,72 +1,73 @@
 // in this, define all games and select one randomly - On button go select go to Quiz
-import React, { useState, useEffect } from 'react'
-import { Button, ButtonContainer } from '../../components/Button'
-import { View, StyleSheet, Text, Image } from 'react-native'
-import useSocket from '../../App/Socket/useSocket'
-import culture from '../../contents/cultureData'
+import React, { useState, useEffect } from "react";
+import { Button, ButtonContainer } from "../../components/Button";
+import { View, StyleSheet, Text, Image } from "react-native";
+import useSocket from "../../App/Socket/useSocket";
+import culture from "../../contents/cultureData";
 // import troudumonde from '../../contents/troudumonde'
 // import parodie from '../../contents/parodie'
 
 const gamesRoots = [
   {
-    key: 'QUESTION',
-    text: 'QUESTION',
-    title: 'Quizz',
+    key: "QUESTION",
+    text: "QUESTION",
+    title: "Quizz",
     question: culture,
-    color: '#799496',
+    color: "#799496",
   },
   {
-    key: 'QUESTION',
-    text: 'QUESTION',
-    title: 'Tabou',
+    key: "QUESTION",
+    text: "QUESTION",
+    title: "Tabou",
     question: culture,
-    color: '#799496',
+    color: "#799496",
   },
   {
-    key: 'QUESTION',
-    text: 'QUESTION',
-    title: 'Shake',
+    key: "QUESTION",
+    text: "QUESTION",
+    title: "Shake",
     question: culture,
-    color: '#799496',
+    color: "#799496",
   },
-]
+];
 let getRoutesFromGameName = ({ game }) => {
   switch (game) {
-    case 'tabou':
-      return { route: 'Tabou', title: 'Tabou' }
-      break
+    case "tabou":
+      return { route: "Tabou", title: "Tabou" };
+      break;
 
-    case 'cultureQ':
-      return { route: 'Quizz', title: 'Quizz' }
-      break
+    case "cultureQ":
+      return { route: "Quizz", title: "Quizz" };
+      break;
 
-    case 'acteurX':
-      return { route: 'Tabou', title: 'Tabou' }
-      break
+    case "acteurX":
+      return { route: "Tabou", title: "Tabou" };
+      break;
 
-    case 'ouEst':
-      return { route: 'Quizz', title: 'Quizz' }
-      break
-    // default:
-    //   return { route: 'Tabou', title: 'Tabou' }
-    //   break
+    case "ouEst":
+      return { route: "Quizz", title: "Quizz" };
+      break;
+    default:
+      throw "non reconized game " + game;
+      break;
   }
-}
+};
 let Wait = ({ navigation }) => {
-  let socketReady = false
-  const { progress, ready, game } = useSocket()
+  let socketReady = false;
+  const { progress, ready, game } = useSocket();
 
   useEffect(() => {
-    ready()
-  }, [])
+    ready();
+  }, []);
 
   useEffect(() => {
     if (progress.start) {
+      console.log(getRoutesFromGameName({ game: game.game }));
       navigation.navigate(getRoutesFromGameName({ game: game.game }).route, {
         title: getRoutesFromGameName({ game: game.game }).title,
-      })
+      });
     }
-  }, [progress])
+  }, [progress]);
 
   return progress.start || false ? (
     <View>
@@ -76,11 +77,11 @@ let Wait = ({ navigation }) => {
     <View>
       <Text>Waiting for everyone to be ready ...</Text>
     </View>
-  )
-}
+  );
+};
 
 export default ({ navigation }) => {
-  const [pressed, setPressed] = useState(false)
+  const [pressed, setPressed] = useState(false);
   return (
     <View>
       {pressed ? (
@@ -92,11 +93,11 @@ export default ({ navigation }) => {
             key="READY"
             text="I'm Ready !"
             onPress={() => {
-              setPressed(true)
+              setPressed(true);
             }}
           ></Button>
         </View>
       )}
     </View>
-  )
-}
+  );
+};

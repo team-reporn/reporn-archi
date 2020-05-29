@@ -13,6 +13,9 @@ import EndGame from "../pages/EndGame";
 
 import Roles from "../pages/Roles";
 import Theme from "../pages/Theme";
+import Achievement from "../pages/Achievement";
+import Futur from "../pages/Futur";
+import PlayAgain from "../pages/PlayAgain";
 
 import Quizz from "../pages/Game/Quizz";
 import Tabou from "../pages/Game/Tabou";
@@ -35,6 +38,9 @@ export default () => {
           <Stack.Screen name="JoinRoom" component={JoinRoom} />
           <Stack.Screen name="Roles" component={Roles} />
           <Stack.Screen name="Theme" component={Theme} />
+          <Stack.Screen name="Achievement" component={Achievement} />
+          <Stack.Screen name="Futur" component={Futur} />
+          <Stack.Screen name="PlayAgain" component={PlayAgain} />
         </Stack.Navigator>
       </Socket>
     </NavigationContainer>

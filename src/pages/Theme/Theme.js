@@ -17,8 +17,8 @@ let Theme = ({ navigation }) => {
           <Text>à toi de tirer un mouchoir pour choisir un theme</Text>
           <ButtonContainer>
             <Button
-              key="tire un mouchoir"
-              text="tire un mouchoir"
+              key="Categorie"
+              text="Categorie"
               onPress={() => {
                 setPressed(true);
               }}
