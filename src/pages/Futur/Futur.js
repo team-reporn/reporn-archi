@@ -30,8 +30,8 @@ let Futur = ({ navigation }) => {
           <Text>{character.futur}</Text>
           <ButtonContainer>
             <Button
-              key="decouvre l'avenir"
-              text="decouvre l'avenir"
+              key="Fin"
+              text="Fin"
               onPress={() => {
                 navigation.navigate("PlayAgain");
               }}

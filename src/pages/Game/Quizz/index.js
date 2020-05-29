@@ -23,37 +23,13 @@ const styles = StyleSheet.create({
   },
 })
 
-const Quiz = () => {
-  // state = {
-  //   correctCount: 0,
-  //   activeQuestionIndex: 0,
-  //   answered: false,
-  //   answerCorrect: false,
-  // }
-
+const Quiz = ({ navigation }) => {
   const [correctCount, setCorrectCount] = useState(0)
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0)
   const [answered, setAnswered] = useState(false)
   const [answerCorrect, setAnswerCorrect] = useState(false)
 
   answer = (correct) => {
-    // this.setState(
-    //   (state) => {
-    //     const nextState = { answered: true }
-
-    //     if (correct) {
-    //       nextState.correctCount = state.correctCount + 1
-    //       nextState.answerCorrect = true
-    //     } else {
-    //       nextState.answerCorrect = false
-    //     }
-
-    //     return nextState
-    //   },
-    //   () => {
-    //     return this.props.navigation.popToTop()
-    //   }
-    // )
     setAnswered(true)
     if (correct) {
       setCorrectCount(correctCount + 1)
@@ -75,16 +51,20 @@ const Quiz = () => {
     <View>
       <Text>{question.question}</Text>
       <ButtonContainer>
-        <Text style={styles.text}>coucou</Text>
         {question.answers.map((answer) => (
           <Button
             key={answer.id}
             text={answer.text}
-            onPress={() => this.answer(answer.correct)}
+            onPress={() =>
+              //this.answer(answer.correct)
+              navigation.navigate('EndGame', {
+                title: 'EndGame',
+              })
+            }
           />
         ))}
       </ButtonContainer>
-      <Alert correct={answerCorrect} visible={answered} />
+      {/* <Alert correct={answerCorrect} visible={answered} /> */}
     </View>
   )
 }

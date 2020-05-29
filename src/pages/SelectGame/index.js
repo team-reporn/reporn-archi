@@ -30,7 +30,28 @@ const gamesRoots = [
     color: "#799496",
   },
 ];
+let getRoutesFromGameName = ({ game }) => {
+  switch (game) {
+    case "tabou":
+      return { route: "Tabou", title: "Tabou" };
+      break;
 
+    case "cultureQ":
+      return { route: "Quizz", title: "Quizz" };
+      break;
+
+    case "acteurX":
+      return { route: "Tabou", title: "Tabou" };
+      break;
+
+    case "ouEst":
+      return { route: "Quizz", title: "Quizz" };
+      break;
+    default:
+      throw "non reconized game " + game;
+      break;
+  }
+};
 let Wait = ({ navigation }) => {
   let socketReady = false;
   const { progress, ready, game } = useSocket();
@@ -41,10 +62,9 @@ let Wait = ({ navigation }) => {
 
   useEffect(() => {
     if (progress.start) {
-      navigation.navigate("Achievement", {
-        title: "Achievement",
-        questions: culture,
-        color: "#799496",
+      console.log(getRoutesFromGameName({ game: game.game }));
+      navigation.navigate(getRoutesFromGameName({ game: game.game }).route, {
+        title: getRoutesFromGameName({ game: game.game }).title,
       });
     }
   }, [progress]);

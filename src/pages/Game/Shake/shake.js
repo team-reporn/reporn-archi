@@ -1,4 +1,10 @@
 import React from "react";
+
+import {
+  Button as BigButton,
+  ButtonContainer,
+} from "../../../components/Button";
+
 import { View, Text, Button } from "react-native";
 import { Accelerometer } from "expo-sensors";
 
@@ -72,11 +78,11 @@ export default class Shake extends React.Component {
         <View>
           <Text>{this.state.resultList[this.state.result]}</Text>
           <ButtonContainer>
-            <Button
+            <BigButton
               key="achievement"
               text="achievement"
               onPress={() => {
-                navigation.navigate("Achievement", {
+                this.props.navigation.navigate("Achievement", {
                   title: "Achievement",
                 });
               }}

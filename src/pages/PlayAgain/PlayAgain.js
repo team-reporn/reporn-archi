@@ -11,6 +11,7 @@ const PlayAgain = ({ navigation }) => {
           key="replay"
           text="replay"
           onPress={() => {
+            //TODO faire une fonction qui handle ça niveau socket pour actualiser le jeu
             navigation.navigate("Theme", {
               title: "Theme",
             });
