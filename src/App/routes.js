@@ -20,6 +20,7 @@ import PlayAgain from "../pages/PlayAgain";
 import Quizz from "../pages/Game/Quizz";
 import Tabou from "../pages/Game/Tabou";
 import Shake from "../pages/Game/Shake";
+import Wiwaldo from "../pages/Game/Wiwaldo";
 
 const Stack = createStackNavigator();
 
@@ -29,18 +30,19 @@ export default () => {
       <Socket>
         <Stack.Navigator>
           <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Room" component={Room} />
+          <Stack.Screen name="JoinRoom" component={JoinRoom} />
           <Stack.Screen name="SelectGame" component={SelectGame} />
           <Stack.Screen name="Quizz" component={Quizz} />
           <Stack.Screen name="Tabou" component={Tabou} />
           <Stack.Screen name="Shake" component={Shake} />
-          <Stack.Screen name="EndGame" component={EndGame} />
-          <Stack.Screen name="Room" component={Room} />
-          <Stack.Screen name="JoinRoom" component={JoinRoom} />
           <Stack.Screen name="Roles" component={Roles} />
+          <Stack.Screen name="EndGame" component={EndGame} />
           <Stack.Screen name="Theme" component={Theme} />
           <Stack.Screen name="Achievement" component={Achievement} />
           <Stack.Screen name="Futur" component={Futur} />
           <Stack.Screen name="PlayAgain" component={PlayAgain} />
+          <Stack.Screen name="Wiwaldo" component={Wiwaldo} />
         </Stack.Navigator>
       </Socket>
     </NavigationContainer>
