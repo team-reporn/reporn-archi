@@ -31,7 +31,7 @@ export default class Chrono extends React.Component {
 
     render() {
         return (
-            <View style={styles.main}>
+            <View style={[styles.main, this.props.style]}>
                 <Image source={require('../assets/img/chrono.png')}></Image>
                 <Text style={styles.text}>{this.state.timerLeft}:00:00</Text>
             </View>

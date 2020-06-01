@@ -12,7 +12,7 @@ export default class PornnewsFlash extends React.Component {
 
     render() {
         return (
-            <View style={styles.main}>
+            <View style={[styles.main, this.props.style]}>
                 <TouchableOpacity onPress={()=>{this.setState({show: !this.state.show})}}>
                     <Image source={require('../assets/img/pornFlashBtn.png')}/>
                 </TouchableOpacity>

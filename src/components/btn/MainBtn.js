@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity  } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 export default class MainBtn extends React.Component {
     constructor (props) {
@@ -32,11 +33,11 @@ export default class MainBtn extends React.Component {
         this.props.rotation4?rotation=styles.rotation4:''
         
         return (
-            <View>
-                <TouchableOpacity style={[styles.main, rotation]} onPress={this.props.onPress} onPressIn={() => {this.setState({pressed: true})}} onPressOut={()=>{this.setState({pressed: false})}}>
+            <View style={[rotation, this.props.style]} >
+                <TouchableWithoutFeedback style={[styles.main]}  onPress={this.props.onPress} onPressIn={() => {this.setState({pressed: true})}} onPressOut={()=>{this.setState({pressed: false})}}>
                     <ImageBtn pressed={this.state.pressed} startBtn={this.state.startBtn} pressedBtn={this.state.pressedBtn} />
                     <Text style={[styles.text, this.state.pressed?textPressedColor:textColor]}>{this.props.content}</Text>
-                </TouchableOpacity>
+                </TouchableWithoutFeedback>
             </View>
         )
     }

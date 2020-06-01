@@ -11,7 +11,7 @@ export default class MainHeader extends React.Component {
 
     render() {
         return (
-            <View style={styles.main}>
+            <View style={[styles.main, this.props.style]}>
                 <BackBtn/>
                 <ParamBtn/>
             </View>
@@ -22,10 +22,8 @@ export default class MainHeader extends React.Component {
 const styles = StyleSheet.create({
     main: {
         width: "100%",
-        height:150,
         flexDirection: "row",
         justifyContent: "space-between",
-        backgroundColor: "red"
     },
     center: {
         justifyContent: "center",

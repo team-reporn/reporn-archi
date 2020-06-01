@@ -14,7 +14,7 @@ export default class Title1 extends React.Component {
 
     render() {
         return (
-            <View style={styles.main}>
+            <View style={[styles.main, this.props.style]}>
                 <Image source={this.bg}></Image>
                 <Text style={styles.text}>{this.props.content}</Text>
             </View>

@@ -9,7 +9,7 @@ export default class Title1 extends React.Component {
 
     render() {
         return (
-            <View style={styles.main}>
+            <View style={[styles.main, this.props.style]}>
                 <Image style={styles.img} source={require('../../assets/img/forms/inputWhite.png')}></Image>
                 <TextInput style={styles.input} placeholder={this.props.placeholder}></TextInput>
             </View>

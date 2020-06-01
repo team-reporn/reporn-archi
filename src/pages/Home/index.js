@@ -5,6 +5,9 @@ import { View, StyleSheet, Text, Image, ImageBackground } from "react-native";
 import useSocket from "../../App/Socket/useSocket";
 import culture from "../../contents/cultureData";
 
+import Title1 from '../../components/titles/Title1'
+import MainBtn from '../../components/btn/MainBtn'
+
 export default ({ navigation }) => {
   const { initializeSocket } = useSocket();
   console.log("yplol", navigation);
@@ -18,21 +21,20 @@ export default ({ navigation }) => {
         source={require("../../assets/backgrounds/Background.png")}
         style={styles.background}
       >
-        <Image source={require("../../assets/Logo.png")} style={styles.logo} />
-        <Text>test</Text>
-        <ButtonContainer>
-          <Button
-            key="rentrer dans le jeu"
-            text="rentrer dans le jeu"
+        <Image source={require("../../assets/logo.png")} style={styles.logo} />
+        <Title1 content="Partie de jambes en l'air" style={styles.title} />
+        <MainBtn content="Rentrer dans le jeu" style={styles.btn1}
             onPress={() => {
               navigation.navigate("SelectGame", {
                 title: "SelectGame",
                 questions: culture,
                 color: "#799496",
               });
-            }}
-          />
-        </ButtonContainer>
+            }} />
+          <MainBtn content="C'est un autre bouton" style={styles.btn2}
+            onPress={() => {
+
+            }} />
       </ImageBackground>
     </View>
   );
@@ -42,6 +44,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
+    paddingTop: 100,
+    alignItems: "center",
+    height: "100%",
+    width: "100%"
   },
   background: {
     flex: 1,
@@ -49,6 +55,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logo: {
-    width: 256,
+    marginBottom: 100
   },
+title: {
+    marginBottom: -20,
+},
+btn1: {
+    marginBottom: 30
+}
 });

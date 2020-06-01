@@ -15,7 +15,7 @@ export default class GameHeader extends React.Component {
 
     render() {
         return (
-            <View style={styles.main}>
+            <View style={[styles.main, this.props.style]}>
                 <Image style={styles.bg} source={require('../../assets/img/headers/gameHeaderBg.png')} />
                 <View style={styles.content}>
                     <View style={{flexDirection: "row"}}>
@@ -33,7 +33,6 @@ export default class GameHeader extends React.Component {
 const styles = StyleSheet.create({
     main: {
         width: "100%",
-        height: 150,
         backgroundColor: "red"
     },
     bg: {
