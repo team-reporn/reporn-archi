@@ -23,7 +23,7 @@ export default ({ navigation }) => {
       >
         <Image source={require("../../assets/logo.png")} style={styles.logo} />
         <Title1 content="Partie de jambes en l'air" style={styles.title} />
-        <MainBtn content="Rentrer dans le jeu" style={styles.btn1}
+        <MainBtn content="Rentrer dans le jeu" style={styles.btn1} rotation1
             onPress={() => {
               navigation.navigate("SelectGame", {
                 title: "SelectGame",
@@ -31,7 +31,7 @@ export default ({ navigation }) => {
                 color: "#799496",
               });
             }} />
-          <MainBtn content="C'est un autre bouton" style={styles.btn2}
+          <MainBtn content="C'est un autre bouton" style={styles.btn2} rotation2
             onPress={() => {
 
             }} />
