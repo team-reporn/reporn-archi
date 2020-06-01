@@ -7,29 +7,6 @@ import culture from "../../contents/cultureData";
 // import troudumonde from '../../contents/troudumonde'
 // import parodie from '../../contents/parodie'
 
-const gamesRoots = [
-  {
-    key: "QUESTION",
-    text: "QUESTION",
-    title: "Quizz",
-    question: culture,
-    color: "#799496",
-  },
-  {
-    key: "QUESTION",
-    text: "QUESTION",
-    title: "Tabou",
-    question: culture,
-    color: "#799496",
-  },
-  {
-    key: "QUESTION",
-    text: "QUESTION",
-    title: "Shake",
-    question: culture,
-    color: "#799496",
-  },
-];
 let getRoutesFromGameName = ({ game }) => {
   switch (game) {
     case "tabou":
@@ -41,19 +18,19 @@ let getRoutesFromGameName = ({ game }) => {
       break;
 
     case "acteurX":
-      return { route: "Tabou", title: "Tabou" };
+      return { route: "Quizz", title: "Quizz" };
       break;
 
     case "ouEst":
-      return { route: "Quizz", title: "Quizz" };
+      return { route: "Wiwaldo", title: "Wiwaldo" };
       break;
+
     default:
       throw "non reconized game " + game;
       break;
   }
 };
 let Wait = ({ navigation }) => {
-  let socketReady = false;
   const { progress, ready, game } = useSocket();
 
   useEffect(() => {
