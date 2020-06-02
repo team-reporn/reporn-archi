@@ -17,7 +17,7 @@ let Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../../assets/backgrounds/Background.png')}
+        source={require('../../assets/img/backgrounds/Background.png')}
         style={styles.background}
       >
         <Image source={require('../../assets/Logo.png')} style={styles.logo} />
@@ -59,7 +59,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   logo: {
-    width: 256,
+    marginBottom: 100,
+  },
+  title: {
+    marginBottom: -20,
+  },
+  btn1: {
+    marginBottom: 30,
   },
 })
 

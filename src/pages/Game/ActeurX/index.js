@@ -5,7 +5,7 @@ import useSocket from '../../../App/Socket/useSocket'
 import Title1 from '../../../components/titles/Title2'
 import QuizzBtn from '../../../components/btn/QuizzBtn'
 
-import culture from '../../../contents/cultureData'
+import acteurX from '../../../contents/acteurX'
 
 const styles = StyleSheet.create({
   container: {
@@ -37,7 +37,7 @@ const Quiz = ({ navigation }) => {
 
   const { game } = useSocket()
 
-  const questions = culture
+  const questions = acteurX
   const question = questions[activeQuestionIndex]
 
   return (

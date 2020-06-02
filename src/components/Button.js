@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 export const Button = ({ text, onPress = () => {} }) => (
   <TouchableOpacity onPress={onPress} style={styles.button}>
     <Image
-      source={require('../assets/buttons/Bk_blue.png')}
+      source={require('../assets/img/btn/AnswerBtnBlue.png')}
       style={styles.img}
     />
     <View style={styles.absoluteView}>

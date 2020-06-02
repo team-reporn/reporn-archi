@@ -1,35 +1,35 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
-import Socket from "./Socket";
+import Socket from './Socket'
 
-import Room from "../pages/Room";
-import JoinRoom from "../pages/JoinRoom";
+import Room from '../pages/Room'
+import JoinRoom from '../pages/JoinRoom'
 
-import Home from "../pages/Home";
-import SelectGame from "../pages/SelectGame";
-import EndGame from "../pages/EndGame";
+import Home from '../pages/Home'
+import SelectGame from '../pages/SelectGame'
+import EndGame from '../pages/EndGame'
 
-import Roles from "../pages/Roles";
-import Theme from "../pages/Theme";
-import Achievement from "../pages/Achievement";
-import Futur from "../pages/Futur";
-import PlayAgain from "../pages/PlayAgain";
+import Roles from '../pages/Roles'
+import Theme from '../pages/Theme'
+import Achievement from '../pages/Achievement'
+import Futur from '../pages/Futur'
+import PlayAgain from '../pages/PlayAgain'
 
-import Quizz from "../pages/Game/Quizz";
-import Tabou from "../pages/Game/Tabou";
-import Shake from "../pages/Game/Shake";
-import Wiwaldo from "../pages/Game/Wiwaldo";
+import Quizz from '../pages/Game/Quizz'
+import Tabou from '../pages/Game/Tabou'
+import Shake from '../pages/Game/Shake'
+import Wiwaldo from '../pages/Game/Wiwaldo'
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 
 export default () => {
   return (
     <NavigationContainer>
       <Socket>
         <Stack.Navigator>
-          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Home" component={Quizz} />
           <Stack.Screen name="Room" component={Room} />
           <Stack.Screen name="JoinRoom" component={JoinRoom} />
           <Stack.Screen name="SelectGame" component={SelectGame} />
@@ -46,5 +46,5 @@ export default () => {
         </Stack.Navigator>
       </Socket>
     </NavigationContainer>
-  );
-};
+  )
+}
