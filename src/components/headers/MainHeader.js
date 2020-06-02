@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
         height:150,
         flexDirection: "row",
         justifyContent: "space-between",
-        backgroundColor: "red"
     },
     center: {
         justifyContent: "center",

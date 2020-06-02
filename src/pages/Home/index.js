@@ -20,7 +20,7 @@ let Home = ({ navigation }) => {
         source={require('../../assets/backgrounds/Background.png')}
         style={styles.background}
       >
-        <Image source={require('../../assets/Logo.png')} style={styles.logo} />
+        <Image source={require('../../assets/logo.png')} style={styles.logo} />
         <Title1 content="Partie de jambes en l'air" style={styles.title} />
         <MainBtn
           content="Rentrer dans le jeu"

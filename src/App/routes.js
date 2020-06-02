@@ -22,13 +22,17 @@ import Tabou from "../pages/Game/Tabou";
 import Shake from "../pages/Game/Shake";
 import Wiwaldo from "../pages/Game/Wiwaldo";
 
+import GameHeader from '../components/headers/GameHeader'
+
 const Stack = createStackNavigator();
 
 export default () => {
   return (
     <NavigationContainer>
       <Socket>
-        <Stack.Navigator>
+        <Stack.Navigator           screenOptions={{
+            headerShown: false,
+          }}>
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Room" component={Room} />
           <Stack.Screen name="JoinRoom" component={JoinRoom} />
