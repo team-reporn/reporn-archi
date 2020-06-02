@@ -5,7 +5,7 @@ import { Button, ButtonContainer } from '../../components/Button'
 import { View, StyleSheet, Text, Image, ImageBackground } from 'react-native'
 import useSocket from '../../App/Socket/useSocket'
 
-import Title1 from '../../components/titles/Title1'
+import Title2 from '../../components/titles/Title2'
 import MainBtn from '../../components/btn/MainBtn'
 
 let Home = ({ navigation }) => {
@@ -21,7 +21,7 @@ let Home = ({ navigation }) => {
         style={styles.background}
       >
         <Image source={require('../../assets/logo.png')} style={styles.logo} />
-        <Title1 content="Partie de jambes en l'air" style={styles.title} />
+        <Title2 content="Partie de jambes en l'air" content2="test" style={styles.title} />
         <MainBtn
           content="Rentrer dans le jeu"
           style={styles.btn1}
