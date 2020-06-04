@@ -3,6 +3,11 @@ import { View, Text } from 'react-native'
 import { Button, ButtonContainer } from '../../components/Button'
 import useSocket from '../../App/Socket/useSocket'
 
+import Title1 from '../../components/titles/Title1'
+import Input from '../../components/forms/Input'
+import NextBtn from '../../components/btn/NextBtn'
+import MainBtn from '../../components/btn/MainBtn'
+
 let Room = ({ navigation }) => {
   const { roomInfo, getRoomInfo, setRoomInfo, startGame } = useSocket()
   // console.log("componentRoom : ", roomInfo);
@@ -21,8 +26,12 @@ let Room = ({ navigation }) => {
   }, [roomInfo])
   return (
     <View>
-      <Text>Room</Text>
-      <Text>Votre numero de room : {roomInfo.roomId}</Text>
+      <Title1 content="Numéro de la room" paper={roomInfo.roomId} />
+      <Title1 content="Niveau de trashitude"/>
+      <MainBtn content="Soft vanilla" />
+      <MainBtn content="Regular mainstream" />
+      <MainBtn content="Haardcore" />
+      <NextBtn/>
       <Text>nombre de personne connecté à la room : {roomInfo.numClients}</Text>
       {roomInfo && roomInfo.role === 'owner' && (
         <ButtonContainer>

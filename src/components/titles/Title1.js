@@ -17,7 +17,14 @@ export default class Title1 extends React.Component {
             <View style={styles.main}>
                 <Image source={this.bg}></Image>
                 <Text style={styles.text}>{this.props.content}</Text>
+                {this.props.paper !== undefined &&
+                <View style={styles.main}>
+                    <Image source={require('../../assets/img/title/title1-paper.png')}></Image>
+                    <Text style={styles.paperText}>{this.props.paper}</Text>
+                </View>
+                }
             </View>
+
         )
     }
 }
@@ -30,5 +37,10 @@ const styles = StyleSheet.create({
     text: {
         color: 'white',
         position: "absolute"
-    }
+    },
+paperText: {
+    position: "absolute",
+    right:30,
+    top: 40
+}
   });
