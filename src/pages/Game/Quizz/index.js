@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, StyleSheet, ImageBackground, Text } from 'react-native'
 import useSocket from '../../../App/Socket/useSocket'
 
-import Title1 from '../../../components/titles/Title2'
+import TitleQuestion from '../../../components/titles/TitleQuestion'
 import QuizzBtn from '../../../components/btn/QuizzBtn'
 
 import culture from '../../../contents/cultureData'
@@ -45,10 +45,10 @@ const Quiz = ({ navigation }) => {
     <View style={styles.container}>
       {step === 0 && (
         <ImageBackground
-          source={require('../../../assets/img/backgrounds/Background3.png')}
+          source={require('../../../assets/img/backgrounds/Question1.png')}
           style={styles.background}
         >
-          <Title1 content={question.question} style={styles.title} />
+          <TitleQuestion content={question.question} style={styles.title} />
           {question.answers.map((answer) => (
             <QuizzBtn
               key={answer.id}
@@ -68,7 +68,7 @@ const Quiz = ({ navigation }) => {
       )}
       {step === 1 && (
         <ImageBackground
-          source={require('../../../assets/img/backgrounds/Background3.png')}
+          source={require('../../../assets/img/backgrounds/Bon.png')}
           style={styles.background}
         >
           <Text>Bien joué</Text>
@@ -76,7 +76,7 @@ const Quiz = ({ navigation }) => {
       )}
       {step === 2 && (
         <ImageBackground
-          source={require('../../../assets/img/backgrounds/Background3.png')}
+          source={require('../../../assets/img/backgrounds/Mauvais.png')}
           style={styles.background}
         >
           <Text>Ou pas</Text>
