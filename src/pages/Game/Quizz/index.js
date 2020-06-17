@@ -4,6 +4,7 @@ import useSocket from '../../../App/Socket/useSocket'
 
 import TitleQuestion from '../../../components/titles/TitleQuestion'
 import QuizzBtn from '../../../components/btn/QuizzBtn'
+import PornnewsFlash from '../../../components/pornnewsFlash'
 
 import culture from '../../../contents/cultureData'
 
@@ -72,6 +73,16 @@ const Quiz = ({ navigation }) => {
           style={styles.background}
         >
           <Text>Bien joué</Text>
+
+          <Text>C’était la sextape de Kim Kardashiam & Ray Jay</Text>
+
+          <Text>
+            La sextape a été vue 55 fois en par minute durant toute l’année 2018
+            et continue toujours de lui rapporter de l’argent. Elle a été
+            diffusé avec son accord et surtout celui de sa mère
+          </Text>
+
+          <PornnewsFlash></PornnewsFlash>
         </ImageBackground>
       )}
       {step === 2 && (

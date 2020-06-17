@@ -1,6 +1,6 @@
 const questions = [
   {
-    question: 'Quelle sextap a été le plus vue ?',
+    question: 'Quelle sextap a etÉ le plus vue ?',
     answers: [
       { id: '1', text: 'Benjamin Grivaux' },
       { id: '2', text: 'Pamela Anderson & Tommy Lee' },
