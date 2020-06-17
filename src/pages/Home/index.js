@@ -15,33 +15,38 @@ let Home = ({ navigation }) => {
     initializeSocket()
   }, [])
 
-    return (
-      <View style={styles.container}>
-          <Image source={require('../../assets/logo.png')} style={styles.logo} />
-          <Title1 content="Partie de jambes en l'air" style={styles.title} />
-          <MainBtn
-            content="Rentrer dans le jeu"
-            style={styles.btn1}
-            rotation1
-            onPress={() => {
-              createRoom()
-              navigation.navigate('Room', {
-                title: 'Room',
-              })
-            }}
-          />
-          <MainBtn
-            content="C'est un autre bouton"
-            style={styles.btn2}
-            rotation2
-            onPress={() => {
-              navigation.navigate('JoinRoom', {
-                title: 'JoinRoom',
-              })
-            }}
-          />
-      </View>
-    )
+  return (
+    <View style={styles.container}>
+      <ImageBackground
+        source={require('../../assets/img/backgrounds/Home.png')}
+        style={styles.background}
+      >
+        <Image source={require('../../assets/Logo.png')} style={styles.logo} />
+        <Title1 content="Partie de jambes en l'air" style={styles.title} />
+        <MainBtn
+          content="Rentrer dans le jeu"
+          style={styles.btn1}
+          rotation1
+          onPress={() => {
+            createRoom()
+            navigation.navigate('Room', {
+              title: 'Room',
+            })
+          }}
+        />
+        <MainBtn
+          content="C'est un autre bouton"
+          style={styles.btn2}
+          rotation2
+          onPress={() => {
+            navigation.navigate('JoinRoom', {
+              title: 'JoinRoom',
+            })
+          }}
+        />
+      </ImageBackground>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({

@@ -15,7 +15,6 @@ export default class QuizzBtn extends React.Component {
       this.state.startBtn = require('../../assets/img/btn/AnswerBtnWhite.png')
     }
   }
-
   render() {
     function getRandomInt(max) {
       return Math.floor(Math.random() * Math.floor(max))
