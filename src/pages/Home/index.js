@@ -7,8 +7,6 @@ import useSocket from '../../App/Socket/useSocket'
 
 import Title1 from '../../components/titles/Title1'
 import MainBtn from '../../components/btn/MainBtn'
-import Input from '../../components/forms/Input'
-import NextBtn from '../../components/btn/NextBtn'
 
 
 let Home = ({ navigation }) => {

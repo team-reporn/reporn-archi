@@ -36,7 +36,7 @@ export default () => {
         <Stack.Navigator screenOptions={{
             headerShown: false,
           }}>
-          <Stack.Screen name="Home" component={(navigation)=>{
+          <Stack.Screen name="Home" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -51,7 +51,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="Login" component={(navigation)=>{
+          <Stack.Screen name="Login" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -66,7 +66,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="Room" component={(navigation)=>{
+          <Stack.Screen name="Room" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -81,7 +81,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="JoinRoom" component={(navigation)=>{
+          <Stack.Screen name="JoinRoom" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -96,7 +96,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="SelectGame" component={(navigation)=>{
+          <Stack.Screen name="SelectGame" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -111,7 +111,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="Quizz" component={(navigation)=>{
+          <Stack.Screen name="Quizz" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -126,7 +126,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="Tabou" component={(navigation)=>{
+          <Stack.Screen name="Tabou" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -141,7 +141,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="Shake" component={(navigation)=>{
+          <Stack.Screen name="Shake" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -156,7 +156,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="Roles" component={(navigation)=>{
+          <Stack.Screen name="Roles" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -171,7 +171,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="EndGame" component={(navigation)=>{
+          <Stack.Screen name="EndGame" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -186,7 +186,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="Theme" component={(navigation)=>{
+          <Stack.Screen name="Theme" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -201,7 +201,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="Achievement" component={(navigation)=>{
+          <Stack.Screen name="Achievement" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -216,7 +216,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="Futur" component={(navigation)=>{
+          <Stack.Screen name="Futur" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -231,7 +231,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="PlayAgain" component={(navigation)=>{
+          <Stack.Screen name="PlayAgain" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
@@ -246,7 +246,7 @@ export default () => {
                   </ImageBackground>
               );
           }} />
-          <Stack.Screen name="Wiwaldo" component={(navigation)=>{
+          <Stack.Screen name="Wiwaldo" component={({navigation})=>{
               return (
                   <ImageBackground
                     source={require('../assets/img/backgrounds/Background.png')}
