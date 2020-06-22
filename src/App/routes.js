@@ -194,7 +194,7 @@ export default () => {
                     <MainHeader />
                   </View>
                   <View style={styles.content}>
-                    <Role navigation={navigation} />
+                    <Roles navigation={navigation} />
                   </View>
                 </ImageBackground>
               )
