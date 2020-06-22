@@ -1,0 +1,28 @@
+/******* D-DIN *******/
+
+@font-face {
+  font-family: 'D-DIN';
+  src: url('../assets/fonts/Din/D-DIN.eot');
+  src: url('../assets/fonts/Din/D-DIN.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/Din/D-DIN.woff2') format('woff2'),
+    url('D-DIN.woff') format('woff'),
+    url('../assets/fonts/Din/D-DIN.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/******* MAIN DISFIGURED *******/
+
+@font-face {
+  font-family: 'Maim Disfigured';
+  src: url('../assets/fonts/MaimDisfigured/MaimDisfigured.eot');
+  src: url('../assets/fonts/MaimDisfigured/MaimDisfigured.eot?#iefix')
+      format('embedded-opentype'),
+    url('../assets/fonts/MaimDisfigured/MaimDisfigured.woff2') format('woff2'),
+    url('../assets/fonts/MaimDisfigured/MaimDisfigured.woff') format('woff'),
+    url('../assets/fonts/MaimDisfigured/MaimDisfigured.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

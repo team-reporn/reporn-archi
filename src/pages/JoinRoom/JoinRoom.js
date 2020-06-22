@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TextInput, Button } from "react-native";
 import useSocket from "../../App/Socket/useSocket";
 
+import Title1 from '../../components/titles/Title1'
+import Input from '../../components/forms/Input'
+import NextBtn from '../../components/btn/NextBtn'
+
 let JoinRoom = ({ navigation }) => {
   const { joinARoom, roomInfo } = useSocket();
   const [customRoomId, setCustomRoomId] = useState(null);
@@ -14,15 +18,13 @@ let JoinRoom = ({ navigation }) => {
   }, [roomInfo]);
   return (
     <View>
-      <Text>Rejoindre une room</Text>
-      <TextInput
-        style={{ height: 40 }}
-        placeholder="tapez le numero de la room que vous voulez rejoindre"
+      <Title1 content="Rejoindre une room" />
+      <Input
+        placeholder="Numéro de la room"
         onChangeText={(customRoomId) => setCustomRoomId(customRoomId)}
         defaultValue={customRoomId}
       />
-      <Button
-        title="join room"
+      <NextBtn
         onPress={() => {
           joinARoom(customRoomId);
         }}

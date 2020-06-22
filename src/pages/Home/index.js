@@ -8,6 +8,7 @@ import useSocket from "../../App/Socket/useSocket";
 import Title1 from "../../components/titles/Title1";
 import MainBtn from "../../components/btn/MainBtn";
 
+
 let Home = ({ navigation }) => {
   const { initializeSocket, createRoom, setRoomInfo } = useSocket();
   useEffect(() => {
@@ -17,7 +18,7 @@ let Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require("../../assets/backgrounds/Background.png")}
+        source={require('../../assets/img/backgrounds/Home.png')}
         style={styles.background}
       >
         <Image source={require("../../assets/Logo.png")} style={styles.logo} />
@@ -53,13 +54,14 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
   },
-  background: {
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
-  },
   logo: {
-    width: 256,
+    marginBottom: 100,
+  },
+  title: {
+    marginBottom: -20,
+  },
+  btn1: {
+    marginBottom: 30,
   },
 });
 

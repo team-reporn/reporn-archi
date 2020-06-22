@@ -1,25 +1,22 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, StatusBar, Text, SafeAreaView } from 'react-native'
-
-import { Button, ButtonContainer } from '../../../components/Button'
-import { Alert } from '../../../components/Alert'
+import { View, StyleSheet, ImageBackground, Text } from 'react-native'
 import useSocket from '../../../App/Socket/useSocket'
+
+import TitleQuestion from '../../../components/titles/TitleQuestion'
+import QuizzBtn from '../../../components/btn/QuizzBtn'
+import PornnewsFlash from '../../../components/pornnewsFlash'
 
 import culture from '../../../contents/cultureData'
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#36B1F0',
     flex: 1,
-    paddingHorizontal: 20,
+    flexDirection: 'column',
   },
-  text: {
-    color: 'black',
-  },
-  safearea: {
+  background: {
     flex: 1,
-    marginTop: 100,
-    justifyContent: 'space-between',
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
 })
 
@@ -28,6 +25,7 @@ const Quiz = ({ navigation }) => {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0)
   const [answered, setAnswered] = useState(false)
   const [answerCorrect, setAnswerCorrect] = useState(false)
+  const [step, setStep] = useState(0)
 
   answer = (correct) => {
     setAnswered(true)
@@ -45,23 +43,56 @@ const Quiz = ({ navigation }) => {
   const question = questions[activeQuestionIndex]
 
   return (
-    <View>
-      <Text>{question.question}</Text>
-      <ButtonContainer>
-        {question.answers.map((answer) => (
-          <Button
-            key={answer.id}
-            text={answer.text}
-            onPress={() =>
-              //this.answer(answer.correct)
-              navigation.navigate('EndGame', {
-                title: 'EndGame',
-              })
-            }
-          />
-        ))}
-      </ButtonContainer>
-      {/* <Alert correct={answerCorrect} visible={answered} /> */}
+    <View style={styles.container}>
+      {step === 0 && (
+        <ImageBackground
+          source={require('../../../assets/img/backgrounds/Question1.png')}
+          style={styles.background}
+        >
+          <TitleQuestion content={question.question} style={styles.title} />
+          {question.answers.map((answer) => (
+            <QuizzBtn
+              key={answer.id}
+              content={answer.text}
+              style={styles.text}
+              rotation
+              onPress={() => {
+                if (answer.correct == true) {
+                  setStep(1)
+                } else {
+                  setStep(2)
+                }
+              }}
+            />
+          ))}
+        </ImageBackground>
+      )}
+      {step === 1 && (
+        <ImageBackground
+          source={require('../../../assets/img/backgrounds/Bon.png')}
+          style={styles.background}
+        >
+          <Text>Bien joué</Text>
+
+          <Text>C’était la sextape de Kim Kardashiam & Ray Jay</Text>
+
+          <Text>
+            La sextape a été vue 55 fois en par minute durant toute l’année 2018
+            et continue toujours de lui rapporter de l’argent. Elle a été
+            diffusé avec son accord et surtout celui de sa mère
+          </Text>
+
+          <PornnewsFlash></PornnewsFlash>
+        </ImageBackground>
+      )}
+      {step === 2 && (
+        <ImageBackground
+          source={require('../../../assets/img/backgrounds/Mauvais.png')}
+          style={styles.background}
+        >
+          <Text>Ou pas</Text>
+        </ImageBackground>
+      )}
     </View>
   )
 }
