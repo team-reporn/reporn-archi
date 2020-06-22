@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Button, ButtonContainer } from "../../components/Button";
 import { View, StyleSheet, Text, Image } from "react-native";
 import useSocket from "../../App/Socket/useSocket";
+import NextButton from "../../components/btn/NextBtn.js";
+
 import culture from "../../contents/cultureData";
 // import troudumonde from '../../contents/troudumonde'
 // import parodie from '../../contents/parodie'
@@ -63,15 +65,20 @@ export default ({ navigation }) => {
       {pressed ? (
         <Wait navigation={navigation} />
       ) : (
-        <View>
-          <Text>Are you ready ?</Text>
-          <Button
+        <View
+          style={{
+            alignItems: "center",
+            justifyContent: "center",
+            top: -100,
+          }}
+        >
+          <NextButton
             key="READY"
             text="I'm Ready !"
             onPress={() => {
               setPressed(true);
             }}
-          ></Button>
+          />
         </View>
       )}
     </View>

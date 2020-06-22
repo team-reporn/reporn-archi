@@ -17,6 +17,7 @@ import {
 } from "../../../components/Button";
 
 import Pan from "./Pan";
+import stylesGlobaux from "../../../utils/globalStyles";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -51,17 +52,22 @@ const Wiwaldo = ({ navigation }) => {
     <View style={styles.container}>
       {step === 0 && (
         <>
-          <Text>tu dois chercher : </Text>
-          <Image source={pictures[indexRecherche.current]} />
-          <ButtonContainer>
-            <BigButton
-              key="rentrer dans le jeu"
-              text="rentrer dans le jeu"
-              onPress={() => {
-                setStep(1);
-              }}
-            />
-          </ButtonContainer>
+          <ImageBackground
+            source={require("../../../assets/backgrounds/Categorie.png")}
+            style={stylesGlobaux.background}
+          >
+            <Text>tu dois chercher : </Text>
+            <Image source={pictures[indexRecherche.current]} />
+            <ButtonContainer>
+              <BigButton
+                key="rentrer dans le jeu"
+                text="rentrer dans le jeu"
+                onPress={() => {
+                  setStep(1);
+                }}
+              />
+            </ButtonContainer>
+          </ImageBackground>
         </>
       )}
       {step === 1 && (
