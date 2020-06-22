@@ -8,7 +8,6 @@ import useSocket from "../../App/Socket/useSocket";
 import Title1 from "../../components/titles/Title1";
 import MainBtn from "../../components/btn/MainBtn";
 
-
 let Home = ({ navigation }) => {
   const { initializeSocket, createRoom, setRoomInfo } = useSocket();
   useEffect(() => {
@@ -17,34 +16,29 @@ let Home = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={require('../../assets/img/backgrounds/Home.png')}
-        style={styles.background}
-      >
-        <Image source={require("../../assets/Logo.png")} style={styles.logo} />
-        <Title1 content="Partie de jambes en l'air" style={styles.title} />
-        <MainBtn
-          content="Create a Room"
-          style={styles.btn1}
-          rotation1
-          onPress={() => {
-            createRoom();
-            navigation.navigate("Room", {
-              title: "Room",
-            });
-          }}
-        />
-        <MainBtn
-          content="Join a Room"
-          style={styles.btn2}
-          rotation2
-          onPress={() => {
-            navigation.navigate("JoinRoom", {
-              title: "JoinRoom",
-            });
-          }}
-        />
-      </ImageBackground>
+      <Image source={require('../../assets/Logo.png')} style={styles.logo} />
+      <Title1 content="Partie de jambes en l'air" style={styles.title} />
+      <MainBtn
+        content="Create a Room"
+        style={styles.btn1}
+        rotation1
+        onPress={() => {
+          createRoom()
+          navigation.navigate('Room', {
+            title: 'Room',
+          })
+        }}
+      />
+      <MainBtn
+        content="Join a Room"
+        style={styles.btn2}
+        rotation2
+        onPress={() => {
+          navigation.navigate('JoinRoom', {
+            title: 'JoinRoom',
+          })
+        }}
+      />
     </View>
   );
 };

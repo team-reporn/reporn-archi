@@ -25,7 +25,7 @@ let CategorieMouchoir = ({ theme }) => {
     >
       <Image
         style={{ position: "absolute" }}
-        source={require("../../assets/elements/Metier.png")}
+        source={require("../../assets/Mouchoirs/Categorie.png")}
       />
       <P3 color={"blue"}>categorie</P3>
       <H1 color={"blue"}>{theme}</H1>

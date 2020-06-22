@@ -6,8 +6,8 @@ export default class TitleWithContent extends React.Component {
     super(props);
     this.state = {};
     this.bg = this.props.dark
-      ? require("../../assets/img/title/title1-dark.png")
-      : require("../../assets/img/title/title1.png");
+      ? require("../../assets/img/title/TitreLargeNoir.png")
+      : require("../../assets/img/title/title1-paper.png");
 
     console.log("rogjt", this.props.children.length);
   }

@@ -19,7 +19,7 @@ let Mouchoirs = ({ count, cardRole }) => {
               rolesStyles.mouchoir1,
               { width: windowWidth * 0.45, height: windowWidth * 0.45 },
             ]}
-            source={require("../../assets/elements/Metier.png")}
+            source={require("../../assets/Mouchoirs/Categorie.png")}
           />
           <Text style={{ position: "absolute" }}>{cardRole.genre}</Text>
         </View>
@@ -30,7 +30,7 @@ let Mouchoirs = ({ count, cardRole }) => {
               rolesStyles.mouchoir1,
               { width: windowWidth * 0.45, height: windowWidth * 0.45 },
             ]}
-            source={require("../../assets/elements/Metier.png")}
+            source={require("../../assets/Mouchoirs/Categorie.png")}
           />
         </View>
       )}
@@ -41,7 +41,7 @@ let Mouchoirs = ({ count, cardRole }) => {
               rolesStyles.mouchoir2,
               { width: windowWidth * 0.45, height: windowWidth * 0.45 },
             ]}
-            source={require("../../assets/elements/Metier.png")}
+            source={require("../../assets/Mouchoirs/Categorie.png")}
           />
           <Text style={{ position: "absolute" }}>{cardRole.job}</Text>
         </View>
@@ -52,7 +52,7 @@ let Mouchoirs = ({ count, cardRole }) => {
               rolesStyles.mouchoir2,
               { width: windowWidth * 0.45, height: windowWidth * 0.45 },
             ]}
-            source={require("../../assets/elements/Metier.png")}
+            source={require("../../assets/Mouchoirs/Categorie.png")}
           />
         </View>
       )}
@@ -63,7 +63,7 @@ let Mouchoirs = ({ count, cardRole }) => {
               rolesStyles.mouchoir3,
               { width: windowWidth * 0.45, height: windowWidth * 0.45 },
             ]}
-            source={require("../../assets/elements/Metier.png")}
+            source={require("../../assets/Mouchoirs/Categorie.png")}
           />
           <Text style={{ position: "absolute" }}>{cardRole.orientationS}</Text>
         </View>
@@ -74,7 +74,7 @@ let Mouchoirs = ({ count, cardRole }) => {
               rolesStyles.mouchoir3,
               { width: windowWidth * 0.45, height: windowWidth * 0.45 },
             ]}
-            source={require("../../assets/elements/Metier.png")}
+            source={require("../../assets/Mouchoirs/Categorie.png")}
           />
         </View>
       )}

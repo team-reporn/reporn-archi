@@ -21,7 +21,7 @@ const BoiteMouchoir = ({ setPressCount, pressCount }) => {
                 height: 50,
                 transform: [{ rotate: "90deg" }],
               }}
-              source={require("../../assets/nav/arrow.png")}
+              source={require("../../assets/img/headers/retourIco.png")}
               onPress={() => {
                 setPressCount(pressCount + 1);
               }}
