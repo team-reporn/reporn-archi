@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, ImageBackground, Text } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 import useSocket from '../../../App/Socket/useSocket'
 
 import TitleQuestion from '../../../components/titles/TitleQuestion'
@@ -10,13 +10,9 @@ import culture from '../../../contents/cultureData'
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-  background: {
-    flex: 1,
-    resizeMode: 'cover',
-    justifyContent: 'center',
+    marginTop: '40%',
+    // flex: 2,
+    // flexDirection: 'column',
   },
 })
 
@@ -42,59 +38,55 @@ const Quiz = ({ navigation }) => {
   const questions = culture
   const question = questions[activeQuestionIndex]
 
-  return (
-    <View style={styles.container}>
-      {step === 0 && (
-        <ImageBackground
-          source={require('../../../assets/img/backgrounds/Question1.png')}
-          style={styles.background}
-        >
-          <TitleQuestion content={question.question} style={styles.title} />
-          {question.answers.map((answer) => (
-            <QuizzBtn
-              key={answer.id}
-              content={answer.text}
-              style={styles.text}
-              rotation
-              onPress={() => {
-                if (answer.correct == true) {
-                  setStep(1)
-                } else {
-                  setStep(2)
-                }
-              }}
-            />
-          ))}
-        </ImageBackground>
-      )}
-      {step === 1 && (
-        <ImageBackground
-          source={require('../../../assets/img/backgrounds/Bon.png')}
-          style={styles.background}
-        >
-          <Text>Bien joué</Text>
+  if (step === 0) {
+    return (
+      <View style={styles.container}>
+        <TitleQuestion content={question.question} style={styles.title} />
+        {question.answers.map((answer) => (
+          <QuizzBtn
+            key={answer.id}
+            content={answer.text}
+            style={styles.text}
+            rotation
+            onPress={() => {
+              if (answer.correct == true) {
+                setStep(1)
+              } else {
+                setStep(2)
+              }
+            }}
+          />
+        ))}
+      </View>
+    )
+  } else if (step === 1) {
+    return (
+      <View style={styles.container}>
+        <Text>Bien joué</Text>
 
-          <Text>C’était la sextape de Kim Kardashiam & Ray Jay</Text>
+        <Text>C’était la sextape de Kim Kardashiam & Ray Jay</Text>
 
-          <Text>
-            La sextape a été vue 55 fois en par minute durant toute l’année 2018
-            et continue toujours de lui rapporter de l’argent. Elle a été
-            diffusé avec son accord et surtout celui de sa mère
-          </Text>
-
-          <PornnewsFlash></PornnewsFlash>
-        </ImageBackground>
-      )}
-      {step === 2 && (
-        <ImageBackground
-          source={require('../../../assets/img/backgrounds/Mauvais.png')}
-          style={styles.background}
-        >
-          <Text>Ou pas</Text>
-        </ImageBackground>
-      )}
-    </View>
-  )
+        <Text>
+          La sextape a été vue 55 fois en par minute durant toute l’année 2018
+          et continue toujours de lui rapporter de l’argent. Elle a été diffusé
+          avec son accord et surtout celui de sa mère
+        </Text>
+        <PornnewsFlash></PornnewsFlash>
+      </View>
+    )
+  } else if (step === 2) {
+    return (
+      <View style={styles.container}>
+        <Text>Ou pas</Text>
+        <Text>
+          La sextape a été vue 55 fois en par minute durant toute l’année 2018
+          et continue toujours de lui rapporter de l’argent. Elle a été diffusé
+          avec son accord et surtout celui de sa mère
+        </Text>
+        <PornnewsFlash></PornnewsFlash>
+      </View>
+    )
+  }
 }
 
 export default Quiz
