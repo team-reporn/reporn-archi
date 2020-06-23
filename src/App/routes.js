@@ -1,33 +1,33 @@
-import React from 'react'
-import { View, ImageBackground, StyleSheet } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
+import React from "react";
+import { View, ImageBackground, StyleSheet, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import Socket from './Socket'
+import Socket from "./Socket";
 
-import Room from '../pages/Room'
-import JoinRoom from '../pages/JoinRoom'
+import Room from "../pages/Room";
+import JoinRoom from "../pages/JoinRoom";
 
-import Home from '../pages/Home'
-import Login from '../pages/Login'
-import SelectGame from '../pages/SelectGame'
-import EndGame from '../pages/EndGame'
+import Home from "../pages/Home";
+import Login from "../pages/Login";
+import SelectGame from "../pages/SelectGame";
+import EndGame from "../pages/EndGame";
 
-import Roles from '../pages/Roles'
-import Theme from '../pages/Theme'
-import Achievement from '../pages/Achievement'
-import Futur from '../pages/Futur'
-import PlayAgain from '../pages/PlayAgain'
+import Roles from "../pages/Roles";
+import Theme from "../pages/Theme";
+import Achievement from "../pages/Achievement";
+import Futur from "../pages/Futur";
+import PlayAgain from "../pages/PlayAgain";
 
-import Quizz from '../pages/Game/Quizz'
-import Tabou from '../pages/Game/Tabou'
-import Shake from '../pages/Game/Shake'
-import Wiwaldo from '../pages/Game/Wiwaldo'
+import Quizz from "../pages/Game/Quizz";
+import Tabou from "../pages/Game/Tabou";
+import Shake from "../pages/Game/Shake";
+import Wiwaldo from "../pages/Game/Wiwaldo";
 
-import GameHeader from '../components/headers/GameHeader'
-import MainHeader from '../components/headers/MainHeader'
+import GameHeader from "../components/headers/GameHeader";
+import MainHeader from "../components/headers/MainHeader";
 
-const Stack = createStackNavigator()
+const Stack = createStackNavigator();
 
 export default () => {
   return (
@@ -43,17 +43,18 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Question1.png')}
+                  source={require("../assets/img/backgrounds/Question1.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
-                    <MainHeader />
+                    <MainHeader param />
                   </View>
+
                   <View style={styles.content}>
                     <Home navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -61,7 +62,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
+                  source={require("../assets/img/backgrounds/Home.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -71,7 +72,7 @@ export default () => {
                     <Login navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -79,7 +80,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
+                  source={require("../assets/img/backgrounds/Home.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -89,7 +90,7 @@ export default () => {
                     <Room navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -97,7 +98,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
+                  source={require("../assets/img/backgrounds/Home.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -107,7 +108,7 @@ export default () => {
                     <JoinRoom navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -115,7 +116,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
+                  source={require("../assets/img/backgrounds/Home.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -125,7 +126,7 @@ export default () => {
                     <SelectGame navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -133,7 +134,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Question1.png')}
+                  source={require("../assets/img/backgrounds/Question1.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -143,7 +144,7 @@ export default () => {
                     <Quizz navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -151,7 +152,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
+                  source={require("../assets/img/backgrounds/Home.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -161,7 +162,7 @@ export default () => {
                     <Tabou navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -169,7 +170,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
+                  source={require("../assets/img/backgrounds/Home.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -179,7 +180,7 @@ export default () => {
                     <Shake navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -187,7 +188,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
+                  source={require("../assets/img/backgrounds/Home.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -197,7 +198,7 @@ export default () => {
                     <Roles navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -205,7 +206,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
+                  source={require("../assets/img/backgrounds/Home.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -215,7 +216,7 @@ export default () => {
                     <EndGame navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -223,7 +224,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
+                  source={require("../assets/img/backgrounds/Home.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -233,7 +234,7 @@ export default () => {
                     <Theme navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -241,7 +242,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
+                  source={require("../assets/img/backgrounds/Home.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -251,7 +252,7 @@ export default () => {
                     <Achievement navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -259,7 +260,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
+                  source={require("../assets/img/backgrounds/Home.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -269,7 +270,7 @@ export default () => {
                     <Futur navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -277,7 +278,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
+                  source={require("../assets/img/backgrounds/Home.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -287,7 +288,7 @@ export default () => {
                     <PlayAgain navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
           <Stack.Screen
@@ -295,7 +296,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
+                  source={require("../assets/img/backgrounds/Home.png")}
                   style={styles.background}
                   resizeMode="cover"
                 >
@@ -306,17 +307,23 @@ export default () => {
                     <Wiwaldo navigation={navigation} />
                   </View>
                 </ImageBackground>
-              )
+              );
             }}
           />
         </Stack.Navigator>
       </Socket>
     </NavigationContainer>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
-  background: { flex: 1 },
-  content: { flex: 8 },
+  background: {
+    flex: 1,
+    resizeMode: "cover",
+    // alignItems: "center",
+    backgroundColor: "red",
+    justifyContent: "flex-start",
+  },
+  content: { flex: 7 },
   header: { flex: 1 },
-})
+});
