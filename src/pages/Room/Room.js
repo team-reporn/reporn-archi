@@ -37,9 +37,9 @@ let Room = ({ navigation }) => {
         }
       />
       <Title1 content="Niveau de trashitude" />
-      <MainBtn content="Soft vanilla" />
-      <MainBtn content="Regular mainstream" />
-      <MainBtn content="Haardcore" />
+      <MainBtn content="Soft vanilla" rotation2 />
+      <MainBtn content="Regular mainstream" rotation1 />
+      <MainBtn content="Haardcore" rotation3 />
       <NextBtn
         onPress={() => {
           startGame();

@@ -1,5 +1,10 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, TouchableOpacity  } from 'react-native';
+import * as Font from 'expo-font';
+
+let customFonts = {
+    DIN: require('../../assets/fonts/Din/bold/D-DIN-Bold.ttf'),
+  }
 
 export default class MainBtn extends React.Component {
     constructor (props) {
@@ -15,6 +20,19 @@ export default class MainBtn extends React.Component {
             this.state.startBtn = require('../../assets/img/btn/AnswerBtnWhite.png')
         }
     }
+
+    state = {
+        fontsLoaded: false,
+      }
+    
+      async _loadFontsAsync() {
+        await Font.loadAsync(customFonts)
+        this.setState({ fontsLoaded: true })
+      }
+    
+      componentDidMount() {
+        this._loadFontsAsync()
+      }
 
     render() {
         let textColor, textPressedColor, rotation = ''
@@ -48,10 +66,11 @@ const styles = StyleSheet.create({
         alignItems:"center"
     },
     text: {
-        position: "absolute"
+        position: "absolute",
+        fontFamily: 'DIN',
     },
     textBlue: {
-        color: "black"
+        color: "blue"
     },
     textWhite: {
         color: "white"
@@ -63,7 +82,7 @@ const styles = StyleSheet.create({
         transform: [{rotate: '6deg'}]
     },
     rotation3: {
-        transform: [{rotate: '-6deg'}]
+        transform: [{rotate: '-1deg'}]
     },
     rotation4: {
         transform: [{rotate: '-6deg'}]
