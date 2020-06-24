@@ -33,10 +33,14 @@ export default () => {
   return (
     <NavigationContainer>
       <Socket>
-        <Stack.Navigator screenOptions={{
+        <Stack.Navigator
+          screenOptions={{
             headerShown: false,
-          }}>
-          <Stack.Screen name="Home" component={({navigation})=>{
+          }}
+        >
+          <Stack.Screen
+            name="Home"
+            component={({ navigation }) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Question1.png")}
@@ -62,7 +66,7 @@ export default () => {
                   style={styles.background}
                 >
                   <View style={styles.header}>
-                    <MainHeader />
+                    <MainHeader param back />
                   </View>
                   <View style={styles.content}>
                     <Login navigation={navigation} />
@@ -80,7 +84,7 @@ export default () => {
                   style={styles.background}
                 >
                   <View style={styles.header}>
-                    <MainHeader />
+                    <MainHeader param back />
                   </View>
                   <View style={styles.content}>
                     <Room navigation={navigation} />
@@ -315,20 +319,11 @@ export default () => {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-<<<<<<< HEAD
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
-  content: {height: "90%"},
-  header: {height: "10%"}
-})
-=======
     resizeMode: "cover",
     // alignItems: "center",
-    backgroundColor: "red",
     justifyContent: "flex-start",
+    flexDirection: "column",
   },
   content: { flex: 7 },
   header: { flex: 1 },
 });
->>>>>>> 188eda7f02d7857327b943814e84009c57806c2d

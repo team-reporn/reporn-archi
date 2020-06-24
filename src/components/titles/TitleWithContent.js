@@ -1,16 +1,20 @@
 import React from "react";
 import { View, StyleSheet, Image, Text, Slider } from "react-native";
 
+
 export default class TitleWithContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
     this.bg = this.props.dark
       ? require("../../assets/img/title/TitreLargeNoir.png")
-      : require("../../assets/img/title/title1-paper.png");
-
+      : require("../../assets/img/title/TitreLargeBleu.png");
     console.log("rogjt", this.props.children.length);
   }
+  state = {
+    fontsLoaded: false,
+  };
+
   render() {
     return (
       <View style={this.props.onRight ? styles.mainOnleft : styles.main}>
@@ -18,7 +22,7 @@ export default class TitleWithContent extends React.Component {
           opacity={0.5}
           style={{
             width: `${(this.props.children.length || 1.5) * 60}%`,
-            height: (this.props.children.length || 1) * 100,
+            height: (this.props.children.length || 1) * 60,
             resizeMode: "stretch",
           }}
           source={this.bg}

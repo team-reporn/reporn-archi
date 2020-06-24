@@ -32,37 +32,38 @@ let Roles = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <ImageBackground
+      {/* <ImageBackground
         source={require("../../assets/backgrounds/Perso.png")}
         style={styles.background}
-      >
-        {pressCount < 3 ? (
-          <>
-            <View style={rolesStyles.title}>
-              <TitleWithContent onRight>
-                <P1 color={"white"}>Tire {3 - pressCount} mouchoir</P1>
-                <P2 color={"white"}>pour découvrir ton personnage</P2>
-              </TitleWithContent>
-            </View>
-          </>
-        ) : (
-          <>
-            <View style={rolesStyles.title}>
-              <TitleWithContent onRight dark>
-                <H3 color={"white"}>tu es ...</H3>
-                <H2 color={"white"}>{character.cardRole.job}</H2>
-              </TitleWithContent>
-            </View>
-          </>
-        )}
-        {character.cardRole && (
-          <Mouchoirs count={pressCount} cardRole={character.cardRole} />
-        )}
-        {pressCount > 2 && (
+      > */}
+      {pressCount < 3 ? (
+        <>
+          <View style={rolesStyles.title}>
+            <TitleWithContent onRight>
+              <P1 color={"white"}>Tire {3 - pressCount} mouchoir</P1>
+              <P2 color={"white"}>pour découvrir ton personnage</P2>
+            </TitleWithContent>
+          </View>
+        </>
+      ) : (
+        <>
+          <View style={rolesStyles.title}>
+            <TitleWithContent onRight dark>
+              <H3 color={"white"}>tu es ...</H3>
+              <H2 color={"white"}>{character.cardRole.job}</H2>
+            </TitleWithContent>
+          </View>
+        </>
+      )}
+      {character.cardRole && (
+        <Mouchoirs count={pressCount} cardRole={character.cardRole} />
+      )}
+      {pressCount > 2 && (
+        <View style={{ width: "100%", alignItems:"center"}}>
           <NextButton
             title="suite"
             text="suite"
-            style={{ position: "absolute" }}
+            style={{}}
             onPress={() => {
               getGameInfo();
               navigation.navigate("Theme", {
@@ -70,9 +71,10 @@ let Roles = ({ navigation }) => {
               });
             }}
           />
-        )}
-        <BoiteMouchoir setPressCount={setPressCount} pressCount={pressCount} />
-      </ImageBackground>
+        </View>
+      )}
+      <BoiteMouchoir setPressCount={setPressCount} pressCount={pressCount} />
+      {/* </ImageBackground> */}
     </View>
   );
 };

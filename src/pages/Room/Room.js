@@ -1,9 +1,12 @@
 import React, { useRef, useEffect } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import { Button, ButtonContainer } from "../../components/Button";
 import useSocket from "../../App/Socket/useSocket";
 
 import Title1 from "../../components/titles/Title1";
+import TitleWithContent from "../../components/titles/TitleWithContent";
+import { P1, P2, P3 } from "../../components/Paragraph/Paragraph";
+import { H3, H2 } from "../../components/headers/Headers";
 import Input from "../../components/forms/Input";
 import NextBtn from "../../components/btn/NextBtn";
 import MainBtn from "../../components/btn/MainBtn";
@@ -25,46 +28,109 @@ let Room = ({ navigation }) => {
     return () => clearInterval(roomInterval);
   }, [roomInfo]);
   return (
-    <View>
-      <Title1
-        content="Numéro de la room"
-        paper={
-          roomInfo &&
-          roomInfo.roomId &&
-          roomInfo.numClients &&
-          `id : ${roomInfo.roomId}
-           nombre de personne connecté : ${roomInfo.numClients}`
-        }
-      />
-      <Title1 content="Niveau de trashitude" />
-      <MainBtn content="Soft vanilla" rotation2 />
-      <MainBtn content="Regular mainstream" rotation1 />
-      <MainBtn content="Haardcore" rotation3 />
-      <NextBtn
-        onPress={() => {
-          startGame();
-          navigation.navigate("Roles", {
-            title: "Roles",
-          });
+    <View
+      style={{
+        flex: 1,
+        width: "100%",
+      }}
+    >
+      <View
+        style={{
+          flex: 1,
         }}
-      />
-      {/* {roomInfo && roomInfo.role === 'owner' && (
-        <ButtonContainer>
-          <Button
-            key="rentrer dans le jeu"
-            text="rentrer dans le jeu"
-            onPress={
-              () => {
-                startGame()
-                navigation.navigate('Roles', {
-                  title: 'Roles',
-                })
-            }
-          />
-        </ButtonContainer>
-      )} */}
+      >
+        <TitleWithContent onRight>
+          <P1 font={"maim"} color={"white"}>
+            NUMERO DE LA ROOM
+          </P1>
+          <View />
+        </TitleWithContent>
+        <View style={styles.paperContainer}>
+          <Image
+            style={styles.imageText}
+            source={require("../../assets/img/title/title1-paper.png")}
+          ></Image>
+          <View style={styles.paperText}>
+            <P1 font={"maim"} color={"blue"}>
+              {roomInfo.roomId}
+            </P1>
+          </View>
+        </View>
+      </View>
+      <View
+        style={{
+          flex: 3,
+          alignItems: "center",
+          justifyContent: "center",
+          width: "100%",
+        }}
+      >
+        <View
+          style={{
+            flex: 1,
+            width: "70%",
+          }}
+        >
+          <TitleWithContent>
+            <View
+              style={{
+                width: "100%",
+                alignItems: "center",
+              }}
+            >
+              <P2 font={"din"} color={"white"}>
+                NIVEAU DE TRASHITUDE
+              </P2>
+            </View>
+          </TitleWithContent>
+          <MainBtn content="Soft vanilla" rotation2 />
+          <MainBtn content="Regular mainstream" rotation1 />
+          <MainBtn content="Haardcore" rotation3 />
+        </View>
+      </View>
+      <View
+        style={{
+          width: "100%",
+          alignItems: "center",
+          flex: 1,
+        }}
+      >
+        <NextBtn
+          onPress={() => {
+            startGame();
+            navigation.navigate("Roles", {
+              title: "Roles",
+            });
+          }}
+        />
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  paperContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    top: -50,
+  },
+
+  bg: {
+    resizeMode: "contain",
+    width: null,
+    height: null,
+  },
+  imageText: {
+    color: "black",
+    position: "absolute",
+    top: 10,
+  },
+  paperText: {
+    color: "black",
+    padding: 40,
+    justifyContent: "flex-end",
+    textAlign: "right",
+  },
+});
 
 export default Room;

@@ -1,10 +1,11 @@
 import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
-import * as Font from 'expo-font';
+import * as Font from "expo-font";
+import { AppLoading } from "expo";
 
 let customFonts = {
-  MaimDisfigured: require('../../assets/fonts/MainDisfigured/MaimDisfigured.ttf'),
-}
+  MaimDisfigured: require("../../assets/fonts/MainDisfigured/MaimDisfigured.ttf"),
+};
 
 export default class Title1 extends React.Component {
   constructor(props) {
@@ -19,35 +20,39 @@ export default class Title1 extends React.Component {
 
   state = {
     fontsLoaded: false,
-  }
+  };
 
   async _loadFontsAsync() {
-    await Font.loadAsync(customFonts)
-    this.setState({ fontsLoaded: true })
+    await Font.loadAsync(customFonts);
+    this.setState({ fontsLoaded: true });
   }
 
   componentDidMount() {
-    this._loadFontsAsync()
+    this._loadFontsAsync();
   }
 
   render() {
-    return (
-      <View style={styles.main}>
-        <View style={styles.titles}>
-          <Image source={this.bg}></Image>
-          <Text style={styles.text}>{this.props.content}</Text>
-        </View>
-        {this.props.paper !== undefined && (
+    if (this.state.fontsLoaded) {
+      return (
+        <View style={styles.main}>
           <View style={styles.titles}>
-            <Image
-              style={styles.imageText}
-              source={require("../../assets/img/title/title1-paper.png")}
-            ></Image>
-            <Text style={styles.paperText}>{this.props.paper}</Text>
+            <Image source={this.bg}></Image>
+            <Text style={styles.text}>{this.props.content}</Text>
           </View>
-        )}
-      </View>
-    );
+          {this.props.paper !== undefined && (
+            <View style={styles.titles}>
+              <Image
+                style={styles.imageText}
+                source={require("../../assets/img/title/title1-paper.png")}
+              ></Image>
+              <Text style={styles.paperText}>{this.props.paper}</Text>
+            </View>
+          )}
+        </View>
+      );
+    } else {
+      return <AppLoading />;
+    }
   }
 }
 
@@ -61,15 +66,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontFamily: 'MaimDisfigured',
+    fontFamily: "MaimDisfigured",
     color: "white",
     position: "absolute",
-    fontSize: 20
+    fontSize: 20,
   },
   bg: {
     resizeMode: "contain",
     width: null,
-    height: null
+    height: null,
   },
   imageText: {
     color: "black",
@@ -81,7 +86,7 @@ const styles = StyleSheet.create({
     color: "black",
     padding: 40,
     paddingBottom: 50,
-    justifyContent:"flex-end",
-    textAlign: "right"
+    justifyContent: "flex-end",
+    textAlign: "right",
   },
 });
