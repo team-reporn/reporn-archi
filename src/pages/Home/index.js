@@ -1,29 +1,23 @@
 // In this, create the home page -choose between create a room or PornNews- on button select go to rules
 // In this, create the home page -choose between create a room or PornNews- on button select go to rules
-import React, { useState, useRef, useEffect } from "react";
-import { Button, ButtonContainer } from "../../components/Button";
-import { View, StyleSheet, Text, Image, ImageBackground } from "react-native";
-import useSocket from "../../App/Socket/useSocket";
-import { Dimensions } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react'
+import { Button, ButtonContainer } from '../../components/Button'
+import { View, StyleSheet, Text, Image, ImageBackground } from 'react-native'
+import useSocket from '../../App/Socket/useSocket'
 
-import Title1 from "../../components/titles/Title1";
-import TitleWithContent from "../../components/titles/TitleWithContent";
-import MainBtn from "../../components/btn/MainBtn";
+import Title1 from '../../components/titles/Title1'
+import MainBtn from '../../components/btn/MainBtn'
 
 let Home = ({ navigation }) => {
-  const { initializeSocket, createRoom, setRoomInfo } = useSocket();
+  const { initializeSocket, createRoom, setRoomInfo } = useSocket()
   useEffect(() => {
-    initializeSocket();
-  }, []);
+    initializeSocket()
+  }, [])
 
   return (
     <View style={styles.container}>
-      <Image source={require('../../assets/logo.png')} style={styles.logo} />
-      {/* <Title1 content="Partie de jambes en l'air" style={styles.title} /> */}
-      <TitleWithContent onRight>
-        <Text style={windowWidth > 700 ? styles.title : null}>Partie de jambes en l'air</Text>
-        <View></View>
-      </TitleWithContent>
+      <Image source={require('../../assets/Logo.png')} style={styles.logo} />
+      <Title1 content="Partie de jambes en l'air" style={styles.title} />
       <MainBtn
         content="Create a Room"
         style={styles.btn1}
@@ -46,16 +40,16 @@ let Home = ({ navigation }) => {
         }}
       />
     </View>
-  );
-};
+  )
+}
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
-    //flexDirection: "column",
+    flex: 1,
+    flexDirection: 'column',
   },
   logo: {
     marginBottom: 100,
@@ -67,6 +61,6 @@ const styles = StyleSheet.create({
   btn1: {
     marginBottom: 30,
   },
-});
+})
 
-export default Home;
+export default Home

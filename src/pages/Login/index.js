@@ -11,7 +11,7 @@ import NextBtn from '../../components/btn/NextBtn'
 let Login = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Image source={require('../../assets/logo.png')} style={styles.logo} />
+      <Image source={require('../../assets/Logo.png')} style={styles.logo} />
       <Title1 content="Connexion" style={styles.title} />
       <Input placeholder="Nom d'utilisateur" />
       <Input placeholder="Mot de passe" />
