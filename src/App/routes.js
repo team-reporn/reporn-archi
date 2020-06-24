@@ -228,7 +228,7 @@ export default () => {
                   style={styles.background}
                 >
                   <View style={styles.header}>
-                    <MainHeader />
+                    <MainHeader param back />
                   </View>
                   <View style={styles.content}>
                     <Theme navigation={navigation} />
