@@ -29,6 +29,22 @@ import MainHeader from "../components/headers/MainHeader";
 
 const Stack = createStackNavigator();
 
+// let Layout = ({ headerParam, headerBack, Content, navigation }) => {
+//   return () => {
+//     return (
+//       <ImageBackground
+//         source={require("../assets/img/backgrounds/Question1.png")}
+//         style={styles.background}
+//       >
+//         <View style={styles.header}>
+//           <MainHeader param={!!headerParam} back={!!headerBack} />
+//         </View>
+
+//         <View style={styles.content}>{<Content navigation />}</View>
+//       </ImageBackground>
+//     );
+//   };
+// };
 export default () => {
   return (
     <NavigationContainer>
@@ -38,27 +54,8 @@ export default () => {
             headerShown: false,
           }}
         >
-                    <Stack.Screen
-            name="Tabou"
-            component={({ navigation }) => {
-              return (
-                <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
-                  style={styles.background}
-                >
-                  <View style={styles.header}>
-                    <MainHeader />
-                  </View>
-                  <View style={styles.content}>
-                    <Tabou navigation={navigation} />
-                  </View>
-                </ImageBackground>
-              );
-            }}
-          />
-          <Stack.Screen
-            name="Home"
-            component={({ navigation }) => {
+          <Stack.Screen name="Home">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Question1.png")}
@@ -69,15 +66,14 @@ export default () => {
                   </View>
 
                   <View style={styles.content}>
-                    <Home navigation={navigation} />
+                    <Home {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
-          <Stack.Screen
-            name="Login"
-            component={({ navigation }) => {
+          </Stack.Screen>
+          <Stack.Screen name="Login">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Home.png")}
@@ -87,15 +83,14 @@ export default () => {
                     <MainHeader param back />
                   </View>
                   <View style={styles.content}>
-                    <Login navigation={navigation} />
+                    <Login {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
-          <Stack.Screen
-            name="Room"
-            component={({ navigation }) => {
+          </Stack.Screen>
+          <Stack.Screen name="Room">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Home.png")}
@@ -105,15 +100,14 @@ export default () => {
                     <MainHeader param back />
                   </View>
                   <View style={styles.content}>
-                    <Room navigation={navigation} />
+                    <Room {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
-          <Stack.Screen
-            name="JoinRoom"
-            component={({ navigation }) => {
+          </Stack.Screen>
+          <Stack.Screen name="JoinRoom">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Home.png")}
@@ -123,15 +117,14 @@ export default () => {
                     <MainHeader />
                   </View>
                   <View style={styles.content}>
-                    <JoinRoom navigation={navigation} />
+                    <JoinRoom {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
-          <Stack.Screen
-            name="SelectGame"
-            component={({ navigation }) => {
+          </Stack.Screen>
+          <Stack.Screen name="SelectGame">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Home.png")}
@@ -141,15 +134,14 @@ export default () => {
                     <MainHeader />
                   </View>
                   <View style={styles.content}>
-                    <SelectGame navigation={navigation} />
+                    <SelectGame {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
-          <Stack.Screen
-            name="Quizz"
-            component={({ navigation }) => {
+          </Stack.Screen>
+          <Stack.Screen name="Quizz">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Question1.png")}
@@ -159,16 +151,14 @@ export default () => {
                     <MainHeader />
                   </View>
                   <View style={styles.content}>
-                    <Quizz navigation={navigation} />
+                    <Quizz {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
-
-          <Stack.Screen
-            name="Shake"
-            component={({ navigation }) => {
+          </Stack.Screen>
+          <Stack.Screen name="Tabou">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Home.png")}
@@ -178,15 +168,31 @@ export default () => {
                     <MainHeader />
                   </View>
                   <View style={styles.content}>
-                    <Shake navigation={navigation} />
+                    <Tabou {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
-          <Stack.Screen
-            name="Roles"
-            component={({ navigation }) => {
+          </Stack.Screen>
+          <Stack.Screen name="Shake">
+            {(props) => {
+              return (
+                <ImageBackground
+                  source={require("../assets/img/backgrounds/Home.png")}
+                  style={styles.background}
+                >
+                  <View style={styles.header}>
+                    <MainHeader />
+                  </View>
+                  <View style={styles.content}>
+                    <Shake {...props} />
+                  </View>
+                </ImageBackground>
+              );
+            }}
+          </Stack.Screen>
+          <Stack.Screen name="Roles">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Home.png")}
@@ -196,15 +202,14 @@ export default () => {
                     <MainHeader param back />
                   </View>
                   <View style={styles.content}>
-                    <Roles navigation={navigation} />
+                    <Roles {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
-          <Stack.Screen
-            name="EndGame"
-            component={({ navigation }) => {
+          </Stack.Screen>
+          <Stack.Screen name="EndGame">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Home.png")}
@@ -214,15 +219,14 @@ export default () => {
                     <MainHeader />
                   </View>
                   <View style={styles.content}>
-                    <EndGame navigation={navigation} />
+                    <EndGame {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
-          <Stack.Screen
-            name="Theme"
-            component={({ navigation }) => {
+          </Stack.Screen>
+          <Stack.Screen name="Theme">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/backgrounds/Categorie.png")}
@@ -232,15 +236,14 @@ export default () => {
                     <MainHeader param back />
                   </View>
                   <View style={styles.content}>
-                    <Theme navigation={navigation} />
+                    <Theme {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
-          <Stack.Screen
-            name="Achievement"
-            component={({ navigation }) => {
+          </Stack.Screen>
+          <Stack.Screen name="Achievement">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Home.png")}
@@ -250,15 +253,15 @@ export default () => {
                     <MainHeader />
                   </View>
                   <View style={styles.content}>
-                    <Achievement navigation={navigation} />
+                    <Achievement {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
-          <Stack.Screen
-            name="Futur"
-            component={({ navigation }) => {
+          </Stack.Screen>
+
+          <Stack.Screen name="Futur">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Home.png")}
@@ -268,15 +271,14 @@ export default () => {
                     <MainHeader />
                   </View>
                   <View style={styles.content}>
-                    <Futur navigation={navigation} />
+                    <Futur {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
-          <Stack.Screen
-            name="PlayAgain"
-            component={({ navigation }) => {
+          </Stack.Screen>
+          <Stack.Screen name="PlayAgain">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Home.png")}
@@ -286,15 +288,14 @@ export default () => {
                     <MainHeader />
                   </View>
                   <View style={styles.content}>
-                    <PlayAgain navigation={navigation} />
+                    <PlayAgain {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
-          <Stack.Screen
-            name="Wiwaldo"
-            component={({ navigation }) => {
+          </Stack.Screen>
+          <Stack.Screen name="Wiwaldo">
+            {(props) => {
               return (
                 <ImageBackground
                   source={require("../assets/img/backgrounds/Home.png")}
@@ -305,12 +306,12 @@ export default () => {
                     <MainHeader />
                   </View>
                   <View style={styles.content}>
-                    <Wiwaldo navigation={navigation} />
+                    <Wiwaldo {...props} />
                   </View>
                 </ImageBackground>
               );
             }}
-          />
+          </Stack.Screen>
         </Stack.Navigator>
       </Socket>
     </NavigationContainer>
