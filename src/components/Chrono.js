@@ -42,11 +42,11 @@ export default class Chrono extends React.Component {
 const styles = StyleSheet.create({
     main: {
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        transform: [{rotate: '-9deg'}]
     },
     text: {
         color: 'white',
         position: "absolute",
-        transform: [{rotate: '-9deg'}]
     }
   });
