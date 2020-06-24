@@ -89,22 +89,24 @@ let Room = ({ navigation }) => {
           <MainBtn bold content="HARDCORE" rotation3 />
         </View>
       </View>
-      <View
-        style={{
-          width: "100%",
-          alignItems: "center",
-          flex: 1.2,
-        }}
-      >
-        <NextBtn
-          onPress={() => {
-            startGame();
-            navigation.navigate("Roles", {
-              title: "Roles",
-            });
+      {roomInfo.role == "owner" ? (
+        <View
+          style={{
+            width: "100%",
+            alignItems: "center",
+            flex: 1.2,
           }}
-        />
-      </View>
+        >
+          <NextBtn
+            onPress={() => {
+              startGame();
+              navigation.navigate("Roles", {
+                title: "Roles",
+              });
+            }}
+          />
+        </View>
+      ) : null}
     </View>
   );
 };

@@ -1,11 +1,12 @@
-import React from "react";
-import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { AppLoading } from "expo";
-import * as Font from "expo-font";
+import React from 'react'
+import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { AppLoading } from 'expo'
+import * as Font from 'expo-font'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
 let customFonts = {
-  DIN_Regular: require("../../assets/fonts/Din/regular/D-DIN.ttf"),
-};
+  DIN_Regular: require('../../assets/fonts/Din/bold/D-DIN-Bold.ttf'),
+}
 
 export default class MainBtn extends React.Component {
   constructor(props) {
@@ -55,7 +56,7 @@ export default class MainBtn extends React.Component {
     if (this.state.fontsLoaded) {
       return (
         <View>
-          <TouchableOpacity
+          <TouchableWithoutFeedback
             style={[styles.main, rotation]}
             onPress={this.props.onPress}
             onPressIn={() => {
@@ -79,7 +80,7 @@ export default class MainBtn extends React.Component {
             >
               {this.props.content}
             </Text>
-          </TouchableOpacity>
+          </TouchableWithoutFeedback>
         </View>
       );
     } else {

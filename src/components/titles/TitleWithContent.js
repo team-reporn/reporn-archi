@@ -1,5 +1,12 @@
 import React from "react";
 import { View, StyleSheet, Image, Text, Slider } from "react-native";
+import { Dimensions } from 'react-native';
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
+let customFonts = {
+  MaimDisfigured: require('../../assets/fonts/MainDisfigured/MaimDisfigured.ttf'),
+}
 
 
 export default class TitleWithContent extends React.Component {
@@ -9,11 +16,20 @@ export default class TitleWithContent extends React.Component {
     this.bg = this.props.dark
       ? require("../../assets/img/title/TitreLargeNoir.png")
       : require("../../assets/img/title/TitreLargeBleu.png");
-    console.log("rogjt", this.props.children.length);
   }
+
   state = {
     fontsLoaded: false,
-  };
+  }
+
+  async _loadFontsAsync() {
+    await Font.loadAsync(customFonts)
+    this.setState({ fontsLoaded: true })
+  }
+
+  componentDidMount() {
+    this._loadFontsAsync()
+  }
 
   render() {
     return (
@@ -54,6 +70,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   text: {
+    fontFamily: 'MaimDisfigured',
     color: "white",
     position: "absolute",
     width: "100%",

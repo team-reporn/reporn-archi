@@ -34,19 +34,24 @@ export default class Title1 extends React.Component {
   render() {
     if (this.state.fontsLoaded) {
       return (
-        <View style={styles.main}>
-          <View style={[styles.titles, {backgroundColor: 'green'}]}>
-            <View>
-              <Image source={this.bg}></Image>
-            </View>
-            <View style={{position: 'absolute', display: 'flex', justifyContent: "center", alignItems: "center",}}>
-              <Text style={[styles.text, {position: "absolute", backgroundColor: 'green'}]}>{this.props.content}</Text>
-            </View>
+      <View>
+        <View style={this.props.onRight ? styles.mainOnleft : styles.main}>
+          <Image
+            style={{
+              width: `${(1.5) * 60}%`,
+              height: (1) * 100,
+              resizeMode: "stretch",
+            }}
+            source={this.bg}
+          ></Image>
+          <View style={this.props.onRight ? styles.textOnLeft : styles.text}>
+            <Text style={styles.title}>{this.props.content}</Text>
           </View>
+        </View>
           {this.props.paper !== undefined && (
-            <View style={[styles.titles, {backgroundColor: 'green'}]}>
+            <View style={[styles.titles, {transform: [{scale: 0.8}, {translateX: -40}], marginTop: -50, position: "relative", display: "flex", justifyContent: "center", alignItems: "center"}]}>
               <Image
-                style={styles.imageText}
+                style={[styles.imageText, {resizeMode:"stretch"}]}
                 source={require("../../assets/img/title/title1-paper.png")}
               ></Image>
               <Text style={styles.paperText}>{this.props.paper}</Text>
@@ -61,36 +66,40 @@ export default class Title1 extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  mainOnleft: {
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    left: 90,
+  },
+  textOnLeft: {
+    color: "white",
+    position: "absolute",
+    left: 20,
+    width: "60%",
+  },
   main: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: 'red',
-  },
-  titles: {
-    justifyContent: "center",
-    alignItems: "center",
-    width:' 80%'
+    width: "100%",
   },
   text: {
     fontFamily: 'MaimDisfigured',
     color: "white",
-    fontSize: 20
+    position: "absolute",
+    width: "100%",
   },
-  bg: {
-    flex: 1,
-    resizeMode: "stretch",
-  },
-  imageText: {
-    color: 'black',
-    position: 'absolute',
-    // right:30,
-    top: 10,
+  title: {
+    color:"white",
+    fontFamily: 'MaimDisfigured',
+    textAlign: 'center'
   },
   paperText: {
-    color: 'black',
-    padding: 40,
-    paddingBottom: 50,
-    justifyContent: "flex-end",
-    textAlign: "right",
-  },
+    position: "absolute",
+    textAlign: "center",
+    fontFamily: 'MaimDisfigured',
+    transform: [
+      {translateY: -20}
+    ]
+  }
 })
