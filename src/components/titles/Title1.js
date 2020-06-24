@@ -36,14 +36,14 @@ export default class Title1 extends React.Component {
       return (
         <View style={styles.main}>
           <View style={[styles.titles, {backgroundColor: 'green'}]}>
-            <View style={{flex: 1, resizeMode:"contain"}}>
+            <View>
               <Image source={this.bg}></Image>
             </View>
-            <View style={{position: 'absolute'}}>
-              <Text style={styles.text}>{this.props.content}</Text>
+            <View style={{position: 'absolute', display: 'flex', justifyContent: "center", alignItems: "center",}}>
+              <Text style={[styles.text, {position: "absolute", backgroundColor: 'green'}]}>{this.props.content}</Text>
             </View>
           </View>
-          {/* {this.props.paper !== undefined && (
+          {this.props.paper !== undefined && (
             <View style={[styles.titles, {backgroundColor: 'green'}]}>
               <Image
                 style={styles.imageText}
@@ -51,7 +51,7 @@ export default class Title1 extends React.Component {
               ></Image>
               <Text style={styles.paperText}>{this.props.paper}</Text>
             </View>
-          )} */}
+          )}
         </View>
       );
     } else {
@@ -78,9 +78,7 @@ const styles = StyleSheet.create({
   },
   bg: {
     flex: 1,
-    resizeMode: "contain",
-    width: null,
-    height: null,
+    resizeMode: "stretch",
   },
   imageText: {
     color: 'black',

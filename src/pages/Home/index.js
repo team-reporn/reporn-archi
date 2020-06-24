@@ -2,7 +2,7 @@
 // In this, create the home page -choose between create a room or PornNews- on button select go to rules
 import React, { useState, useRef, useEffect } from 'react'
 import { Button, ButtonContainer } from '../../components/Button'
-import { View, StyleSheet, Text, Image, ImageBackground } from 'react-native'
+import { View, StyleSheet, Dimensions,Text, Image, ImageBackground } from 'react-native'
 import useSocket from '../../App/Socket/useSocket'
 
 import Title1 from '../../components/titles/Title1'
