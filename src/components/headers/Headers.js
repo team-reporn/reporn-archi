@@ -1,14 +1,40 @@
 import React from "react";
 import { Text, StyleSheet } from "react-native";
+import * as Font from "expo-font";
 
-const H1 = ({ children, color }) => {
-  return <Text style={[styles[color], styles.h1]}>{children}</Text>;
+let customFonts = {
+  MaimDisfigured: require("../../assets/fonts/MainDisfigured/MaimDisfigured.ttf"),
+  DIN: require("../../assets/fonts/Din/bold/D-DIN-Bold.ttf"),
 };
-const H2 = ({ children, color }) => {
-  return <Text style={[styles[color], styles.h2]}>{children}</Text>;
+let isLoaded = false;
+
+let setLoaded = () => {
+  isLoaded = true;
 };
-const H3 = ({ children, color }) => {
-  return <Text style={[styles[color], styles.h3]}>{children}</Text>;
+
+const H1 = ({ children, color, font }) => {
+  Promise.all([Font.loadAsync(customFonts)]).then(setLoaded.bind(this));
+  let lastFont = isLoaded && !!font ? font : "null";
+
+  return (
+    <Text style={[styles[color], styles.h1, styles[lastFont]]}>{children}</Text>
+  );
+};
+const H2 = ({ children, color, font }) => {
+  Promise.all([Font.loadAsync(customFonts)]).then(setLoaded.bind(this));
+  let lastFont = isLoaded && !!font ? font : "null";
+
+  return (
+    <Text style={[styles[color], styles.h2, styles[lastFont]]}>{children}</Text>
+  );
+};
+const H3 = ({ children, color, font }) => {
+  Promise.all([Font.loadAsync(customFonts)]).then(setLoaded.bind(this));
+  let lastFont = isLoaded && !!font ? font : "null";
+
+  return (
+    <Text style={[styles[color], styles.h3, styles[lastFont]]}>{children}</Text>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -16,7 +42,9 @@ const styles = StyleSheet.create({
   h2: { fontSize: 40 },
   h3: { fontSize: 30 },
   white: { color: "white" },
-  blue: { color: "#201DCE" },
+  blue: { color: "#0C09D7" },
+  maim: { fontFamily: "MaimDisfigured" },
+  din: { fontFamily: "DIN" },
 });
 
 export { H1, H2, H3 };

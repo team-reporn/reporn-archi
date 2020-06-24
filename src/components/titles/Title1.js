@@ -9,12 +9,12 @@ let customFonts = {
 
 export default class Title1 extends React.Component {
   constructor(props) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {}
     if (this.props.dark) {
-      this.bg = require("../../assets/img/title/TitreNoir.png");
+      this.bg = require('../../assets/img/title/TitreNoir.png')
     } else {
-      this.bg = require("../../assets/img/title/TitreBleu.png");
+      this.bg = require('../../assets/img/title/TitreBleu.png')
     }
   }
 
@@ -58,12 +58,12 @@ export default class Title1 extends React.Component {
 
 const styles = StyleSheet.create({
   main: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   titles: {
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
     fontFamily: "MaimDisfigured",
@@ -72,21 +72,21 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   bg: {
-    resizeMode: "contain",
+    resizeMode: 'contain',
     width: null,
     height: null,
   },
   imageText: {
-    color: "black",
-    position: "absolute",
+    color: 'black',
+    position: 'absolute',
     // right:30,
     top: 10,
   },
   paperText: {
-    color: "black",
+    color: 'black',
     padding: 40,
     paddingBottom: 50,
     justifyContent: "flex-end",
     textAlign: "right",
   },
-});
+})

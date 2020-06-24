@@ -36,7 +36,8 @@ let Room = ({ navigation }) => {
     >
       <View
         style={{
-          flex: 1,
+          flex: 2,
+          paddingTop: "5%",
         }}
       >
         <TitleWithContent onRight>
@@ -83,16 +84,16 @@ let Room = ({ navigation }) => {
               </P2>
             </View>
           </TitleWithContent>
-          <MainBtn content="Soft vanilla" rotation2 />
-          <MainBtn content="Regular mainstream" rotation1 />
-          <MainBtn content="Haardcore" rotation3 />
+          <MainBtn bold content="SOFT VANILLA" rotation2 />
+          <MainBtn bold content="REGULAR MAINSTREAM" rotation1 />
+          <MainBtn bold content="HARDCORE" rotation3 />
         </View>
       </View>
       <View
         style={{
           width: "100%",
           alignItems: "center",
-          flex: 1,
+          flex: 1.2,
         }}
       >
         <NextBtn

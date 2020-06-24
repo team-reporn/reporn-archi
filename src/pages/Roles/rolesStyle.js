@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   title: {
     transform: [{ rotate: "5deg" }],
-    flex: 1,
+    flex: 2,
     marginTop: 20,
     justifyContent: "center",
   },

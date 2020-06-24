@@ -192,7 +192,7 @@ export default () => {
                   style={styles.background}
                 >
                   <View style={styles.header}>
-                    <MainHeader />
+                    <MainHeader param back />
                   </View>
                   <View style={styles.content}>
                     <Roles navigation={navigation} />
@@ -224,7 +224,7 @@ export default () => {
             component={({ navigation }) => {
               return (
                 <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
+                  source={require("../assets/backgrounds/Categorie.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -320,7 +320,6 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     resizeMode: "cover",
-    // alignItems: "center",
     justifyContent: "flex-start",
     flexDirection: "column",
   },

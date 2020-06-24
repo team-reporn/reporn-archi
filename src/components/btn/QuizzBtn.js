@@ -4,7 +4,9 @@ import { AppLoading } from 'expo'
 import * as Font from 'expo-font'
 
 let customFonts = {
-  DIN: require('../../assets/fonts/Din/bold/D-DIN-Bold.ttf'),
+  DIN_Regular: require('../../assets/fonts/Din/regular/D-DIN.ttf'),
+  MaimDisfigured: require('../../assets/fonts/MainDisfigured/MaimDisfigured.ttf'),
+  DIN_Bold: require('../../assets/fonts/Din/bold/D-DIN-Bold.ttf'),
 }
 
 export default class QuizzBtn extends React.Component {
@@ -104,8 +106,7 @@ const styles = StyleSheet.create({
   text: {
     position: 'absolute',
     textTransform: 'uppercase',
-    fontFamily: 'DIN',
-    fontWeight: 'bold',
+    fontFamily: 'DIN_Bold',
     letterSpacing: 1.2,
   },
   textBlue: {

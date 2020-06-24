@@ -1,10 +1,10 @@
 import React from "react";
 import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
-import * as Font from "expo-font";
 import { AppLoading } from "expo";
+import * as Font from "expo-font";
 
 let customFonts = {
-  DIN: require("../../assets/fonts/Din/bold/D-DIN-Bold.ttf"),
+  DIN_Regular: require("../../assets/fonts/Din/regular/D-DIN.ttf"),
 };
 
 export default class MainBtn extends React.Component {
@@ -51,36 +51,40 @@ export default class MainBtn extends React.Component {
     this.props.rotation2 ? (rotation = styles.rotation2) : "";
     this.props.rotation3 ? (rotation = styles.rotation3) : "";
     this.props.rotation4 ? (rotation = styles.rotation4) : "";
-    return this.state.fontsLoaded ? (
-      <View>
-        <TouchableOpacity
-          style={[styles.main, rotation]}
-          onPress={this.props.onPress}
-          onPressIn={() => {
-            this.setState({ pressed: true });
-          }}
-          onPressOut={() => {
-            this.setState({ pressed: false });
-          }}
-        >
-          <ImageBtn
-            pressed={this.state.pressed}
-            startBtn={this.state.startBtn}
-            pressedBtn={this.state.pressedBtn}
-          />
-          <Text
-            style={[
-              styles.text,
-              this.state.pressed ? textPressedColor : textColor,
-            ]}
+
+    if (this.state.fontsLoaded) {
+      return (
+        <View>
+          <TouchableOpacity
+            style={[styles.main, rotation]}
+            onPress={this.props.onPress}
+            onPressIn={() => {
+              this.setState({ pressed: true });
+            }}
+            onPressOut={() => {
+              this.setState({ pressed: false });
+            }}
           >
-            {this.props.content}
-          </Text>
-        </TouchableOpacity>
-      </View>
-    ) : (
-      <AppLoading />
-    );
+            <ImageBtn
+              pressed={this.state.pressed}
+              startBtn={this.state.startBtn}
+              pressedBtn={this.state.pressedBtn}
+            />
+            <Text
+              style={[
+                this.props.bold ? styles.bold : null,
+                styles.text,
+                this.state.pressed ? textPressedColor : textColor,
+              ]}
+            >
+              {this.props.content}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      );
+    } else {
+      return <AppLoading />;
+    }
   }
 }
 
@@ -91,7 +95,7 @@ const styles = StyleSheet.create({
   },
   text: {
     position: "absolute",
-    fontFamily: "DIN",
+    fontFamily: "DIN_Regular",
   },
   textBlue: {
     color: "blue",
@@ -111,6 +115,7 @@ const styles = StyleSheet.create({
   rotation4: {
     transform: [{ rotate: "-6deg" }],
   },
+  bold: { fontWeight: "bold" },
 });
 
 let ImageBtn = ({ pressed, startBtn, pressedBtn }) => {

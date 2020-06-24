@@ -40,8 +40,12 @@ let Roles = ({ navigation }) => {
         <>
           <View style={rolesStyles.title}>
             <TitleWithContent onRight>
-              <P1 color={"white"}>Tire {3 - pressCount} mouchoir</P1>
-              <P2 color={"white"}>pour découvrir ton personnage</P2>
+              <P1 font={"maim"} color={"white"}>
+                Tire {3 - pressCount} mouchoir
+              </P1>
+              <P2 font={"maim"} color={"white"}>
+                pour découvrir ton personnage
+              </P2>
             </TitleWithContent>
           </View>
         </>
@@ -49,22 +53,37 @@ let Roles = ({ navigation }) => {
         <>
           <View style={rolesStyles.title}>
             <TitleWithContent onRight dark>
-              <H3 color={"white"}>tu es ...</H3>
-              <H2 color={"white"}>{character.cardRole.job}</H2>
+              <H3 font={"maim"} color={"white"}>
+                tu es ...
+              </H3>
+              <H2 font={"maim"} color={"white"}>
+                {character.cardRole.job}
+              </H2>
             </TitleWithContent>
           </View>
         </>
       )}
       {character.cardRole && (
-        <Mouchoirs count={pressCount} cardRole={character.cardRole} />
+        <View style={{ flex: 3 }}>
+          <Mouchoirs count={pressCount} cardRole={character.cardRole} />
+        </View>
       )}
-      {pressCount > 2 && (
-        <View style={{ width: "100%", alignItems:"center"}}>
+      {pressCount > 2 ? (
+        <View
+          style={{
+            width: "100%",
+            alignItems: "center",
+            justifyContent: "center",
+            flex: 2,
+            position: "relative",
+            zIndex: 100,
+          }}
+        >
           <NextButton
             title="suite"
             text="suite"
-            style={{}}
             onPress={() => {
+              console.log("clicked");
               getGameInfo();
               navigation.navigate("Theme", {
                 title: "Theme",
@@ -72,9 +91,16 @@ let Roles = ({ navigation }) => {
             }}
           />
         </View>
+      ) : (
+        <View
+          style={{
+            width: "100%",
+            alignItems: "center",
+            flex: 2,
+          }}
+        />
       )}
       <BoiteMouchoir setPressCount={setPressCount} pressCount={pressCount} />
-      {/* </ImageBackground> */}
     </View>
   );
 };

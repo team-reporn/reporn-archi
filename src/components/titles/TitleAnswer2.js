@@ -4,7 +4,8 @@ import { AppLoading } from 'expo'
 import * as Font from 'expo-font'
 
 let customFonts = {
-  MaimDisfigured: require('../../assets/fonts/MainDisfigured/MaimDisfigured.ttf'),
+  DIN_Regular: require('../../assets/fonts/Din/regular/D-DIN.ttf'),
+  DIN_Bold: require('../../assets/fonts/Din/bold/D-DIN-Bold.ttf'),
 }
 
 export default class TitleQuestion extends React.Component {
@@ -28,12 +29,13 @@ export default class TitleQuestion extends React.Component {
   render() {
     if (this.state.fontsLoaded) {
       return (
-        <View style={styles.container}>
+        <View style={styles.main}>
           <Image
-            source={require('../../assets/img/scotch/TitreQuestion.png')}
+            source={require('../../assets/img/scotch/Réponse.png')}
             style={styles.image}
           />
           <Text style={styles.text}>{this.props.content}</Text>
+          <Text style={styles.text2}>{this.props.content2}</Text>
         </View>
       )
     } else {
@@ -43,24 +45,32 @@ export default class TitleQuestion extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  main: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    marginBottom: '10%',
+    marginRight: 25,
   },
   image: {
-    width: '95%',
-    height: 80,
-    marginLeft: 60,
+    width: '89%',
+    height: 75,
   },
   text: {
-    paddingTop: 15,
-    fontFamily: 'MaimDisfigured',
-    width: '60%',
+    fontFamily: 'DIN_Regular',
     textAlign: 'center',
-    fontSize: 28,
-    color: 'white',
+    textTransform: 'uppercase',
+    fontSize: 15,
+    color: '#0F0EDD',
     position: 'absolute',
+    paddingBottom: 15,
+  },
+  text2: {
+    fontFamily: 'DIN_Bold',
+    textAlign: 'center',
+    textTransform: 'uppercase',
+    fontSize: 14,
+    color: '#0F0EDD',
+    position: 'absolute',
+    paddingTop: 25,
   },
 })
