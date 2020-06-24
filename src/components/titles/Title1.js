@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
-import * as Font from "expo-font";
-import { AppLoading } from "expo";
+import { AppLoading } from 'expo'
+import * as Font from 'expo-font';
 
 let customFonts = {
   MaimDisfigured: require("../../assets/fonts/MainDisfigured/MaimDisfigured.ttf"),
@@ -35,12 +35,16 @@ export default class Title1 extends React.Component {
     if (this.state.fontsLoaded) {
       return (
         <View style={styles.main}>
-          <View style={styles.titles}>
-            <Image source={this.bg}></Image>
-            <Text style={styles.text}>{this.props.content}</Text>
+          <View style={[styles.titles, {backgroundColor: 'green'}]}>
+            <View>
+              <Image source={this.bg}></Image>
+            </View>
+            <View style={{position: 'absolute', display: 'flex', justifyContent: "center", alignItems: "center",}}>
+              <Text style={[styles.text, {position: "absolute", backgroundColor: 'green'}]}>{this.props.content}</Text>
+            </View>
           </View>
           {this.props.paper !== undefined && (
-            <View style={styles.titles}>
+            <View style={[styles.titles, {backgroundColor: 'green'}]}>
               <Image
                 style={styles.imageText}
                 source={require("../../assets/img/title/title1-paper.png")}
@@ -58,23 +62,23 @@ export default class Title1 extends React.Component {
 
 const styles = StyleSheet.create({
   main: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: 'red',
   },
   titles: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
+    width:' 80%'
   },
   text: {
-    fontFamily: "MaimDisfigured",
+    fontFamily: 'MaimDisfigured',
     color: "white",
-    position: "absolute",
-    fontSize: 20,
+    fontSize: 20
   },
   bg: {
-    resizeMode: 'contain',
-    width: null,
-    height: null,
+    flex: 1,
+    resizeMode: "stretch",
   },
   imageText: {
     color: 'black',

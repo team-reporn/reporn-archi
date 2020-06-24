@@ -2,7 +2,7 @@
 // In this, create the home page -choose between create a room or PornNews- on button select go to rules
 import React, { useState, useRef, useEffect } from 'react'
 import { Button, ButtonContainer } from '../../components/Button'
-import { View, StyleSheet, Text, Image, ImageBackground } from 'react-native'
+import { View, StyleSheet, Dimensions,Text, Image, ImageBackground } from 'react-native'
 import useSocket from '../../App/Socket/useSocket'
 
 import Title1 from '../../components/titles/Title1'
@@ -43,6 +43,9 @@ let Home = ({ navigation }) => {
   )
 }
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -52,7 +55,8 @@ const styles = StyleSheet.create({
     marginBottom: 100,
   },
   title: {
-    marginLeft: 50,
+    marginBottom: -20,
+    marginLeft: 200,
   },
   btn1: {
     marginBottom: 30,
