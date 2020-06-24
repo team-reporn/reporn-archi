@@ -25,18 +25,17 @@ let Room = ({ navigation }) => {
     return () => clearInterval(roomInterval);
   }, [roomInfo]);
   return (
-    <View>
-      <Title1
-        content="Numéro de la room"
-        paper={
-          roomInfo &&
-          roomInfo.roomId &&
-          roomInfo.numClients &&
-          `id : ${roomInfo.roomId}
-           nombre de personne connecté : ${roomInfo.numClients}`
-        }
-      />
-      <Title1 content="Niveau de trashitude" />
+    <View style={{}}>
+      <View>
+        <Title1
+          content="Numéro de la room"
+          onRight
+          paper={
+            `${roomInfo.roomId}`
+          }
+        />
+        <Title1 content="Niveau de trashitude"/>
+      </View>
       <MainBtn content="Soft vanilla" rotation2 />
       <MainBtn content="Regular mainstream" rotation1 />
       <MainBtn content="Haardcore" rotation3 />

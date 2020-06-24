@@ -8,6 +8,7 @@ import useSocket from '../../App/Socket/useSocket'
 import Title1 from '../../components/titles/Title1'
 import MainBtn from '../../components/btn/MainBtn'
 
+
 let Home = ({ navigation }) => {
   const { initializeSocket, createRoom, setRoomInfo } = useSocket()
   useEffect(() => {
@@ -50,9 +51,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
+    alignItems: "center"
   },
   logo: {
-    marginBottom: 100,
+    margin: 'auto',
+    marginBottom: 50,
   },
   title: {
     marginBottom: -20,

@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Image, StyleSheet, TouchableOpacity } from 'react-native'
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
 export default class NextBtn extends React.Component {
   constructor(props) {
@@ -10,9 +11,9 @@ export default class NextBtn extends React.Component {
   render() {
     return (
       <View>
-        <TouchableOpacity onPress={this.props.onPress}>
-          <Image source={require('../../assets/img/btn/Next.png')}></Image>
-        </TouchableOpacity>
+        <TouchableWithoutFeedback style={{display: "flex", justifyContent: "center", alignItems: "center"}} onPress={this.props.onPress}>
+          <Image style={{}} source={require('../../assets/img/btn/Next.png')}></Image>
+        </TouchableWithoutFeedback>
       </View>
     )
   }
