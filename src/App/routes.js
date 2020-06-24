@@ -4,6 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import Socket from "./Socket";
+import useSocket from './Socket/useSocket'
 
 import Room from "../pages/Room";
 import JoinRoom from "../pages/JoinRoom";
@@ -29,22 +30,6 @@ import MainHeader from "../components/headers/MainHeader";
 
 const Stack = createStackNavigator();
 
-// let Layout = ({ headerParam, headerBack, Content, navigation }) => {
-//   return () => {
-//     return (
-//       <ImageBackground
-//         source={require("../assets/img/backgrounds/Question1.png")}
-//         style={styles.background}
-//       >
-//         <View style={styles.header}>
-//           <MainHeader param={!!headerParam} back={!!headerBack} />
-//         </View>
-
-//         <View style={styles.content}>{<Content navigation />}</View>
-//       </ImageBackground>
-//     );
-//   };
-// };
 export default () => {
   return (
     <NavigationContainer>
@@ -54,6 +39,24 @@ export default () => {
             headerShown: false,
           }}
         >
+          <Stack.Screen name="Shake">
+            {(props) => {
+                const { roomInfo, getRoomInfo, setRoomInfo, startGame } = useSocket();
+              return (
+                <ImageBackground
+                  source={require("../assets/img/backgrounds/Home.png")}
+                  style={styles.background}
+                >
+                  <View style={styles.header}>
+                    <MainHeader param back />
+                  </View>
+                  <View style={styles.content}>
+                    <Shake {...props} />
+                  </View>
+                </ImageBackground>
+              );
+            }}
+          </Stack.Screen>
           <Stack.Screen name="Home">
             {(props) => {
               return (
@@ -174,23 +177,7 @@ export default () => {
               );
             }}
           </Stack.Screen>
-          <Stack.Screen name="Shake">
-            {(props) => {
-              return (
-                <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
-                  style={styles.background}
-                >
-                  <View style={styles.header}>
-                    <MainHeader />
-                  </View>
-                  <View style={styles.content}>
-                    <Shake {...props} />
-                  </View>
-                </ImageBackground>
-              );
-            }}
-          </Stack.Screen>
+
           <Stack.Screen name="Roles">
             {(props) => {
               return (
