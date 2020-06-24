@@ -38,6 +38,24 @@ export default () => {
             headerShown: false,
           }}
         >
+                    <Stack.Screen
+            name="Tabou"
+            component={({ navigation }) => {
+              return (
+                <ImageBackground
+                  source={require("../assets/img/backgrounds/Home.png")}
+                  style={styles.background}
+                >
+                  <View style={styles.header}>
+                    <MainHeader />
+                  </View>
+                  <View style={styles.content}>
+                    <Tabou navigation={navigation} />
+                  </View>
+                </ImageBackground>
+              );
+            }}
+          />
           <Stack.Screen
             name="Home"
             component={({ navigation }) => {
@@ -147,24 +165,7 @@ export default () => {
               );
             }}
           />
-          <Stack.Screen
-            name="Tabou"
-            component={({ navigation }) => {
-              return (
-                <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
-                  style={styles.background}
-                >
-                  <View style={styles.header}>
-                    <MainHeader />
-                  </View>
-                  <View style={styles.content}>
-                    <Tabou navigation={navigation} />
-                  </View>
-                </ImageBackground>
-              );
-            }}
-          />
+
           <Stack.Screen
             name="Shake"
             component={({ navigation }) => {
