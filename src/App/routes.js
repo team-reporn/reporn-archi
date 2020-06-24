@@ -315,14 +315,6 @@ export default () => {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-<<<<<<< HEAD
-    resizeMode: 'cover',
-    justifyContent: 'center',
-  },
-  content: {height: "90%"},
-  header: {height: "10%"}
-})
-=======
     resizeMode: "cover",
     // alignItems: "center",
     backgroundColor: "red",
@@ -331,4 +323,3 @@ const styles = StyleSheet.create({
   content: { flex: 7 },
   header: { flex: 1 },
 });
->>>>>>> 188eda7f02d7857327b943814e84009c57806c2d

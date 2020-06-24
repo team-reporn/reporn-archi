@@ -4,8 +4,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { Button, ButtonContainer } from "../../components/Button";
 import { View, StyleSheet, Text, Image, ImageBackground } from "react-native";
 import useSocket from "../../App/Socket/useSocket";
+import { Dimensions } from 'react-native';
 
 import Title1 from "../../components/titles/Title1";
+import TitleWithContent from "../../components/titles/TitleWithContent";
 import MainBtn from "../../components/btn/MainBtn";
 
 let Home = ({ navigation }) => {
@@ -17,7 +19,11 @@ let Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Image source={require('../../assets/logo.png')} style={styles.logo} />
-      <Title1 content="Partie de jambes en l'air" style={styles.title} />
+      {/* <Title1 content="Partie de jambes en l'air" style={styles.title} /> */}
+      <TitleWithContent onRight>
+        <Text style={windowWidth > 700 ? styles.title : null}>Partie de jambes en l'air</Text>
+        <View></View>
+      </TitleWithContent>
       <MainBtn
         content="Create a Room"
         style={styles.btn1}
@@ -43,16 +49,20 @@ let Home = ({ navigation }) => {
   );
 };
 
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: "column",
+    //flex: 1,
+    //flexDirection: "column",
   },
   logo: {
     marginBottom: 100,
   },
   title: {
     marginBottom: -20,
+    marginLeft: 200,
   },
   btn1: {
     marginBottom: 30,
