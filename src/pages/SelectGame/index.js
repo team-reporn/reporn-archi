@@ -1,6 +1,5 @@
 // in this, define all games and select one randomly - On button go select go to Quiz
 import React, { useState, useEffect } from 'react'
-import { Button, ButtonContainer } from '../../components/Button'
 import { View, StyleSheet, Text, Image } from 'react-native'
 import useSocket from '../../App/Socket/useSocket'
 import NextButton from '../../components/btn/NextBtn.js'
@@ -34,7 +33,6 @@ let getRoutesFromGameName = ({ game }) => {
 }
 let Wait = ({ navigation }) => {
   const { progress, ready, game } = useSocket()
-  console.log(game)
   useEffect(() => {
     ready()
   }, [])
@@ -84,3 +82,18 @@ export default ({ navigation }) => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  background: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
+  image: {
+    transform: [{ rotate: '22deg' }],
+  },
+})

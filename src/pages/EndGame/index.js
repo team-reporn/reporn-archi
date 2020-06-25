@@ -55,7 +55,6 @@ export default ({ navigation }) => {
       />
       <Answer content={questions[gameIndex].paragraph} />
       <PornnewsFlash content={questions[gameIndex].pornews}></PornnewsFlash>
-      <SelectGame navigation={navigation} />
       {game.round.laps < 4 ? (
         <Button
           key="QUESTION"
