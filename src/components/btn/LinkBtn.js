@@ -9,7 +9,7 @@ export default class LinkBtn extends React.Component {
 
     render() {
         return (
-            <View>
+            <View styles={this.props.styles}>
                 <TouchableOpacity onPress={this.props.onPress}>
                 <Text style={styles.text}>{this.props.content} ></Text>
                 </TouchableOpacity>
@@ -20,6 +20,7 @@ export default class LinkBtn extends React.Component {
 
 const styles = StyleSheet.create({
     text: {
-        color: 'blue'
+        color: 'blue',
+        textAlign: "center"
     }
   });

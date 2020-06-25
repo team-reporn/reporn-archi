@@ -12,6 +12,7 @@ import styles from "../../utils/globalStyles";
 import TitleWithContent from "../../components/titles/TitleWithContent";
 import { P1, P2, P3 } from "../../components/Paragraph/Paragraph";
 import { H1 } from "../../components/headers/Headers";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -109,13 +110,18 @@ let Theme = ({ navigation }) => {
               </TitleWithContent>
             </View>
           </View>
-          <SelectGame navigation={navigation} />
+
+          {/* <SelectGame navigation={navigation} /> */}
           <BoiteMouchoir
             setPressCount={setPressCount}
             pressCount={pressCount}
           />
         </>
       )}
+                <TouchableOpacity onPress={()=>{
+            navigation.navigate("SelectGame", {
+              title: "SelectGame",
+            });}}><Text>LALALALALALALA</Text></TouchableOpacity>
     </View>
   );
 };

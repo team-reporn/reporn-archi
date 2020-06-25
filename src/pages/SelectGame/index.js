@@ -4,6 +4,8 @@ import { Button, ButtonContainer } from '../../components/Button'
 import { View, StyleSheet, Text, Image } from 'react-native'
 import useSocket from '../../App/Socket/useSocket'
 import NextButton from '../../components/btn/NextBtn.js'
+import BigTitle from '../../components/titles/BigTitle'
+import Chrono from '../../components/Chrono'
 
 import culture from '../../contents/cultureData'
 // import troudumonde from '../../contents/troudumonde'
@@ -12,19 +14,19 @@ import culture from '../../contents/cultureData'
 let getRoutesFromGameName = ({ game }) => {
   switch (game) {
     case 'tabou':
-      return { route: 'Tabou', title: 'Tabou' }
+      return { route: 'Tabou', title: 'Safe Word', subContent: 'Aide ton partenaire à se souvenir de votre safe word', consigne: "L'un fait deviner un mot à l'autre" }
       break
 
     case 'cultureQ':
-      return { route: 'Quizz', title: 'Quizz' }
+      return { route: 'Quizz', title: 'Culture Q', subContent: 'Petite question de culture point G', consigne: 'Caresse la bonne réponse' }
       break
 
     case 'acteurX':
-      return { route: 'ActeurX', title: 'ActeurX' }
+      return { route: 'ActeurX', title: 'Qui...?', subContent: null , consigne: 'Touche la bonne réponse' }
       break
 
     case 'ouEst':
-      return { route: 'Wiwaldo', title: 'Wiwaldo' }
+      return { route: 'Où est ...?', title: 'Le sextoy le plus cheap ?', consigne: 'Touche la bonne réponse' }
       break
 
     default:
@@ -60,6 +62,7 @@ let Wait = ({ navigation }) => {
 
 export default ({ navigation }) => {
   const [pressed, setPressed] = useState(false)
+  const {game} = useSocket()
   return (
     <View>
       {pressed ? (
@@ -72,6 +75,10 @@ export default ({ navigation }) => {
             top: -100,
           }}
         >
+          <View style={{marginBottom:-80, zIndex: 2}}>
+            <Chrono duration={1} onFinish={()=>{}} />
+          </View>
+          <BigTitle content={getRoutesFromGameName({ game: game.game }).title} subContent={getRoutesFromGameName({ game: game.game }).subContent} upperContent={getRoutesFromGameName({ game: game.game }).upperContent} consigne={getRoutesFromGameName({ game: game.game }).consigne}/>
           <NextButton
             key="READY"
             text="I'm Ready !"
