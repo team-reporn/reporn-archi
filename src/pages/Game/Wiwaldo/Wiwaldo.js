@@ -52,10 +52,7 @@ const Wiwaldo = ({ navigation }) => {
     <View style={styles.container}>
       {step === 0 && (
         <>
-          <ImageBackground
-            source={require("../../../assets/backgrounds/Categorie.png")}
-            style={stylesGlobaux.background}
-          >
+          
             <Text>tu dois chercher : </Text>
             <Image source={pictures[indexRecherche.current]} />
             <ButtonContainer>
@@ -67,7 +64,6 @@ const Wiwaldo = ({ navigation }) => {
                 }}
               />
             </ButtonContainer>
-          </ImageBackground>
         </>
       )}
       {step === 1 && (
@@ -173,7 +169,6 @@ const styles = StyleSheet.create({
     height: "100%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "cyan",
   },
 });
 export default Wiwaldo;

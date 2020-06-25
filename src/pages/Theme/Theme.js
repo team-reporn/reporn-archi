@@ -6,6 +6,7 @@ import { Button, ButtonContainer } from "../../components/Button";
 
 import SelectGame from "../SelectGame";
 import BoiteMouchoir from "../Roles/BoiteMouchoir";
+import NextButton from "../../components/btn/NextBtn.js";
 
 import styles from "../../utils/globalStyles";
 
@@ -110,8 +111,30 @@ let Theme = ({ navigation }) => {
               </TitleWithContent>
             </View>
           </View>
+<<<<<<< HEAD
 
           {/* <SelectGame navigation={navigation} /> */}
+=======
+          <View
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              top: -100,
+              position: "relative",
+              zIndex: 10,
+            }}
+          >
+            <NextButton
+              key="READY"
+              text="I'm Ready !"
+              onPress={() => {
+                navigation.navigate("SelectGame", {
+                  title: "SelectGame",
+                });
+              }}
+            />
+          </View>
+>>>>>>> fbce2889158ebabfe937d24c54e669237e907fd9
           <BoiteMouchoir
             setPressCount={setPressCount}
             pressCount={pressCount}
