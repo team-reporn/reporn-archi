@@ -1,10 +1,12 @@
-import React from "react";
-import { View, ImageBackground, StyleSheet, Text } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, ImageBackground, StyleSheet, Text, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
+import { P1, P2, P3 } from "../components/Paragraph/Paragraph";
+
 import Socket from "./Socket";
-import useSocket from './Socket/useSocket'
+import useSocket from "./Socket/useSocket";
 
 import Room from "../pages/Room";
 import JoinRoom from "../pages/JoinRoom";
@@ -29,7 +31,36 @@ import GameHeader from "../components/headers/GameHeader";
 import MainHeader from "../components/headers/MainHeader";
 
 const Stack = createStackNavigator();
+let award = require("../pages/Game/Shake/Award.png");
+let off = require("../pages/Game/Shake/Off.png");
+const backgrounds = { award, off };
+let Shit = () => {
+  const [steps, setSteps] = useState(0);
 
+  function increment({ setSteps }) {
+    setSteps(steps + 1);
+    console.log(steps);
+  }
+
+  return (
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "red",
+        justifyContent: "center",
+      }}
+    >
+      <Text>Today you've taken {steps} steps!</Text>
+      <Button
+        title=" I took another step"
+        onPress={() => {
+          increment({ setSteps });
+          console.log("aafe");
+        }}
+      ></Button>
+    </View>
+  );
+};
 export default () => {
   return (
     <NavigationContainer>
@@ -39,24 +70,7 @@ export default () => {
             headerShown: false,
           }}
         >
-          <Stack.Screen name="Shake">
-            {(props) => {
-                const { roomInfo, getRoomInfo, setRoomInfo, startGame } = useSocket();
-              return (
-                <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
-                  style={styles.background}
-                >
-                  <View style={styles.header}>
-                    <MainHeader param back />
-                  </View>
-                  <View style={styles.content}>
-                    <Shake {...props} />
-                  </View>
-                </ImageBackground>
-              );
-            }}
-          </Stack.Screen>
+         
           <Stack.Screen name="Home">
             {(props) => {
               return (
@@ -130,7 +144,7 @@ export default () => {
             {(props) => {
               return (
                 <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
+                  source={require("../assets/img/backgrounds/Question1.png")}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -177,7 +191,41 @@ export default () => {
               );
             }}
           </Stack.Screen>
+          <Stack.Screen name="Shake">
+            {(props) => {
+              let Comp = () => {
+                const { character, game } = useSocket();
+                const [background, setBackGround] = useState(backgrounds.off);
 
+                return (
+                  <ImageBackground
+                    source={background}
+                    style={styles.background}
+                  >
+                    <View style={styles.header}>
+                      <MainHeader
+                        param
+                        back
+                        title={
+                          <P1 font={"maim"} color={"blue"}>
+                            {game.theme}
+                          </P1>
+                        }
+                      />
+                    </View>
+                    <View style={styles.content}>
+                      <Shake
+                        {...props}
+                        character={character}
+                        setBackGround={setBackGround}
+                      />
+                    </View>
+                  </ImageBackground>
+                );
+              };
+              return <Comp />;
+            }}
+          </Stack.Screen>
           <Stack.Screen name="Roles">
             {(props) => {
               return (
@@ -246,7 +294,6 @@ export default () => {
               );
             }}
           </Stack.Screen>
-
           <Stack.Screen name="Futur">
             {(props) => {
               return (
@@ -313,5 +360,5 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   content: { flex: 7 },
-  header: { flex: 1 },
+  header: { flex: 0.7 },
 });
