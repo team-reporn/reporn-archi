@@ -1,19 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
-import {
-  Button as BigButton,
-  ButtonContainer,
-} from "../../../components/Button";
-
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, Image } from "react-native";
 import { Accelerometer } from "expo-sensors";
 
-import styles from "../../../utils/globalStyles";
-
+import useSocket from "../../../App/Socket/useSocket";
 import TitleWithContent from "../../../components/titles/TitleWithContent";
 import { P1, P2, P3 } from "../../../components/Paragraph/Paragraph";
-import { H1 } from "../../../components/headers/Headers";
+import NextButton from "../../../components/btn/NextBtn.js";
+
 import { GLView, Asset } from "expo-gl";
+
+import Chrono from "../../../components/Chrono";
+import Award from "./Award";
+import Exploit from "./Exploit";
 
 const vertSrc = `
   precision highp float;
@@ -48,103 +47,15 @@ const fragSrc = `
   void main () {
     vec4 t = texture2D(texture, vec2(uv.x, uv.y)); 
     vec3 hsvT = rgb2hsv(t.rgb);
-    vec3 augmentedHsvT = hsv2rgb(vec3(hsvT.r+u_speed/5.,hsvT.g+u_speed/5.,hsvT.b+u_speed/5.));
-    gl_FragColor = vec4(t.r + augmentedHsvT.r, t.g + augmentedHsvT.g, t.b + augmentedHsvT.b, 1.);
+    vec3 augmentedHsvT = hsv2rgb(vec3(
+      hsvT.r+u_speed/10.,
+      hsvT.g+u_speed/10.,
+      hsvT.b+u_speed/10.
+      ));
+    gl_FragColor = vec4( augmentedHsvT.r,  augmentedHsvT.g, augmentedHsvT.b, 1.);
   }`;
 
-class Shake extends React.Component {
-  _isMounted = false;
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      step: 0,
-      timer: null,
-      timerDuration: 10,
-      timerLeft: 10,
-      accelerometerData: { x: 0, y: 0, z: 0 },
-      result: 0,
-      resultList: ["Le rythme dans la peau", "La plus passionée"],
-    };
-  }
-
-  componentDidMount() {
-    this._isMounted = true;
-  }
-
-  startTimer = () => {
-    this._subscription = Accelerometer.addListener((accelerometerData) => {
-      this.setState({ accelerometerData });
-    });
-    let timer = setInterval(this.timerCheck, 1000);
-    this.setState({ timer });
-  };
-
-  componentWillUnmount() {
-    clearInterval(this.state.timer);
-  }
-
-  timerCheck = () => {
-    this.setState({ timerLeft: this.state.timerLeft - 1 });
-    if (this.state.timerLeft <= 0) {
-      clearInterval(this.state.timer);
-      this.setState({ step: 2 });
-      this._subscription && this._subscription.remove();
-      this._subscription = null;
-      this.setState({
-        result: Math.floor(Math.random() * this.state.resultList.length),
-      });
-    }
-  };
-
-  render() {
-    if (this.state.step == 0) {
-      return (
-        <View style={styles.container}>
-          <GLView></GLView>
-          <ImageBackground
-            source={require("../../../assets/backgrounds/Categorie.png")}
-            style={styles.background}
-          >
-            <Text>Secoue ton téléphone pour finir</Text>
-            <Button
-              title=">"
-              onPress={() => {
-                this.setState({ step: 1 });
-                this.startTimer();
-              }}
-            />
-          </ImageBackground>
-        </View>
-      );
-    } else if (this.state.step == 1) {
-      return (
-        <View>
-          <Text>{this.state.timerLeft}:00:00</Text>
-        </View>
-      );
-    } else if (this.state.step == 2) {
-      return (
-        <View>
-          <Text>{this.state.resultList[this.state.result]}</Text>
-          <ButtonContainer>
-            <BigButton
-              key="achievement"
-              text="achievement"
-              onPress={() => {
-                this.props.navigation.navigate("Achievement", {
-                  title: "Achievement",
-                });
-              }}
-            />
-          </ButtonContainer>
-        </View>
-      );
-    }
-  }
-}
-
-export default class BasicScene extends React.Component {
+class BasicScene extends React.Component {
   static meta = {
     description: "Basic Scene with Texture",
   };
@@ -152,12 +63,15 @@ export default class BasicScene extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
+      step: 0,
       ready: false,
       accelerometerData: { x: 0, y: 0, z: 0 },
       oldAccelerometerData: { x: 0, y: 0, z: 0 },
       speed: 0,
+      highestSpeed: 0,
     };
     this._subscribeToAccelerometer();
+    console.log(" cara ", this.props.character.cardRole.genre);
   }
 
   _subscribeToAccelerometer = () => {
@@ -167,20 +81,24 @@ export default class BasicScene extends React.Component {
           { oldAccelerometerData: this.state.accelerometerData },
           this.setState({ accelerometerData }, () => {
             let oldP =
-              this.state.oldAccelerometerData.x +
-              this.state.oldAccelerometerData.z +
-              this.state.oldAccelerometerData.y;
+              Math.abs(this.state.oldAccelerometerData.x) +
+              Math.abs(this.state.oldAccelerometerData.z) +
+              Math.abs(this.state.oldAccelerometerData.y);
             let newP =
-              this.state.accelerometerData.x +
-              this.state.accelerometerData.y +
-              this.state.accelerometerData.z;
+              Math.abs(this.state.accelerometerData.x) +
+              Math.abs(this.state.accelerometerData.y) +
+              Math.abs(this.state.accelerometerData.z);
+            let rep =
+              newP > 1.7 ? this.state.speed + 0.01 : this.state.speed - 0.01;
             this.setState({
-              speed:
-                this.state.speed + (newP - oldP) / 2 - 0.1 > 0
-                  ? this.state.speed + (newP - oldP) / 2 - 0.1
-                  : 0,
+              speed: rep > -0.7 ? rep : -0.7,
+              // this.state.speed + (newP - oldP) / 2 - 0.1 > 0
+              //   ? this.state.speed + (newP - oldP) / 2 - 0.01
+              //   : 0,
             });
-            // console.log(this.state.speed);
+            if (this.state.speed > this.state.highestSpeed) {
+              this.setState({ highestSpeed: this.state.speed });
+            }
           })
         );
       }
@@ -201,13 +119,7 @@ export default class BasicScene extends React.Component {
 
   render() {
     return (
-      // <View>
-      //   <Text>coucou</Text>
-      //   <Text>{this.state.accelerometerData.x}</Text>
-      //   <Text>{this.state.accelerometerData.y}</Text>
-      // <Text>{this.state.accelerometerData.z}</Text>
       <GLView style={{ flex: 1 }} onContextCreate={this._onContextCreate} />
-      // </View>
     );
   }
 
@@ -240,12 +152,6 @@ export default class BasicScene extends React.Component {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
 
-    console.log("\n====");
-    console.log("\n====");
-    console.log(this._textureAsset);
-    console.log("\n====");
-    console.log("\n====");
-
     const dataToPass = (imagedata) =>
       imagedata &&
       typeof imagedata === "object" &&
@@ -253,7 +159,7 @@ export default class BasicScene extends React.Component {
         ? null
         : imagedata;
 
-      gl.texImage2D(
+    gl.texImage2D(
       gl.TEXTURE_2D,
       0,
       gl.RGBA,
@@ -280,7 +186,6 @@ export default class BasicScene extends React.Component {
           // return;
         }
 
-        // console.log(this.state.accelerometerData);
         // Clear
         gl.clearColor(0, 0, 1, 1);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
@@ -295,7 +200,6 @@ export default class BasicScene extends React.Component {
         gl.enableVertexAttribArray(positionAttrib);
         gl.vertexAttribPointer(positionAttrib, 2, gl.FLOAT, false, 0, 0);
         // gl.uniform3f(uAccelerometer, x, y, z); // offset it to the right half the screen
-        // console.log(actualPosition - oldPosition);
         gl.uniform1f(uSpeed, this.state.speed); // offset it to the right half the screen
 
         // Buffer data and draw!
@@ -315,3 +219,85 @@ export default class BasicScene extends React.Component {
     animate();
   };
 }
+
+let ShakeVue = ({ navigation, setBackGround }) => {
+  const { character } = useSocket();
+  const [step, setStep] = useState(0);
+  if (step == 0) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          // alignItems: "center",
+        }}
+      >
+        <View
+          style={{
+            marginTop: -100,
+            justifyContent: "center",
+            alignItems: "center",
+            transform: [{ rotate: "-5deg" }],
+          }}
+        >
+          <TitleWithContent onRight>
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <P1 font={"maim"} color={"white"}>
+                SECOUE TON TELEPHONE
+              </P1>
+              <P3 font={"maim"} color={"white"}>
+                POUR FINIR
+              </P3>
+            </View>
+            <View></View>
+          </TitleWithContent>
+        </View>
+        <View
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            position: "relative",
+            zIndex: 100,
+          }}
+        >
+          <NextButton
+            onPress={() => {
+              setStep(1);
+            }}
+          />
+        </View>
+      </View>
+    );
+  }
+  if (step == 1) {
+    return (
+      <View style={{ flex: 1 }}>
+        <BasicScene character={character} />
+        <View
+          style={{
+            flex: 1,
+            bottom: 0,
+            left: 0,
+            position: "absolute",
+            width: "100%",
+          }}
+        >
+          <Chrono
+            duration={2}
+            onFinish={() => {
+              setStep(2);
+              setBackGround(require("./Award.png"));
+            }}
+          />
+        </View>
+      </View>
+    );
+  }
+  if (step == 2) {
+    return <Award setStep={setStep} />;
+  }
+  if (step == 3) {
+    return <View></View>;
+  }
+};
+export default ShakeVue;
