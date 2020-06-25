@@ -1,9 +1,12 @@
-import React from 'react'
-import { View, ImageBackground, StyleSheet, Text } from 'react-native'
+import React, { useState } from 'react'
+import { View, ImageBackground, StyleSheet, Text, Button } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 
+import { P1, P2, P3 } from '../components/Paragraph/Paragraph'
+
 import Socket from './Socket'
+import useSocket from './Socket/useSocket'
 
 import Room from '../pages/Room'
 import JoinRoom from '../pages/JoinRoom'
@@ -29,23 +32,10 @@ import GameHeader from '../components/headers/GameHeader'
 import MainHeader from '../components/headers/MainHeader'
 
 const Stack = createStackNavigator()
+let award = require('../pages/Game/Shake/Award.png')
+let off = require('../pages/Game/Shake/Off.png')
+const backgrounds = { award, off }
 
-// let Layout = ({ headerParam, headerBack, Content, navigation }) => {
-//   return () => {
-//     return (
-//       <ImageBackground
-//         source={require("../assets/img/backgrounds/Question1.png")}
-//         style={styles.background}
-//       >
-//         <View style={styles.header}>
-//           <MainHeader param={!!headerParam} back={!!headerBack} />
-//         </View>
-
-//         <View style={styles.content}>{<Content navigation />}</View>
-//       </ImageBackground>
-//     );
-//   };
-// };
 export default () => {
   return (
     <NavigationContainer>
@@ -195,19 +185,37 @@ export default () => {
           </Stack.Screen>
           <Stack.Screen name="Shake">
             {(props) => {
-              return (
-                <ImageBackground
-                  source={require('../assets/img/backgrounds/Home.png')}
-                  style={styles.background}
-                >
-                  <View style={styles.header}>
-                    <MainHeader />
-                  </View>
-                  <View style={styles.content}>
-                    <Shake {...props} />
-                  </View>
-                </ImageBackground>
-              )
+              let Comp = () => {
+                const { character, game } = useSocket()
+                const [background, setBackGround] = useState(backgrounds.off)
+
+                return (
+                  <ImageBackground
+                    source={background}
+                    style={styles.background}
+                  >
+                    <View style={styles.header}>
+                      <MainHeader
+                        param
+                        back
+                        title={
+                          <P1 font={'maim'} color={'blue'}>
+                            {game.theme}
+                          </P1>
+                        }
+                      />
+                    </View>
+                    <View style={styles.content}>
+                      <Shake
+                        {...props}
+                        character={character}
+                        setBackGround={setBackGround}
+                      />
+                    </View>
+                  </ImageBackground>
+                )
+              }
+              return <Comp />
             }}
           </Stack.Screen>
           <Stack.Screen name="Roles">
@@ -278,7 +286,6 @@ export default () => {
               )
             }}
           </Stack.Screen>
-
           <Stack.Screen name="Futur">
             {(props) => {
               return (
@@ -345,5 +352,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   content: { flex: 7 },
-  header: { flex: 1 },
+  header: { flex: 0.7 },
 })

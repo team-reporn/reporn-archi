@@ -5,8 +5,11 @@ export const Context = createContext(null)
 const socket = SocketIOClient('http://192.168.1.35:4000')
 
 const Socket = ({ children }) => {
-  const [game, setGame] = useState({ name: 'cultureQ' })
-  const [character, setCharacter] = useState({ cardRole: null, id: null })
+  const [game, setGame] = useState({ name: 'cultureQ', theme: 'Amateur' })
+  const [character, setCharacter] = useState({
+    cardRole: { genre: 'f' },
+    id: null,
+  })
   const [progress, setProgress] = useState({ start: false })
   const [roomInfo, setRoomInfo] = useState({
     roomId: null,

@@ -11,11 +11,17 @@ export default class MainHeader extends React.Component {
     this.state = {};
   }
 
+  // reporn-archi\src\assets\img\headers\gameHeaderBg.png
+
   render() {
     return (
       <View style={styles.main}>
         {this.props.back ? <BackBtn /> : <View style={{ flex: 2 }} />}
-        <View style={{ flex: 0.1 }} />
+        {this.props.title ? (
+          <TitleContainer>{this.props.title}</TitleContainer>
+        ) : (
+          <View style={{ flex: 0.1 }} />
+        )}
         {this.props.param ? <ParamBtn /> : <View style={{ flex: 2 }} />}
       </View>
     );
@@ -27,9 +33,11 @@ const styles = StyleSheet.create({
     height: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
+    zIndex: 200,
   },
   center: {
     flex: 2,
+    zIndex: 2,
   },
   bg: {
     height: "100%",
@@ -116,6 +124,46 @@ let ParamBtn = ({}) => {
             source={require("../../assets/img/headers/reglageIco.png")}
           />
         </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+let TitleContainer = ({ children }) => {
+  return (
+    <View
+      style={{
+        width: "100%",
+        justifyContent: "flex-start",
+        alignItems: "flex-start",
+      }}
+    >
+      <View
+        style={{
+          flex: 1,
+          width: "100%",
+          zIndex: 10,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {children}
+      </View>
+      <View
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: 150,
+        }}
+      >
+        <Image
+          style={{
+            width: "100%",
+            height: "100%",
+            resizeMode: "stretch",
+          }}
+          source={require("../../assets/img/headers/gameHeaderBg.png")}
+        />
       </View>
     </View>
   );

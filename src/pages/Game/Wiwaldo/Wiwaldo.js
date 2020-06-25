@@ -50,101 +50,80 @@ const Wiwaldo = ({ navigation }) => {
   console.log(indexRecherche.current)
   return (
     <View style={styles.container}>
-      {/* <ImageBackground
-            source={require("../../../assets/backgrounds/Categorie.png")}
-            style={stylesGlobaux.background}
-          >
-            <Text>tu dois chercher : </Text>
-            <Image source={pictures[indexRecherche.current]} />
-            <ButtonContainer>
-              <BigButton
-                key="rentrer dans le jeu"
-                text="rentrer dans le jeu"
-                onPress={() => {
-                  setStep(1);
-                }}
-              />
-            </ButtonContainer>
-          </ImageBackground>
-      {step === 1 && ( */}
-      <Pan>
-        <ImageBackground
-          style={{ width: '100%', height: '100%' }}
-          source={require('./assets/backgroundWiwaldo.jpg')}
-        />
-        {pictures.map((image, index) => {
-          return index !== indexRecherche.current ? (
-            <TouchableHighlight
-              style={[setStyleImg1[index], { zIndex: 100 }]}
-              key={index}
-              onPress={() =>
-                navigation.navigate('EndGame', {
-                  title: 'EndGame',
-                })
-              }
-            >
-              <Image source={image} />
-            </TouchableHighlight>
-          ) : (
-            <TouchableHighlight
-              style={[setStyleImg1[indexRecherche.current], { zIndex: 101 }]}
-              onPress={() =>
-                navigation.navigate('EndGame', {
-                  title: 'EndGame',
-                })
-              }
-            >
-              <Image source={pictures[indexRecherche.current]} />
-            </TouchableHighlight>
-          )
-        })}
-        {pictures.map((image, index) => {
-          return index !== indexRecherche.current ? (
-            <TouchableHighlight
-              style={[setStyleImg2[index], { zIndex: 100 }]}
-              key={index}
-              onPress={() =>
-                navigation.navigate('EndGame', {
-                  title: 'EndGame',
-                })
-              }
-            >
-              <Image source={image} />
-            </TouchableHighlight>
-          ) : null
-        })}
-        {pictures.map((image, index) => {
-          return index !== indexRecherche.current ? (
-            <TouchableHighlight
-              style={[setStyleImg3[index], { zIndex: 100 }]}
-              key={index}
-              onPress={() =>
-                navigation.navigate('EndGame', {
-                  title: 'EndGame',
-                })
-              }
-            >
-              <Image source={image} />
-            </TouchableHighlight>
-          ) : null
-        })}
-        {pictures.map((image, index) => {
-          return index !== indexRecherche.current ? (
-            <TouchableHighlight
-              style={[setStyleImg4[index], { zIndex: 100 }]}
-              key={index}
-              onPress={() =>
-                navigation.navigate('EndGame', {
-                  title: 'EndGame',
-                })
-              }
-            >
-              <Image source={image} />
-            </TouchableHighlight>
-          ) : null
-        })}
-      </Pan>
-      {/* )}
+      {step === 0 && (
+        <>
+          <Text>tu dois chercher : </Text>
+          <Image source={pictures[indexRecherche.current]} />
+          <ButtonContainer>
+            <BigButton
+              key="rentrer dans le jeu"
+              text="rentrer dans le jeu"
+              onPress={() => {
+                setStep(1)
+              }}
+            />
+          </ButtonContainer>
+        </>
+      )}
+      {step === 1 && (
+        <Pan>
+          <ImageBackground
+            style={{ width: '100%', height: '100%' }}
+            source={require('./assets/backgroundWiwaldo.jpg')}
+          />
+          {pictures.map((image, index) => {
+            return index !== indexRecherche.current ? (
+              <TouchableHighlight
+                style={[setStyleImg1[index], { zIndex: 100 }]}
+                key={index}
+                onPress={() => setStep(3)}
+              >
+                <Image source={image} />
+              </TouchableHighlight>
+            ) : (
+              <TouchableHighlight
+                style={[setStyleImg1[indexRecherche.current], { zIndex: 101 }]}
+                onPress={() => setStep(2)}
+              >
+                <Image source={pictures[indexRecherche.current]} />
+              </TouchableHighlight>
+            )
+          })}
+          {pictures.map((image, index) => {
+            return index !== indexRecherche.current ? (
+              <TouchableHighlight
+                style={[setStyleImg2[index], { zIndex: 100 }]}
+                key={index}
+                onPress={() => setStep(3)}
+              >
+                <Image source={image} />
+              </TouchableHighlight>
+            ) : null
+          })}
+          {pictures.map((image, index) => {
+            return index !== indexRecherche.current ? (
+              <TouchableHighlight
+                style={[setStyleImg3[index], { zIndex: 100 }]}
+                key={index}
+                onPress={() => setStep(3)}
+              >
+                <Image source={image} />
+              </TouchableHighlight>
+            ) : null
+          })}
+          {pictures.map((image, index) => {
+            return index !== indexRecherche.current ? (
+              <TouchableHighlight
+                style={[setStyleImg4[index], { zIndex: 100 }]}
+                key={index}
+                onPress={() => setStep(3)}
+              >
+                <Image source={image} />
+              </TouchableHighlight>
+            ) : null
+          })}
+        </Pan>
+      )}
       {step === 2 && (
         <>
           <Text>Bravo tu as trouvé en : </Text>
@@ -154,9 +133,9 @@ const Wiwaldo = ({ navigation }) => {
               key="end game"
               text="end game"
               onPress={() => {
-                navigation.navigate("EndGame", {
-                  title: "EndGame",
-                });
+                navigation.navigate('EndGame', {
+                  title: 'EndGame',
+                })
               }}
             />
           </ButtonContainer>
@@ -170,14 +149,15 @@ const Wiwaldo = ({ navigation }) => {
               key="end game"
               text="end game"
               onPress={() => {
-                navigation.navigate("EndGame", {
-                  title: "EndGame",
-                });
+                navigation.navigate('EndGame', {
+                  title: 'EndGame',
+                })
               }}
             />
           </ButtonContainer>
         </>
-      )} */}
+      )}{' '}
+      */}
     </View>
   )
 }
@@ -189,7 +169,6 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'cyan',
   },
 })
 export default Wiwaldo
