@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, ImageBackground } from 'react-native'
-import useSocket from '../../../App/Socket/useSocket'
+import { View, StyleSheet, Image } from 'react-native'
+// import useSocket from '../../App/Socket/useSocket'
 
-import Title1 from '../../../components/titles/Title2'
-import QuizzBtn from '../../../components/btn/QuizzBtn'
-
-import acteurX from '../../../contents/acteurX'
+import TitleQuestion from '../../../components/titles/TitleQuestion'
+import ActeurBtn from '../../../components/btn/ActeurBtn'
 
 const styles = StyleSheet.create({
   container: {
@@ -17,50 +15,36 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     justifyContent: 'center',
   },
+  image: {
+    transform: [{ rotate: '22deg' }],
+  },
 })
 
 const Quiz = ({ navigation }) => {
-  const [correctCount, setCorrectCount] = useState(0)
-  const [activeQuestionIndex, setActiveQuestionIndex] = useState(0)
-  const [answered, setAnswered] = useState(false)
-  const [answerCorrect, setAnswerCorrect] = useState(false)
-
-  answer = (correct) => {
-    setAnswered(true)
-    if (correct) {
-      setCorrectCount(correctCount + 1)
-      setAnswerCorrect(true)
-    } else {
-      setAnswerCorrect(false)
-    }
-  }
-
-  const { game } = useSocket()
-
-  const questions = acteurX
-  const question = questions[activeQuestionIndex]
-
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={require('../../../assets/img/backgrounds/Background3.png')}
-        style={styles.background}
-      >
-        <Title1 content={question.question} style={styles.title} />
-        {question.answers.map((answer) => (
-          <QuizzBtn
-            key={answer.id}
-            content={answer.text}
-            style={styles.text}
-            rotation
-            onPress={() =>
-              navigation.navigate('EndGame', {
-                title: 'EndGame',
-              })
-            }
-          />
-        ))}
-      </ImageBackground>
+      <TitleQuestion
+        content="qui ... est connu pour ses vidéos amateur ?"
+        style={styles.title}
+      />
+      <ActeurBtn
+        source={require('./assets/Amateur_Rep1.png')}
+        style={styles.image}
+        onPress={() => {
+          navigation.navigate('EndGame', {
+            title: 'EndGame',
+          })
+        }}
+      />
+      <ActeurBtn
+        source={require('./assets/Amateur_Rep2.png')}
+        style={styles.image}
+        onPress={() => {
+          navigation.navigate('EndGame', {
+            title: 'EndGame',
+          })
+        }}
+      />
     </View>
   )
 }
