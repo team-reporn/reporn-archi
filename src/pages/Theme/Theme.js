@@ -143,7 +143,6 @@ let Theme = ({ navigation }) => {
           })
         }}
       >
-        <Text>LALALALALALALA</Text>
       </TouchableOpacity>
     </View>
   )

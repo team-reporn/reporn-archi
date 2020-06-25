@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState } from "react";
 import {
   View,
   Text,
@@ -9,45 +9,45 @@ import {
   ImageBackground,
   TouchableHighlight,
   Image,
-} from 'react-native'
-import pictures from './pictures'
+} from "react-native";
+import pictures from "./pictures";
 import {
   Button as BigButton,
   ButtonContainer,
-} from '../../../components/Button'
+} from "../../../components/Button";
 
-import Pan from './Pan'
-import stylesGlobaux from '../../../utils/globalStyles'
+import Pan from "./Pan";
+import stylesGlobaux from "../../../utils/globalStyles";
 
-const windowWidth = Dimensions.get('window').width
-const windowHeight = Dimensions.get('window').height
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 
 function getRandomInt({ max }) {
-  return Math.floor(Math.random() * Math.floor(max))
+  return Math.floor(Math.random() * Math.floor(max));
 }
 let styleImg = () =>
   pictures.map((img, index) => {
     // let scaleimg = Math.random() * 0.5;
-    let rotateimg = Math.random() * 100 * Math.PI
-    let left = -40 + Math.random() * windowWidth * 1
-    let top = -40 + Math.random() * windowHeight * 1
+    let rotateimg = Math.random() * 100 * Math.PI;
+    let left = -40 + Math.random() * windowWidth * 1;
+    let top = -40 + Math.random() * windowHeight * 1;
     return {
       width: 200,
       height: 200,
-      position: 'absolute',
+      position: "absolute",
       left: left || 0,
       top: top || 0,
-      transform: [{ scale: 0.3 }, { rotate: '' + rotateimg + 'deg' }],
-    }
-  })
-const setStyleImg1 = styleImg()
-const setStyleImg2 = styleImg()
-const setStyleImg3 = styleImg()
-const setStyleImg4 = styleImg()
+      transform: [{ scale: 0.3 }, { rotate: "" + rotateimg + "deg" }],
+    };
+  });
+const setStyleImg1 = styleImg();
+const setStyleImg2 = styleImg();
+const setStyleImg3 = styleImg();
+const setStyleImg4 = styleImg();
 const Wiwaldo = ({ navigation }) => {
-  const indexRecherche = useRef(getRandomInt({ max: pictures.length }))
-  const [step, setStep] = useState(0)
-  console.log(indexRecherche.current)
+  const indexRecherche = useRef(getRandomInt({ max: pictures.length }));
+  const [step, setStep] = useState(0);
+  console.log(indexRecherche.current);
   return (
     <View style={styles.container}>
       {step === 0 && (
@@ -59,7 +59,7 @@ const Wiwaldo = ({ navigation }) => {
               key="rentrer dans le jeu"
               text="rentrer dans le jeu"
               onPress={() => {
-                setStep(1)
+                setStep(1);
               }}
             />
           </ButtonContainer>
@@ -68,8 +68,8 @@ const Wiwaldo = ({ navigation }) => {
       {step === 1 && (
         <Pan>
           <ImageBackground
-            style={{ width: '100%', height: '100%' }}
-            source={require('./assets/backgroundWiwaldo.jpg')}
+            style={{ width: "100%", height: "100%" }}
+            source={require("./assets/backgroundWiwaldo.jpg")}
           />
           {pictures.map((image, index) => {
             return index !== indexRecherche.current ? (
@@ -87,7 +87,7 @@ const Wiwaldo = ({ navigation }) => {
               >
                 <Image source={pictures[indexRecherche.current]} />
               </TouchableHighlight>
-            )
+            );
           })}
           {pictures.map((image, index) => {
             return index !== indexRecherche.current ? (
@@ -98,7 +98,7 @@ const Wiwaldo = ({ navigation }) => {
               >
                 <Image source={image} />
               </TouchableHighlight>
-            ) : null
+            ) : null;
           })}
           {pictures.map((image, index) => {
             return index !== indexRecherche.current ? (
@@ -109,7 +109,7 @@ const Wiwaldo = ({ navigation }) => {
               >
                 <Image source={image} />
               </TouchableHighlight>
-            ) : null
+            ) : null;
           })}
           {pictures.map((image, index) => {
             return index !== indexRecherche.current ? (
@@ -120,7 +120,7 @@ const Wiwaldo = ({ navigation }) => {
               >
                 <Image source={image} />
               </TouchableHighlight>
-            ) : null
+            ) : null;
           })}
         </Pan>
       )}
@@ -133,9 +133,9 @@ const Wiwaldo = ({ navigation }) => {
               key="end game"
               text="end game"
               onPress={() => {
-                navigation.navigate('EndGame', {
-                  title: 'EndGame',
-                })
+                navigation.navigate("EndGame", {
+                  title: "EndGame",
+                });
               }}
             />
           </ButtonContainer>
@@ -149,26 +149,25 @@ const Wiwaldo = ({ navigation }) => {
               key="end game"
               text="end game"
               onPress={() => {
-                navigation.navigate('EndGame', {
-                  title: 'EndGame',
-                })
+                navigation.navigate("EndGame", {
+                  title: "EndGame",
+                });
               }}
             />
           </ButtonContainer>
         </>
-      )}{' '}
-      */}
+      )}
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
-})
-export default Wiwaldo
+});
+export default Wiwaldo;
