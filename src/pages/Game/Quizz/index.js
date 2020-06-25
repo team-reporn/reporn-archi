@@ -3,12 +3,7 @@ import { View, StyleSheet, Text, Image } from 'react-native'
 import useSocket from '../../../App/Socket/useSocket'
 
 import TitleQuestion from '../../../components/titles/TitleQuestion'
-import TitleAnswer from '../../../components/titles/TitleAnswer'
-import TitleAnswer2 from '../../../components/titles/TitleAnswer2'
-import Answer from '../../../components/Paragraph/Answer'
-
 import QuizzBtn from '../../../components/btn/QuizzBtn'
-import PornnewsFlash from '../../../components/Paragraph/pornnewsFlash'
 
 import {
   Button as BigButton,

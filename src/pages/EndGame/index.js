@@ -8,7 +8,6 @@ import TitleAnswer from '../../components/titles/TitleAnswer'
 import TitleAnswer2 from '../../components/titles/TitleAnswer2'
 import Answer from '../../components/Paragraph/Answer'
 import PornnewsFlash from '../../components/Paragraph/pornnewsFlash'
-import NextButton from '../../components/btn/NextBtn.js'
 import SelectGame from '../SelectGame'
 
 import content from './content'
@@ -41,10 +40,10 @@ let getAnswerfromGame = ({ game }) => {
 }
 
 export default ({ navigation }) => {
-  const { game } = useSocket()
+  const { changeGame, game } = useSocket()
   gameIndex = getAnswerfromGame(game)
   return (
-    <View>
+    <View style={styles.container}>
       <Image
         source={require('../../assets/img/pictos/Bon.png')}
         style={styles.image}
@@ -57,26 +56,6 @@ export default ({ navigation }) => {
       <Answer content={questions[gameIndex].paragraph} />
       <PornnewsFlash content={questions[gameIndex].pornews}></PornnewsFlash>
       <SelectGame navigation={navigation} />
-      {/* <NextButton
-        title="suite"
-        text="suite"
-        onPress={() => {
-          navigation.navigate('SelectGame', {
-            title: 'SelectGame',
-          })
-        }}
-      /> */}
-      {/* <ButtonContainer>
-        <BigButton
-          key="end game"
-          text="end game"
-          onPress={() => {
-            navigation.navigate('EndGame', {
-              title: 'EndGame',
-            })
-          }}
-        />
-      </ButtonContainer>
       {game.round.laps < 4 ? (
         <Button
           key="QUESTION"
@@ -99,7 +78,7 @@ export default ({ navigation }) => {
             })
           }}
         />
-      )} */}
+      )}
     </View>
   )
 }
@@ -108,7 +87,6 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: '30%',
   },
   image: {
     marginBottom: 30,
