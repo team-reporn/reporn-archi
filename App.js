@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Index from './src/App/index.js'
+console.disableYellowBox = true
 
 export default class App extends React.Component {
   render() {
