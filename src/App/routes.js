@@ -352,5 +352,5 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   content: { flex: 7 },
-  header: { flex: 0.7 },
+  header: { flex: 1 },
 })
