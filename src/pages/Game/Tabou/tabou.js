@@ -14,6 +14,9 @@ import MainBtn from "../../../components/btn/MainBtn"
 import PornnewsFlash from "./pornnewsFlash";
 
 import * as Font from "expo-font";
+import TitleWithContent from "../../../components/titles/TitleWithContent";
+import { P1, P2, P3 } from "../../../components/Paragraph/Paragraph";
+import Input from '../../../components/forms/Input.js'
 
 let customFonts = {
   MaimDisfigured: require("../../../assets/fonts/MainDisfigured/MaimDisfigured.ttf"),
@@ -35,16 +38,8 @@ const Tabou = (props) => {
   const [showFlash, setShowFlash] = useState(false)
   const [wordList, setWordList] = useState([
     {
-      answer: "Le cheval à bascule",
-      forbidenWords: ["Mot1", "Mot2"],
-    },
-    {
-      answer: "Le triangle lumineux",
-      forbidenWords: ["Mot1", "Mot2"],
-    },
-    {
-      answer: "La cuillère",
-      forbidenWords: ["Mot1", "Mot2"],
+      answer: "Sodomie",
+      forbidenWords: ["Anal", "Surprise", "Cul", "Gay", "Femme", "Première fois"],
     },
   ])
 
@@ -70,7 +65,7 @@ const Tabou = (props) => {
   };
 
   
-  if (roomInfo.role !== "owner") {
+  if (roomInfo.role == "owner") {
       if (step == 0) {
         return (
           <View>
@@ -108,7 +103,51 @@ const Tabou = (props) => {
       }
     
   } else {
-    return null
+    if (step == 0) {
+      return (
+        <View>
+          <Text>Tu fait partie de l'équipe Gang Bang</Text>
+          <Text>A toi de faire deviner un mot</Text>
+          <Button
+            title=">"
+            onPress={() => {
+              setStep(1)
+            }}
+          />
+        </View>
+      );
+    } else if (step == 1) {
+      return (
+        <View>
+          <Chrono duration={10} onFinish={()=>{setStep(2);setWin(false);}}/>
+          <Title1 onRight content={"Devine le safe word"}/>
+          <MainBtn
+            content="Trouvé !"
+            onPress={() => {
+              setStep(2);
+              setWin(true);
+            }}
+          />
+        </View>
+      )
+    } else if (step == 2) {
+      return (
+        <View>
+          <Chrono duration={0} onFinish={()=>{}}/>
+          <TitleWithContent>
+            <P1>Valide le safe word</P1>
+            <Input/>
+          </TitleWithContent>
+          <MainBtn
+            content="Trouvé !"
+            onPress={() => {
+              setStep(2);
+              setWin(true);
+            }}
+          />
+        </View>
+      )
+    }
   }
 
 }
