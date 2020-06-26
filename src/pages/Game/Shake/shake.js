@@ -69,11 +69,16 @@ class BasicScene extends React.Component {
       oldAccelerometerData: { x: 0, y: 0, z: 0 },
       speed: 0,
       highestSpeed: 0,
+      genre: "h",
     };
-    this._subscribeToAccelerometer();
+    this.props.character.cardRole.genre
+      ? this._subscribeToAccelerometer()
+      : this.setState({ genre: "f" });
     console.log(" cara ", this.props.character.cardRole.genre);
   }
-
+  touchMoveHandler = () => {
+    console.log("handle touch move");
+  };
   _subscribeToAccelerometer = () => {
     this._accelerometerSubscription = Accelerometer.addListener(
       (accelerometerData) => {
@@ -119,7 +124,11 @@ class BasicScene extends React.Component {
 
   render() {
     return (
-      <GLView style={{ flex: 1 }} onContextCreate={this._onContextCreate} />
+      <GLView
+        style={{ flex: 1 }}
+        onContextCreate={this._onContextCreate}
+        onTouchMove={this.state.genre == "f" ? this.touchMoveHandler() : null}
+      />
     );
   }
 
