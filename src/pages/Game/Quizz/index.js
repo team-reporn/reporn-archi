@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, Image } from 'react-native'
 import useSocket from '../../../App/Socket/useSocket'
 
 import TitleQuestion from '../../../components/titles/TitleQuestion'
-import QuizzBtn from '../../../components/btn/QuizzBtn'
+import MainBtn from '../../../components/btn/MainBtn'
 
 import {
   Button as BigButton,
@@ -20,10 +20,8 @@ const styles = StyleSheet.create({
     // flex: 2,
     // flexDirection: 'column',
   },
-  image: {
-    marginBottom: 30,
-    width: 64,
-    height: 64,
+  button: {
+    marginTop: 50,
   },
 })
 
@@ -64,54 +62,52 @@ const Quiz = ({ navigation }) => {
           }}
         />
       ))} */}
-      <QuizzBtn
-        content={questions[0].answers[0].text}
-        style={styles.text}
-        rotation1
-        image1
-        onPress={() => {
-          setSuccess(questions[0].answers[0].correct)
-          navigation.navigate('EndGame', {
-            title: 'EndGame',
-          })
-        }}
-      />
-      <QuizzBtn
-        content={questions[0].answers[1].text}
-        style={styles.text}
-        rotation2
-        image2
-        onPress={() => {
-          setSuccess(questions[0].answers[1].correct)
-          navigation.navigate('EndGame', {
-            title: 'EndGame',
-          })
-        }}
-      />
-      <QuizzBtn
-        content={questions[0].answers[2].text}
-        style={styles.text}
-        rotation3
-        image3
-        onPress={() => {
-          setSuccess(questions[0].answers[2].correct)
-          navigation.navigate('EndGame', {
-            title: 'EndGame',
-          })
-        }}
-      />
-      <QuizzBtn
-        content={questions[0].answers[3].text}
-        style={styles.text}
-        rotation4
-        image4
-        onPress={() => {
-          setSuccess(questions[0].answers[3].correct)
-          navigation.navigate('EndGame', {
-            title: 'EndGame',
-          })
-        }}
-      />
+      <View style={styles.buttons}>
+        <MainBtn
+          content={questions[0].answers[0].text}
+          style={styles.text}
+          rotation1
+          onPress={() => {
+            setSuccess(questions[0].answers[0].correct)
+            navigation.navigate('EndGame', {
+              title: 'EndGame',
+            })
+          }}
+        />
+        <MainBtn
+          content={questions[0].answers[1].text}
+          style={styles.text}
+          rotation2
+          onPress={() => {
+            setSuccess(questions[0].answers[1].correct)
+            navigation.navigate('EndGame', {
+              title: 'EndGame',
+            })
+          }}
+        />
+        <MainBtn
+          content={questions[0].answers[2].text}
+          style={styles.text}
+          rotation3
+          onPress={() => {
+            setSuccess(questions[0].answers[2].correct)
+            navigation.navigate('EndGame', {
+              title: 'EndGame',
+            })
+          }}
+        />
+        <MainBtn
+          content={questions[0].answers[3].text}
+          style={styles.text}
+          rotation4
+          onPress={() => {
+            setSuccess(questions[0].answers[3].correct)
+            navigation.navigate('EndGame', {
+              title: 'EndGame',
+            })
+          }}
+        />
+      </View>
     </View>
   )
 }

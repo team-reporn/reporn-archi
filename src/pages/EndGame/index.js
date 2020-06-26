@@ -42,7 +42,6 @@ let getAnswerfromGame = ({ game }) => {
 
 export default ({ navigation, setBackGround }) => {
   const { changeGame, game, setSuccess, success } = useSocket();
-  console.log("gaaaaaames", game);
   gameIndex = getAnswerfromGame(game);
   useEffect(() => {
     console.log("nieé", success, gameIndex);
@@ -69,6 +68,7 @@ export default ({ navigation, setBackGround }) => {
           require("../../assets/img/backgrounds/WiwaldoMauvais.png")
         );
       } else if (gameIndex == 2) {
+        console.log("HE", gameIndex);
         setBackGround(require("../../assets/img/backgrounds/ActeurXBon.png"));
       } else if (gameIndex == 4) {
         console.log("HE", gameIndex);
@@ -76,7 +76,7 @@ export default ({ navigation, setBackGround }) => {
       }
     }
   }, []);
-  let playSound = () => {
+  playSound = () => {
     if (success == "ou Pas !") {
       try {
         const {
@@ -145,10 +145,5 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: "center",
     alignItems: "center",
-  },
-  image: {
-    marginBottom: 30,
-    width: 64,
-    height: 64,
   },
 });
