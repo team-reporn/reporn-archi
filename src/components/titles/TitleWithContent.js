@@ -3,6 +3,7 @@ import { View, StyleSheet, Image, Text, Slider } from "react-native";
 import { Dimensions } from 'react-native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+import ColorBlending from 'gl-react-color-blending';
 
 let customFonts = {
   MaimDisfigured: require('../../assets/fonts/MainDisfigured/MaimDisfigured.ttf'),
@@ -34,7 +35,13 @@ export default class TitleWithContent extends React.Component {
   render() {
     return (
       <View style={this.props.onRight ? styles.mainOnleft : styles.main}>
-        <Image
+        <ColorBlending
+          color={[1,1,1,1]}
+          blendMode='blendDarken'
+        >
+            {{uri: '../../assets/img/title/TitreLargeBleu.png'}}
+        </ColorBlending>
+        {/* <Image
           opacity={0.5}
           style={{
             width: `${(this.props.children.length || 1.5) * 60}%`,
@@ -42,7 +49,7 @@ export default class TitleWithContent extends React.Component {
             resizeMode: "stretch",
           }}
           source={this.bg}
-        ></Image>
+        ></Image> */}
         <View style={this.props.onRight ? styles.textOnLeft : styles.text}>
           {this.props.children}
         </View>

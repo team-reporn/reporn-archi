@@ -8,10 +8,25 @@ export default class NextBtn extends React.Component {
     this.state = {}
   }
 
+  playSound = ()=> {
+    try {
+        const { sound: soundObject, status } = Audio.Sound.createAsync(
+          require('../../assets/sound/dechirure_2.wav'),
+          { shouldPlay: true }
+        );
+      } catch (error) {
+      }
+}
+
+onPress = () => {
+  this.playSound()
+  this.props.onPress()
+}
+
   render() {
     return (
       <View>
-        <TouchableWithoutFeedback style={{display: "flex", justifyContent: "center", alignItems: "center"}} onPress={this.props.onPress}>
+        <TouchableWithoutFeedback style={{display: "flex", justifyContent: "center", alignItems: "center"}} onPress={this.onPress}>
           <Image style={{}} source={require('../../assets/img/btn/Next.png')}></Image>
         </TouchableWithoutFeedback>
       </View>

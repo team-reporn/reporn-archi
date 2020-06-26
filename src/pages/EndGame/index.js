@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, ButtonContainer } from "../../components/Button";
 import { View, StyleSheet, Text, Image } from "react-native";
+import { Audio } from 'expo-av';
 
 import useSocket from "../../App/Socket/useSocket";
 
@@ -62,7 +63,15 @@ export default ({ navigation, setBackGround }) => {
     console.log("nieé", getAnswerfromGame({ game: game.game }).background);
     setBackGround(getAnswerfromGame({ game: game.game }).background);
   }, []);
-
+  playSound = ()=> {
+    try {
+        const { sound: soundObject, status } = Audio.Sound.createAsync(
+          require('../../assets/sound/Timer.wav'),
+          { shouldPlay: true }
+        );
+      } catch (error) {
+      }
+}
   return (
     <View style={styles.container}>
       <Image
