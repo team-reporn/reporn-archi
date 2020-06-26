@@ -40,7 +40,7 @@ let getAnswerfromGame = ({ game }) => {
 }
 
 export default ({ navigation }) => {
-  const { changeGame, game } = useSocket()
+  const { changeGame, game, setSuccess, success } = useSocket()
   gameIndex = getAnswerfromGame(game)
   return (
     <View style={styles.container}>
@@ -48,7 +48,7 @@ export default ({ navigation }) => {
         source={require('../../assets/img/pictos/Bon.png')}
         style={styles.image}
       />
-      <TitleAnswer content="BIeN JOuÉ !" />
+      <TitleAnswer content={success ? 'BIeN JOuÉ !' : 'ou Pas !'} />
       <TitleAnswer2
         content={questions[gameIndex].content}
         content2={questions[gameIndex].content2}

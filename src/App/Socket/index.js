@@ -2,7 +2,7 @@ import React, { useCallback, createContext, useState } from 'react'
 import SocketIOClient from 'socket.io-client'
 export const Context = createContext(null)
 
-const socket = SocketIOClient('http://192.168.1.37:4000')
+const socket = SocketIOClient('http://192.168.1.35:4000')
 
 const Socket = ({ children }) => {
   const [game, setGame] = useState({ name: 'cultureQ', theme: 'Amateur' })
@@ -16,6 +16,8 @@ const Socket = ({ children }) => {
     numClients: null,
     role: null,
   })
+
+  const [success, setSuccess] = useState(false)
 
   const initializeSocket = useCallback(() => {
     socket.emit('channel1', 'Hi server')
@@ -57,6 +59,7 @@ const Socket = ({ children }) => {
     socket.emit('start playing', roomInfo.roomId)
   }, [])
   const changeGame = useCallback(() => {
+    setSuccess(false)
     socket.emit('change game')
   })
   const ready = useCallback(() => {
@@ -83,6 +86,8 @@ const Socket = ({ children }) => {
         changeGame,
         getGameInfo,
         character,
+        success,
+        setSuccess,
       }}
     >
       {children}

@@ -173,7 +173,14 @@ export default () => {
                   style={styles.background}
                 >
                   <View style={styles.header}>
-                    <MainHeader param />
+                    <MainHeader
+                      param
+                      title={
+                        <P1 font={'maim'} color={'blue'}>
+                          {game.theme}
+                        </P1>
+                      }
+                    />
                   </View>
 
                   <View style={styles.content}>

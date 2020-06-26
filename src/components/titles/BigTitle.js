@@ -25,18 +25,24 @@ const BigTitle = ({
 
   return (
     <View
-      style={{ width: '100%', justifyContent: 'center', alignItems: 'center' }}
+      style={{ justifyContent: 'center', alignItems: 'center', width: '100%' }}
     >
       <View
         style={{
-          width: '100%',
           justifyContent: 'center',
           alignItems: 'center',
+          width: '100%',
+          marginTop: 60,
         }}
       >
         <Image
           source={require('../../assets/img/scotch/Question.png')}
-          style={{ resizeMode: 'stretch', transform: [{ translateX: -50 }] }}
+          style={{
+            resizeMode: 'stretch',
+            width: 530,
+            height: 153,
+            transform: [{ translateX: -50 }],
+          }}
         />
         <View style={{ position: 'absolute' }}>
           {upperContent ? (
@@ -44,9 +50,9 @@ const BigTitle = ({
               style={[
                 {
                   color: 'white',
-                  backgroundColor: 'red',
                   fontSize: 15,
                   marginBottom: 20,
+                  width: '100%',
                 },
                 styles[lastFont],
               ]}
@@ -54,7 +60,7 @@ const BigTitle = ({
               {upperContent ? upperContent : null}
             </Text>
           ) : null}
-          <Text style={[{ color: 'white', fontSize: 50 }, styles[lastFont]]}>
+          <Text style={[{ color: 'white', fontSize: 40 }, styles[lastFont]]}>
             {content}
           </Text>
           {subContent ? (
@@ -80,7 +86,10 @@ const BigTitle = ({
             transform: [{ rotate: '-10deg' }],
           }}
         >
-          <Image source={require('../../assets/img/scotch/Consigne.png')} />
+          <Image
+            style={styles.image}
+            source={require('../../assets/img/scotch/Consigne.png')}
+          />
           <Text
             style={[
               {
@@ -103,6 +112,10 @@ const BigTitle = ({
 const styles = StyleSheet.create({
   maim: { fontFamily: 'MaimDisfigured' },
   null: {},
+  image: {
+    width: '80%',
+    height: 73,
+  },
 })
 
 export default BigTitle
