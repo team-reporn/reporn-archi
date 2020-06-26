@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -25,11 +25,29 @@ import BoiteMouchoir from "./BoiteMouchoir";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-let Roles = ({ navigation }) => {
+let Roles = ({ navigation, setBackGround }) => {
   const { getGameInfo, character } = useSocket();
 
   const [pressCount, setPressCount] = useState(0);
 
+  useEffect(() => {
+    if (character.cardRole) {
+      console.log(
+        "meeeeee",
+        character.cardRole.job,
+        character.cardRole.job == "Masseure.se"
+      );
+      if (pressCount >= 3) {
+        console.log("aefezbhfr");
+        if (character.cardRole.job == "Plombier.e") {
+          setBackGround(require("../../assets/img/backgrounds/Plombier.png"));
+        }
+        if (character.cardRole.job == "Masseure.se") {
+          setBackGround(require("../../assets/img/backgrounds/Masseur.png"));
+        }
+      }
+    }
+  }, [pressCount]);
   return (
     <View style={styles.container}>
       {/* <ImageBackground
@@ -57,7 +75,7 @@ let Roles = ({ navigation }) => {
                 tu es ...
               </H3>
               <H2 font={"maim"} color={"white"}>
-                {character.cardRole.job}
+                {character.cardRole && character.cardRole.job}
               </H2>
             </TitleWithContent>
           </View>
