@@ -42,58 +42,65 @@ let getAnswerfromGame = ({ game }) => {
 
 export default ({ navigation, setBackGround }) => {
   const { changeGame, game, setSuccess, success } = useSocket();
+  console.log("gaaaaaames", game);
   gameIndex = getAnswerfromGame(game);
   useEffect(() => {
     console.log("nieé", success, gameIndex);
     if (success) {
+      console.log("HU");
       if (gameIndex == 0) {
         setBackGround(require("../../assets/img/backgrounds/Question1Bon.png"));
       } else if (gameIndex == 1) {
         setBackGround(require("../../assets/img/backgrounds/WiwaldoBon.png"));
       } else if (gameIndex == 2) {
         setBackGround(require("../../assets/img/backgrounds/ActeurXBon.png"));
-      } else if (gameIndex == 3) {
+      } else if (gameIndex == 4) {
+        console.log("HE", gameIndex);
         setBackGround(require("../../assets/img/backgrounds/TabouBon.png"));
       }
     } else {
       console.log("HA");
       if (gameIndex == 0) {
-        console.log("HE", gameIndex);
         setBackGround(
           require("../../assets/img/backgrounds/Question1Mauvais.png")
         );
       } else if (gameIndex == 1) {
-        console.log("HE", gameIndex);
         setBackGround(
           require("../../assets/img/backgrounds/WiwaldoMauvais.png")
         );
       } else if (gameIndex == 2) {
-        console.log("HE", gameIndex);
         setBackGround(require("../../assets/img/backgrounds/ActeurXBon.png"));
-      } else if (gameIndex == 3) {
+      } else if (gameIndex == 4) {
         console.log("HE", gameIndex);
         setBackGround(require("../../assets/img/backgrounds/TabouMauvais.png"));
       }
     }
   }, []);
-  playSound()
-  playSound = ()=> {
-    if (success == 'ou Pas !') {
+  let playSound = () => {
+    if (success == "ou Pas !") {
       try {
-          const { sound: soundObject, status } = Audio.Sound.createAsync(
-            require('../../assets/sound/mm_desaccord_1.wav'),
-            { shouldPlay: true }
-          );
-        } catch (error) {}
+        const {
+          sound: soundObject,
+          status,
+        } = Audio.Sound.createAsync(
+          require("../../assets/sound/mm_desaccord_1.wav"),
+          { shouldPlay: true }
+        );
+      } catch (error) {}
     } else {
       try {
-        const { sound: soundObject, status } = Audio.Sound.createAsync(
-          require('../../assets/sound/mm_comprehensif_1.wav'),
+        const {
+          sound: soundObject,
+          status,
+        } = Audio.Sound.createAsync(
+          require("../../assets/sound/mm_comprehensif_1.wav"),
           { shouldPlay: true }
         );
       } catch (error) {}
     }
-}
+  };
+  playSound();
+
   return (
     <View style={styles.container}>
       <Image
