@@ -63,14 +63,23 @@ export default ({ navigation, setBackGround }) => {
     console.log("nieé", getAnswerfromGame({ game: game.game }).background);
     setBackGround(getAnswerfromGame({ game: game.game }).background);
   }, []);
+  playSound()
   playSound = ()=> {
-    try {
+    if (success == 'ou Pas !') {
+      try {
+          const { sound: soundObject, status } = Audio.Sound.createAsync(
+            require('../../assets/sound/mm_desaccord_1.wav'),
+            { shouldPlay: true }
+          );
+        } catch (error) {}
+    } else {
+      try {
         const { sound: soundObject, status } = Audio.Sound.createAsync(
-          require('../../assets/sound/Timer.wav'),
+          require('../../assets/sound/mm_comprehensif_1.wav'),
           { shouldPlay: true }
         );
-      } catch (error) {
-      }
+      } catch (error) {}
+    }
 }
   return (
     <View style={styles.container}>

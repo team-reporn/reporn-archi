@@ -9,7 +9,9 @@ export default class Chrono extends React.Component {
             timer: null,
             timerLeft: this.props.duration
         }
-        this.playSound()
+        if (this.state.timer > 20) {
+            this.playSound()
+        }
         this.startTimer()
     }
 
