@@ -76,16 +76,24 @@ export default ({ navigation, setBackGround }) => {
       }
     }
   }, []);
-  playSound = () => {
-    try {
-      const { sound: soundObject, status } = Audio.Sound.createAsync(
-        require("../../assets/sound/Timer.wav"),
-        {
-          shouldPlay: true,
-        }
-      );
-    } catch (error) {}
-  };
+  playSound()
+  playSound = ()=> {
+    if (success == 'ou Pas !') {
+      try {
+          const { sound: soundObject, status } = Audio.Sound.createAsync(
+            require('../../assets/sound/mm_desaccord_1.wav'),
+            { shouldPlay: true }
+          );
+        } catch (error) {}
+    } else {
+      try {
+        const { sound: soundObject, status } = Audio.Sound.createAsync(
+          require('../../assets/sound/mm_comprehensif_1.wav'),
+          { shouldPlay: true }
+        );
+      } catch (error) {}
+    }
+}
   return (
     <View style={styles.container}>
       <Image
