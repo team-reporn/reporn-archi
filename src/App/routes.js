@@ -284,7 +284,7 @@ export default () => {
 
                 return (
                   <ImageBackground
-                    source={require("../assets/img/backgrounds/Home.png")}
+                    source={background}
                     style={styles.background}
                   >
                     <View style={styles.header}>

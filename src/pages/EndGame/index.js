@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, ButtonContainer } from "../../components/Button";
 import { View, StyleSheet, Text, Image } from "react-native";
-import { Audio } from 'expo-av';
+import { Audio } from "expo-av";
 
 import useSocket from "../../App/Socket/useSocket";
 
@@ -19,35 +19,19 @@ let gameIndex = 0;
 let getAnswerfromGame = ({ game }) => {
   switch (game) {
     case "tabou":
-      return {
-        id: 4,
-        backgroundWin: require("../../assets/img/backgrounds/TabouBon.png"),
-        backgroundLose: require("../../assets/img/backgrounds/TabouMauvais.png"),
-      };
+      return 4;
       break;
 
     case "cultureQ":
-      return {
-        id: 0,
-        backgroundWin: require("../../assets/img/backgrounds/Question1Bon.png"),
-        backgroundLose: require("../../assets/img/backgrounds/Question1Mauvais.png"),
-      };
+      return 0;
       break;
 
     case "acteurX":
-      return {
-        id: 2,
-        backgroundWin: require("../../assets/img/backgrounds/ActeurXBon.png"),
-        backgroundLose: require("../../assets/img/backgrounds/Question1Mauvais.png"),
-      };
+      return 2;
       break;
 
     case "ouEst":
-      return {
-        id: 1,
-        backgroundWin: require("../../assets/img/backgrounds/WiwaldoBon.png"),
-        backgroundLose: require("../../assets/img/backgrounds/WiwaldoMauvais.png"),
-      };
+      return 1;
       break;
 
     default:
@@ -57,28 +41,58 @@ let getAnswerfromGame = ({ game }) => {
 };
 
 export default ({ navigation, setBackGround }) => {
-  const { changeGame, game, setSuccess, success } = useSocket()
-  gameIndex = getAnswerfromGame(game).id;
+  const { changeGame, game, setSuccess, success } = useSocket();
+  gameIndex = getAnswerfromGame(game);
   useEffect(() => {
-    console.log("nieé", getAnswerfromGame({ game: game.game }).background);
-    setBackGround(getAnswerfromGame({ game: game.game }).background);
-  }, []);
-  playSound = ()=> {
-    try {
-        const { sound: soundObject, status } = Audio.Sound.createAsync(
-          require('../../assets/sound/Timer.wav'),
-          { shouldPlay: true }
-        );
-      } catch (error) {
+    console.log("nieé", success, gameIndex);
+    if (success) {
+      if (gameIndex == 0) {
+        setBackGround(require("../../assets/img/backgrounds/Question1Bon.png"));
+      } else if (gameIndex == 1) {
+        setBackGround(require("../../assets/img/backgrounds/WiwaldoBon.png"));
+      } else if (gameIndex == 2) {
+        setBackGround(require("../../assets/img/backgrounds/ActeurXBon.png"));
+      } else if (gameIndex == 3) {
+        setBackGround(require("../../assets/img/backgrounds/TabouBon.png"));
       }
-}
+    } else {
+      console.log("HA");
+      if (gameIndex == 0) {
+        console.log("HE", gameIndex);
+        setBackGround(
+          require("../../assets/img/backgrounds/Question1Mauvais.png")
+        );
+      } else if (gameIndex == 1) {
+        console.log("HE", gameIndex);
+        setBackGround(
+          require("../../assets/img/backgrounds/WiwaldoMauvais.png")
+        );
+      } else if (gameIndex == 2) {
+        console.log("HE", gameIndex);
+        setBackGround(require("../../assets/img/backgrounds/ActeurXBon.png"));
+      } else if (gameIndex == 3) {
+        console.log("HE", gameIndex);
+        setBackGround(require("../../assets/img/backgrounds/TabouMauvais.png"));
+      }
+    }
+  }, []);
+  playSound = () => {
+    try {
+      const { sound: soundObject, status } = Audio.Sound.createAsync(
+        require("../../assets/sound/Timer.wav"),
+        {
+          shouldPlay: true,
+        }
+      );
+    } catch (error) {}
+  };
   return (
     <View style={styles.container}>
       <Image
         source={require("../../assets/img/pictos/Bon.png")}
         style={styles.image}
       />
-      <TitleAnswer content={success ? 'BIeN JOuÉ !' : 'ou Pas !'} />
+      <TitleAnswer content={success ? "BIeN JOuÉ !" : "ou Pas !"} />
       <TitleAnswer2
         content={questions[gameIndex].content}
         content2={questions[gameIndex].content2}

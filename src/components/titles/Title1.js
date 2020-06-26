@@ -4,7 +4,6 @@ import { AppLoading } from 'expo'
 import * as Font from 'expo-font';
 import ColorBlending from 'gl-react-color-blending';
 
-
 let customFonts = {
   MaimDisfigured: require("../../assets/fonts/MainDisfigured/MaimDisfigured.ttf"),
 };
