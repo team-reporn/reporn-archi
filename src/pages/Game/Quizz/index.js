@@ -37,22 +37,21 @@ const Quiz = ({ navigation }) => {
   answer = (correct) => {
     setAnswered(true)
     if (correct) {
-      setCorrectCount(correctCount + 1)
       setAnswerCorrect(true)
     } else {
       setAnswerCorrect(false)
     }
   }
 
-  const { game } = useSocket()
+  const { game, setSuccess } = useSocket()
 
   const questions = culture
   const question = questions[activeQuestionIndex]
 
   return (
     <View style={styles.container}>
-      <TitleQuestion content={question.question} style={styles.title} />
-      {question.answers.map((answer) => (
+      <TitleQuestion content={question.question} taille2 />
+      {/* {question.answers.map((answer) => (
         <QuizzBtn
           key={answer.id}
           content={answer.text}
@@ -64,7 +63,55 @@ const Quiz = ({ navigation }) => {
             })
           }}
         />
-      ))}
+      ))} */}
+      <QuizzBtn
+        content={questions[0].answers[0].text}
+        style={styles.text}
+        rotation1
+        image1
+        onPress={() => {
+          setSuccess(questions[0].answers[0].correct)
+          navigation.navigate('EndGame', {
+            title: 'EndGame',
+          })
+        }}
+      />
+      <QuizzBtn
+        content={questions[0].answers[1].text}
+        style={styles.text}
+        rotation2
+        image2
+        onPress={() => {
+          setSuccess(questions[0].answers[1].correct)
+          navigation.navigate('EndGame', {
+            title: 'EndGame',
+          })
+        }}
+      />
+      <QuizzBtn
+        content={questions[0].answers[2].text}
+        style={styles.text}
+        rotation3
+        image3
+        onPress={() => {
+          setSuccess(questions[0].answers[2].correct)
+          navigation.navigate('EndGame', {
+            title: 'EndGame',
+          })
+        }}
+      />
+      <QuizzBtn
+        content={questions[0].answers[3].text}
+        style={styles.text}
+        rotation4
+        image4
+        onPress={() => {
+          setSuccess(questions[0].answers[3].correct)
+          navigation.navigate('EndGame', {
+            title: 'EndGame',
+          })
+        }}
+      />
     </View>
   )
 }

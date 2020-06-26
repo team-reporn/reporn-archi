@@ -56,7 +56,7 @@ let getAnswerfromGame = ({ game }) => {
 };
 
 export default ({ navigation, setBackGround }) => {
-  const { changeGame, game } = useSocket();
+  const { changeGame, game, setSuccess, success } = useSocket()
   gameIndex = getAnswerfromGame(game).id;
   useEffect(() => {
     console.log("nieé", getAnswerfromGame({ game: game.game }).background);
@@ -69,7 +69,7 @@ export default ({ navigation, setBackGround }) => {
         source={require("../../assets/img/pictos/Bon.png")}
         style={styles.image}
       />
-      <TitleAnswer content="BIeN JOuÉ !" />
+      <TitleAnswer content={success ? 'BIeN JOuÉ !' : 'ou Pas !'} />
       <TitleAnswer2
         content={questions[gameIndex].content}
         content2={questions[gameIndex].content2}

@@ -25,11 +25,12 @@ const Quiz = ({ navigation }) => {
     <View style={styles.container}>
       <TitleQuestion
         content="qui ... est connu pour ses vidéos amateur ?"
-        style={styles.title}
+        taille1
       />
       <ActeurBtn
         source={require('./assets/Amateur_Rep1.png')}
         style={styles.image}
+        position1
         onPress={() => {
           navigation.navigate('EndGame', {
             title: 'EndGame',
@@ -39,6 +40,7 @@ const Quiz = ({ navigation }) => {
       <ActeurBtn
         source={require('./assets/Amateur_Rep2.png')}
         style={styles.image}
+        position2
         onPress={() => {
           navigation.navigate('EndGame', {
             title: 'EndGame',

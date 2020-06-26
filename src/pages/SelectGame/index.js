@@ -1,12 +1,12 @@
 // in this, define all games and select one randomly - On button go select go to Quiz
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
-import useSocket from "../../App/Socket/useSocket";
-import NextButton from "../../components/btn/NextBtn.js";
-import BigTitle from "../../components/titles/BigTitle";
-import Chrono from "../../components/Chrono";
+import React, { useState, useEffect } from 'react'
+import { View, StyleSheet, Text, Image } from 'react-native'
+import useSocket from '../../App/Socket/useSocket'
+import NextButton from '../../components/btn/NextBtn.js'
+import BigTitle from '../../components/titles/BigTitle'
+import Chrono from '../../components/Chrono'
 
-import culture from "../../contents/cultureData";
+import culture from '../../contents/cultureData'
 // import troudumonde from '../../contents/troudumonde'
 // import parodie from '../../contents/parodie'
 
@@ -22,7 +22,7 @@ let getRoutesFromGameName = ({ game }) => {
     // };
     // break;
 
-    case "cultureQ":
+    case 'cultureQ':
       return {
         route: "Quizz",
         title: "Culture Q",
@@ -32,17 +32,17 @@ let getRoutesFromGameName = ({ game }) => {
       };
       break;
 
-    case "acteurX":
+    case 'acteurX':
       return {
-        route: "ActeurX",
-        title: "Qui...?",
+        route: 'ActeurX',
+        title: 'Qui...?',
         subContent: null,
         consigne: "Touche la bonne réponse",
         background: require("../../assets/img/backgrounds/Qui.png"),
       };
       break;
 
-    case "ouEst":
+    case 'ouEst':
       return {
         route: "Wiwaldo",
         title: "Le sextoy le plus cheap ?",
@@ -52,24 +52,24 @@ let getRoutesFromGameName = ({ game }) => {
       break;
 
     default:
-      throw "non reconized game " + game;
-      break;
+      throw 'non reconized game ' + game
+      break
   }
-};
+}
 let Wait = ({ navigation, setPressed }) => {
-  const { progress, ready, game } = useSocket();
+  const { progress, ready, game } = useSocket()
   useEffect(() => {
-    ready();
-  }, []);
+    ready()
+  }, [])
 
   useEffect(() => {
     if (progress.start) {
       setPressed(false);
       navigation.navigate(getRoutesFromGameName({ game: game.game }).route, {
         title: getRoutesFromGameName({ game: game.game }).title,
-      });
+      })
     }
-  }, [progress]);
+  }, [progress])
 
   return progress.start || false ? (
     <View>
@@ -79,8 +79,8 @@ let Wait = ({ navigation, setPressed }) => {
     <View>
       <Text>Waiting for everyone to be ready ...</Text>
     </View>
-  );
-};
+  )
+}
 
 export default ({ navigation, setBackGround }) => {
   const [pressed, setPressed] = useState(false);
@@ -89,14 +89,14 @@ export default ({ navigation, setBackGround }) => {
     setBackGround(getRoutesFromGameName({ game: game.game }).background);
   }, []);
   return (
-    <View>
+    <View style={styles.container}>
       {pressed ? (
         <Wait navigation={navigation} setPressed={setPressed} />
       ) : (
         <View
           style={{
-            alignItems: "center",
-            justifyContent: "center",
+            alignItems: 'center',
+            justifyContent: 'center',
             top: -100,
           }}
         >
@@ -111,30 +111,33 @@ export default ({ navigation, setBackGround }) => {
             }
             consigne={getRoutesFromGameName({ game: game.game }).consigne}
           />
-          <NextButton
-            key="READY"
-            text="I'm Ready !"
-            onPress={() => {
-              setPressed(true);
-            }}
-          />
+          <View style={{ marginTop: 100 }}>
+            <NextButton
+              key="READY"
+              text="I'm Ready !"
+              onPress={() => {
+                setPressed(true)
+              }}
+            />
+          </View>
         </View>
       )}
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
+    flexDirection: 'column',
+    marginTop: '30%',
   },
   background: {
     flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
   image: {
-    transform: [{ rotate: "22deg" }],
+    transform: [{ rotate: '22deg' }],
   },
-});
+})
