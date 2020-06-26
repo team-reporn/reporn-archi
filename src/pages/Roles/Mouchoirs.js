@@ -10,6 +10,7 @@ let Mouchoirs = ({ count, cardRole }) => {
   let rotationMouchoir2 = rolesStyles.mouchoir2.transform[0].rotate;
   let rotationMouchoir3 = rolesStyles.mouchoir3.transform[0].rotate;
   // console.log(rotationMouchoir1, typeof rotationMouchoir1);
+
   return (
     <View style={rolesStyles.mouchoir}>
       {count > 0 ? (

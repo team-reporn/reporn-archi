@@ -1,8 +1,10 @@
 import React from 'react'
+import { Audio } from 'expo-av';
 
 import Index from './src/App/index.js'
 console.disableYellowBox = true
 
+Audio.requestPermissionsAsync()
 export default class App extends React.Component {
   render() {
     return (

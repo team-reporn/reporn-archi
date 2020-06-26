@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Image, Text  } from 'react-native';
+import { Audio } from 'expo-av';
 
 export default class Chrono extends React.Component {
     constructor (props) {
@@ -8,6 +9,7 @@ export default class Chrono extends React.Component {
             timer: null,
             timerLeft: this.props.duration
         }
+        this.playSound()
         this.startTimer()
     }
 
@@ -28,6 +30,17 @@ export default class Chrono extends React.Component {
             //this.setState({step: 2, win: false})
         }
     }
+
+    playSound = ()=> {
+        try {
+            const { sound: soundObject, status } = Audio.Sound.createAsync(
+              require('../assets/sound/Timer.wav'),
+              { shouldPlay: true }
+            );
+          } catch (error) {
+          }
+    }
+
 
     render() {
         return (

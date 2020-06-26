@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Button, ButtonContainer } from "../../components/Button";
 import useSocket from "../../App/Socket/useSocket";
+import {Audio} from 'expo-av'
 
 import Title1 from "../../components/titles/Title1";
 import TitleWithContent from "../../components/titles/TitleWithContent";
@@ -27,6 +28,26 @@ let Room = ({ navigation }) => {
     }
     return () => clearInterval(roomInterval);
   }, [roomInfo]);
+
+  playSoundHardcore = ()=> {
+    try {
+        const { sound: soundObject, status } = Audio.Sound.createAsync(
+          require('../../assets/sound/niveau_hardcore_1.wav'),
+          { shouldPlay: true }
+        );
+      } catch (error) {
+      }
+}
+playSoundMS = ()=> {
+  try {
+      const { sound: soundObject, status } = Audio.Sound.createAsync(
+        require('../../assets/sound/niveau_mainstream.wav'),
+        { shouldPlay: true }
+      );
+    } catch (error) {
+    }
+}
+
   return (
     <View
       style={{
@@ -85,8 +106,8 @@ let Room = ({ navigation }) => {
             </View>
           </TitleWithContent>
           <MainBtn bold content="SOFT VANILLA" rotation2 />
-          <MainBtn bold content="REGULAR MAINSTREAM" rotation1 />
-          <MainBtn bold content="HARDCORE" rotation3 />
+          <MainBtn bold content="REGULAR MAINSTREAM" onPress={()=>{playSoundMS()}} rotation1 />
+          <MainBtn bold content="HARDCORE" onPress={()=>{playSoundHardcore()}} rotation3 />
         </View>
       </View>
       {roomInfo.role == "owner" ? (
