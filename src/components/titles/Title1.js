@@ -2,6 +2,8 @@ import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
 import { AppLoading } from 'expo'
 import * as Font from 'expo-font';
+import ColorBlending from 'gl-react-color-blending';
+
 
 let customFonts = {
   MaimDisfigured: require("../../assets/fonts/MainDisfigured/MaimDisfigured.ttf"),
@@ -36,14 +38,20 @@ export default class Title1 extends React.Component {
       return (
       <View>
         <View style={this.props.onRight ? styles.mainOnleft : styles.main}>
-          <Image
+        <ColorBlending
+          color={[1,1,1,1]}
+          blendMode={'blendDarken'}
+        >
+            this.bg
+        </ColorBlending>
+          {/* <Image
             style={{
               width: `${(1.5) * 60}%`,
               height: (1) * 100,
               resizeMode: "stretch",
             }}
             source={this.bg}
-          ></Image>
+          ></Image> */}
           <View style={this.props.onRight ? styles.textOnLeft : styles.text}>
             <Text style={styles.title}>{this.props.content}</Text>
           </View>

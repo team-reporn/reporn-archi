@@ -26,6 +26,12 @@ export default class TitleQuestion extends React.Component {
   }
 
   render() {
+    let taille = ''
+    this.props.taille1 ? (taille = styles.taille1) : ''
+    this.props.taille2 ? (taille = styles.taille2) : ''
+    this.props.taille3 ? (taille = styles.taille3) : ''
+    this.props.taille4 ? (taille = styles.taille4) : ''
+
     if (this.state.fontsLoaded) {
       return (
         <View style={styles.container}>
@@ -33,7 +39,7 @@ export default class TitleQuestion extends React.Component {
             source={require('../../assets/img/scotch/TitreQuestion.png')}
             style={styles.image}
           />
-          <Text style={styles.text}>{this.props.content}</Text>
+          <Text style={[styles.text, taille]}>{this.props.content}</Text>
         </View>
       )
     } else {
@@ -47,7 +53,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    marginBottom: '10%',
   },
   image: {
     width: '95%',
@@ -55,12 +60,24 @@ const styles = StyleSheet.create({
     marginLeft: 60,
   },
   text: {
-    paddingTop: 15,
     fontFamily: 'MaimDisfigured',
-    width: '60%',
     textAlign: 'center',
     fontSize: 28,
     color: 'white',
     position: 'absolute',
+  },
+  taille1: {
+    width: '90%',
+    paddingLeft: 50,
+    paddingTop: 0,
+  },
+  taille2: {
+    width: '60%',
+  },
+  taille3: {
+    width: '60%',
+  },
+  taille4: {
+    width: '60%',
   },
 })

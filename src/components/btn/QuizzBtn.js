@@ -15,12 +15,27 @@ export default class QuizzBtn extends React.Component {
     this.state = {}
     this.pressed = false
 
+    let imagePath = ''
+
+    this.props.image1
+      ? (imagePath = require('../../assets/img/btn/BlancReponse1.png'))
+      : ''
+    this.props.image2
+      ? (imagePath = require('../../assets/img/btn/BlancReponse2.png'))
+      : ''
+    this.props.image3
+      ? (imagePath = require('../../assets/img/btn/BlancReponse3.png'))
+      : ''
+    this.props.image4
+      ? (imagePath = require('../../assets/img/btn/BlancReponse4.png'))
+      : ''
+
     if (this.props.blue) {
-      this.state.startBtn = require('../../assets/img/btn/AnswerBtnBlue.png')
+      this.state.startBtn = imagePath
       this.state.pressedBtn = require('../../assets/img/btn/AnswerBtnWhite.png')
     } else {
       this.state.pressedBtn = require('../../assets/img/btn/AnswerBtnBlue.png')
-      this.state.startBtn = require('../../assets/img/btn/AnswerBtnWhite.png')
+      this.state.startBtn = imagePath
     }
   }
 
@@ -44,7 +59,7 @@ export default class QuizzBtn extends React.Component {
 
     let textColor,
       textPressedColor,
-      rotation = getRandomInt(4)
+      rotation = ''
     if (this.props.blue) {
       textColor = styles.textWhite
       textPressedColor = styles.textBlue
@@ -53,15 +68,11 @@ export default class QuizzBtn extends React.Component {
       textPressedColor = styles.textWhite
     }
 
-    if (rotation == 0) {
-      rotation = styles.rotation1
-    } else if (rotation == 1) {
-      rotation = styles.rotation2
-    } else if (rotation == 2) {
-      rotation = styles.rotation3
-    } else if (rotation == 3) {
-      rotation = styles.rotation4
-    }
+    this.props.rotation1 ? (rotation = styles.rotation1) : ''
+    this.props.rotation2 ? (rotation = styles.rotation2) : ''
+    this.props.rotation3 ? (rotation = styles.rotation3) : ''
+    this.props.rotation4 ? (rotation = styles.rotation4) : ''
+
     if (this.state.fontsLoaded) {
       return (
         <View>
@@ -77,8 +88,10 @@ export default class QuizzBtn extends React.Component {
           >
             <ImageBtn
               pressed={this.state.pressed}
+              source={this.imagePath}
               startBtn={this.state.startBtn}
               pressedBtn={this.state.pressedBtn}
+              style={styles.image}
             />
             <Text
               style={[
@@ -102,6 +115,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     fontSize: 14,
+  },
+  image: {
+    width: '80%',
   },
   text: {
     position: 'absolute',
