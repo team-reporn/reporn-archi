@@ -5,6 +5,8 @@ import { View, StyleSheet, Image } from 'react-native'
 import TitleQuestion from '../../../components/titles/TitleQuestion'
 import ActeurBtn from '../../../components/btn/ActeurBtn'
 
+import useSocket from '../../../App/Socket/useSocket'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -21,6 +23,8 @@ const styles = StyleSheet.create({
 })
 
 const Quiz = ({ navigation }) => {
+  const { setSuccess } = useSocket()
+
   return (
     <View style={styles.container}>
       <TitleQuestion
@@ -32,6 +36,7 @@ const Quiz = ({ navigation }) => {
         style={styles.image}
         position1
         onPress={() => {
+          setSuccess(true)
           navigation.navigate('EndGame', {
             title: 'EndGame',
           })
@@ -42,6 +47,7 @@ const Quiz = ({ navigation }) => {
         style={styles.image}
         position2
         onPress={() => {
+          setSuccess(true)
           navigation.navigate('EndGame', {
             title: 'EndGame',
           })
