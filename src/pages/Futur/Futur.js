@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import useSocket from "../../App/Socket/useSocket";
 import { Button, ButtonContainer } from "../../components/Button";
+import BoiteMouchoir from '../Roles/BoiteMouchoir'
+import NextBtn from "../../components/btn/NextBtn";
 
 let Futur = ({ navigation }) => {
   const [pressed, setPressed] = useState(false);
@@ -13,7 +15,10 @@ let Futur = ({ navigation }) => {
     <View>
       {!pressed ? (
         <>
-          <Text>tire le mouchoir pour découvrir ton avenir</Text>
+          <View style={{justifyContent: "center", alignItems: "center", height: "100%"}}>
+            <Image source={require('../../assets/img/scotch/Bleu.png')} />
+            <Text style={{position:"absolute"}}>tire le mouchoir pour découvrir ton avenir</Text>
+          </View>
           <ButtonContainer>
             <Button
               key="decouvre l'avenir"
@@ -23,20 +28,24 @@ let Futur = ({ navigation }) => {
               }}
             />
           </ButtonContainer>
+          <Image style={{position: "absolute", bottom: 0}} source={require('../../assets/Mouchoirs/On.png')}               onPress={() => {
+                setPressed(true);
+              }}/>
         </>
       ) : (
         <>
-          <Text>je vois, je vois</Text>
-          <Text>{character.futur}</Text>
-          <ButtonContainer>
-            <Button
-              key="Fin"
-              text="Fin"
-              onPress={() => {
+        <View style={{justifyContent: "center", alignItems: "center", height: "100%"}}>
+          <Image source={require('../../assets/Mouchoirs/Categorie.png')} />
+          <View style={{position: "absolute"}}>
+            <Text>je vois, je vois</Text>
+            <Text>{character.futur}</Text>
+          </View>
+        </View>
+
+          <NextBtn onPress={() => {
                 navigation.navigate("PlayAgain");
-              }}
-            />
-          </ButtonContainer>
+              }}/>
+        <Image style={{position: "absolute", bottom: 0}} source={require('../../assets/Mouchoirs/Off.png')}/>
         </>
       )}
     </View>

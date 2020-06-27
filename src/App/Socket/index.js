@@ -2,11 +2,7 @@ import React, { useCallback, createContext, useState } from 'react'
 import SocketIOClient from 'socket.io-client'
 export const Context = createContext(null)
 
-<<<<<<< HEAD
-const socket = SocketIOClient('http://192.168.43.103:4000')
-=======
 const socket = SocketIOClient('http://192.168.1.35:4000')
->>>>>>> d3b110fdb22913e63151f8bccee618da9fa0b7cb
 
 const Socket = ({ children }) => {
   const [game, setGame] = useState({ name: 'cultureQ', theme: 'Amateur' })
