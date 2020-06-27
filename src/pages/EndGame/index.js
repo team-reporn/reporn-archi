@@ -92,7 +92,7 @@ export default ({ navigation, setBackGround }) => {
         const {
           sound: soundObject,
           status,
-        } = Audio.Sound.createAsync(
+          } = Audio.Sound.createAsync(
           require("../../assets/sound/mm_comprehensif_1.wav"),
           { shouldPlay: true }
         );
