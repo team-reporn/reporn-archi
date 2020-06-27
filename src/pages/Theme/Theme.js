@@ -6,7 +6,7 @@ import { Button, ButtonContainer } from '../../components/Button'
 
 import SelectGame from '../SelectGame'
 import BoiteMouchoir from '../Roles/BoiteMouchoir'
-import NextButton from '../../components/btn/NextBtn.js'
+import NextButton from '../../components/btn/NextBtn'
 
 import styles from '../../utils/globalStyles'
 
@@ -142,8 +142,7 @@ let Theme = ({ navigation }) => {
             title: 'SelectGame',
           })
         }}
-      >
-      </TouchableOpacity>
+      ></TouchableOpacity>
     </View>
   )
 }

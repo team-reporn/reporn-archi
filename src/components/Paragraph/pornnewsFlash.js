@@ -74,15 +74,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
-    marginTop: -40,
+    marginTop: -50,
   },
   content: {
     position: 'absolute',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
+    height: '100%',
     width: '100%',
     zIndex: -1,
-    height: 480,
   },
   picto: {
     width: 90,
@@ -90,20 +88,21 @@ const styles = StyleSheet.create({
   },
   textCtn: {
     position: 'absolute',
+    marginTop: 100,
     padding: '5%',
   },
   title: {
     fontFamily: 'MaimDisfigured',
     color: 'white',
     textAlign: 'center',
-    fontSize: 18,
-    marginBottom: 20,
+    fontSize: 25,
+    marginBottom: 30,
   },
   text: {
     fontFamily: 'DIN_Regular',
     color: 'white',
     textAlign: 'left',
-    fontSize: 13,
+    fontSize: 15,
     marginBottom: 13,
   },
   text2: {
@@ -114,7 +113,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 300,
+    height: 350,
     resizeMode: 'stretch',
   },
 })

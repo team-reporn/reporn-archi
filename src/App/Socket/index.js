@@ -17,7 +17,8 @@ const Socket = ({ children }) => {
     role: null,
   });
 
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(false)
+  const [QuestionIndex, setQuestionIndex] = useState(false)
 
   const initializeSocket = useCallback(() => {
     socket.emit("channel1", "Hi server");
@@ -88,6 +89,8 @@ const Socket = ({ children }) => {
         character,
         success,
         setSuccess,
+        QuestionIndex,
+        setQuestionIndex,
       }}
     >
       {children}
