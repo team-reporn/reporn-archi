@@ -91,7 +91,6 @@ export default class QuizzBtn extends React.Component {
               source={this.imagePath}
               startBtn={this.state.startBtn}
               pressedBtn={this.state.pressedBtn}
-              style={styles.image}
             />
             <Text
               style={[
@@ -116,9 +115,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     fontSize: 14,
   },
-  image: {
-    width: '80%',
-  },
+
   text: {
     position: 'absolute',
     textTransform: 'uppercase',

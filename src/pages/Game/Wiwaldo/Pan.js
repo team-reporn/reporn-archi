@@ -14,7 +14,7 @@ const windowHeight = Dimensions.get("window").height;
 const Pan = ({ debug, children, limits }) => {
   console.log(windowHeight*2)
   const [boundaries, setBoundaries] = useState(
-    limits || { x: 60, y: 100, x0: -60, y0: -100 }
+    limits || { x: 60, y: 29, x0: -60, y0: -120 }
   );
   const pan = useRef(new Animated.ValueXY()).current;
   const dx = useRef(0);

@@ -6,13 +6,9 @@ import NextButton from '../../components/btn/NextBtn.js'
 import BigTitle from '../../components/titles/BigTitle'
 import Chrono from '../../components/Chrono'
 
-import culture from '../../contents/cultureData'
-// import troudumonde from '../../contents/troudumonde'
-// import parodie from '../../contents/parodie'
-
 let getRoutesFromGameName = ({ game }) => {
   switch (game) {
-    case "tabou":
+    case 'tabou':
     // return {
     //   route: "Tabou",
     //   title: "Safe Word",
@@ -24,32 +20,32 @@ let getRoutesFromGameName = ({ game }) => {
 
     case 'cultureQ':
       return {
-        route: "Quizz",
-        title: "Culture Q",
-        subContent: "Petite question de culture point G",
-        consigne: "Caresse la bonne réponse",
-        background: require("../../assets/img/backgrounds/Question1.png"),
-      };
-      break;
+        route: 'Quizz',
+        title: 'Culture Q',
+        subContent: 'Petite question de culture point G',
+        consigne: 'Caresse la bonne réponse',
+        background: require('../../assets/img/backgrounds/Question1.png'),
+      }
+      break
 
     case 'acteurX':
       return {
         route: 'ActeurX',
         title: 'Qui...?',
         subContent: null,
-        consigne: "Touche la bonne réponse",
-        background: require("../../assets/img/backgrounds/Qui.png"),
-      };
-      break;
+        consigne: 'Touche la bonne réponse',
+        background: require('../../assets/img/backgrounds/Qui.png'),
+      }
+      break
 
     case 'ouEst':
       return {
-        route: "Wiwaldo",
-        title: "Le sextoy le plus cheap ?",
-        consigne: "Touche la bonne réponse",
-        background: require("../../assets/img/backgrounds/Wiwaldo.png"),
-      };
-      break;
+        route: 'Wiwaldo',
+        title: 'Le sextoy le plus cheap ?',
+        consigne: 'Touche la bonne réponse',
+        background: require('../../assets/img/backgrounds/Wiwaldo.png'),
+      }
+      break
 
     default:
       throw 'non reconized game ' + game
@@ -64,7 +60,7 @@ let Wait = ({ navigation, setPressed }) => {
 
   useEffect(() => {
     if (progress.start) {
-      setPressed(false);
+      setPressed(false)
       navigation.navigate(getRoutesFromGameName({ game: game.game }).route, {
         title: getRoutesFromGameName({ game: game.game }).title,
       })
@@ -83,11 +79,11 @@ let Wait = ({ navigation, setPressed }) => {
 }
 
 export default ({ navigation, setBackGround }) => {
-  const [pressed, setPressed] = useState(false);
-  const { game } = useSocket();
+  const [pressed, setPressed] = useState(false)
+  const { game } = useSocket()
   useEffect(() => {
-    setBackGround(getRoutesFromGameName({ game: game.game }).background);
-  }, []);
+    setBackGround(getRoutesFromGameName({ game: game.game }).background)
+  }, [])
   return (
     <View style={styles.container}>
       {pressed ? (

@@ -15,7 +15,7 @@ import {
   Button as BigButton,
   ButtonContainer,
 } from "../../../components/Button";
-
+import useSocket from "../../../App/Socket/useSocket";
 import Pan from "./Pan";
 import stylesGlobaux from "../../../utils/globalStyles";
 
@@ -45,27 +45,14 @@ const setStyleImg2 = styleImg();
 const setStyleImg3 = styleImg();
 const setStyleImg4 = styleImg();
 const Wiwaldo = ({ navigation }) => {
-  const indexRecherche = useRef(getRandomInt({ max: pictures.length }));
+  const { success, setSuccess } = useSocket();
+
+  const indexRecherche = useRef(0);
   const [step, setStep] = useState(0);
   console.log(indexRecherche.current);
   return (
     <View style={styles.container}>
       {step === 0 && (
-        <>
-          <Text>tu dois chercher : </Text>
-          <Image source={pictures[indexRecherche.current]} />
-          <ButtonContainer>
-            <BigButton
-              key="rentrer dans le jeu"
-              text="rentrer dans le jeu"
-              onPress={() => {
-                setStep(1);
-              }}
-            />
-          </ButtonContainer>
-        </>
-      )}
-      {step === 1 && (
         <Pan>
           <ImageBackground
             style={{ width: "100%", height: "100%" }}
@@ -76,86 +63,30 @@ const Wiwaldo = ({ navigation }) => {
               <TouchableHighlight
                 style={[setStyleImg1[index], { zIndex: 100 }]}
                 key={index}
-                onPress={() => setStep(3)}
+                onPress={() => {
+                  setSuccess(false);
+                  navigation.navigate("EndGame", {
+                    title: "EndGame",
+                  });
+                }}
               >
                 <Image source={image} />
               </TouchableHighlight>
             ) : (
               <TouchableHighlight
                 style={[setStyleImg1[indexRecherche.current], { zIndex: 101 }]}
-                onPress={() => setStep(2)}
+                onPress={() => {
+                  setSuccess(true);
+                  navigation.navigate("EndGame", {
+                    title: "EndGame",
+                  });
+                }}
               >
                 <Image source={pictures[indexRecherche.current]} />
               </TouchableHighlight>
             );
           })}
-          {pictures.map((image, index) => {
-            return index !== indexRecherche.current ? (
-              <TouchableHighlight
-                style={[setStyleImg2[index], { zIndex: 100 }]}
-                key={index}
-                onPress={() => setStep(3)}
-              >
-                <Image source={image} />
-              </TouchableHighlight>
-            ) : null;
-          })}
-          {pictures.map((image, index) => {
-            return index !== indexRecherche.current ? (
-              <TouchableHighlight
-                style={[setStyleImg3[index], { zIndex: 100 }]}
-                key={index}
-                onPress={() => setStep(3)}
-              >
-                <Image source={image} />
-              </TouchableHighlight>
-            ) : null;
-          })}
-          {pictures.map((image, index) => {
-            return index !== indexRecherche.current ? (
-              <TouchableHighlight
-                style={[setStyleImg4[index], { zIndex: 100 }]}
-                key={index}
-                onPress={() => setStep(3)}
-              >
-                <Image source={image} />
-              </TouchableHighlight>
-            ) : null;
-          })}
         </Pan>
-      )}
-      {step === 2 && (
-        <>
-          <Text>Bravo tu as trouvé en : </Text>
-          <Text>seconde</Text>
-          <ButtonContainer>
-            <BigButton
-              key="end game"
-              text="end game"
-              onPress={() => {
-                navigation.navigate("EndGame", {
-                  title: "EndGame",
-                });
-              }}
-            />
-          </ButtonContainer>
-        </>
-      )}
-      {step === 3 && (
-        <>
-          <Text>Raté : </Text>
-          <ButtonContainer>
-            <BigButton
-              key="end game"
-              text="end game"
-              onPress={() => {
-                navigation.navigate("EndGame", {
-                  title: "EndGame",
-                });
-              }}
-            />
-          </ButtonContainer>
-        </>
       )}
     </View>
   );
