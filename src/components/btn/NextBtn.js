@@ -8,30 +8,52 @@ export default class NextBtn extends React.Component {
     this.state = {}
   }
 
-  playSound = ()=> {
+  playSound = () => {
     try {
-        const { sound: soundObject, status } = Audio.Sound.createAsync(
-          require('../../assets/sound/dechirure_2.wav'),
-          { shouldPlay: true }
-        );
-      } catch (error) {
-      }
-}
+      const {
+        sound: soundObject,
+        status,
+      } = Audio.Sound.createAsync(
+        require('../../assets/sound/dechirure_2.wav'),
+        { shouldPlay: true }
+      )
+    } catch (error) {}
+  }
 
-onPress = () => {
-  this.playSound()
-  this.props.onPress()
-}
+  onPress = () => {
+    this.playSound()
+    this.props.onPress()
+  }
 
   render() {
     return (
-      <View>
-        <TouchableWithoutFeedback style={{display: "flex", justifyContent: "center", alignItems: "center"}} onPress={this.onPress}>
-          <Image style={{}} source={require('../../assets/img/btn/Next.png')}></Image>
+      <View style={styles.container}>
+        <TouchableWithoutFeedback
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          onPress={this.onPress}
+        >
+          <Image
+            style={styles.image}
+            source={require('../../assets/img/btn/Suivant.png')}
+          ></Image>
         </TouchableWithoutFeedback>
       </View>
     )
   }
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+  },
+  image: {
+    width: 126,
+    height: 83,
+  },
+})

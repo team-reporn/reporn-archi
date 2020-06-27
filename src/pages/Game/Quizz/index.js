@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     // flex: 2,
     // flexDirection: 'column',
   },
-  button: {
+  buttons: {
     marginTop: 50,
   },
 })

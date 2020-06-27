@@ -82,7 +82,7 @@ const BigTitle = ({
             width: '100%',
             justifyContent: 'center',
             alignItems: 'center',
-            marginTop: -30,
+            marginTop: -20,
             transform: [{ rotate: '-10deg' }],
           }}
         >

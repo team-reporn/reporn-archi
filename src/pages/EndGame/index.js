@@ -115,29 +115,29 @@ export default ({ navigation, setBackGround }) => {
       />
       <Answer content={questions[gameIndex].paragraph} />
       <PornnewsFlash content={questions[gameIndex].pornews}></PornnewsFlash>
-      {game.round.laps < 4 ? (
-        <Button
-          key="QUESTION"
-          text="QUESTION"
-          onPress={() => {
-            changeGame()
-            navigation.navigate('SelectGame', {
-              title: 'SelectGame',
-            })
-          }}
-        />
-      ) : (
-        <Button
-          key="Shake"
-          text="Shake"
-          onPress={() => {
-            changeGame()
-            navigation.navigate('Shake', {
-              title: 'Shake',
-            })
-          }}
-        />
-      )}
+      <View style={styles.button}>
+        {game.round.laps < 4 ? (
+          <NextButton
+            key="READY"
+            onPress={() => {
+              changeGame()
+              navigation.navigate('SelectGame', {
+                title: 'SelectGame',
+              })
+            }}
+          />
+        ) : (
+          <NextButton
+            key="Shake"
+            onPress={() => {
+              changeGame()
+              navigation.navigate('Shake', {
+                title: 'Shake',
+              })
+            }}
+          />
+        )}
+      </View>
     </View>
   )
 }
@@ -146,5 +146,9 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  button: {
+    marginTop: 150,
+    marginLeft: 200,
   },
 })
