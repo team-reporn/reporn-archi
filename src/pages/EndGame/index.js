@@ -76,7 +76,6 @@ export default ({ navigation, setBackGround }) => {
       }
     }
   }, []);
-  playSound()
   playSound = ()=> {
     if (success == 'ou Pas !') {
       try {
@@ -94,6 +93,7 @@ export default ({ navigation, setBackGround }) => {
       } catch (error) {}
     }
 }
+playSound()
   return (
     <View style={styles.container}>
       <Image

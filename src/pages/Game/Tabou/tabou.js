@@ -86,7 +86,7 @@ const Tabou = (props) => {
       return (
         <View>
           <Chrono
-            duration={10}
+            duration={30}
             onFinish={() => {
               setStep(1)
               setWin(false)
@@ -143,7 +143,7 @@ const Tabou = (props) => {
       return (
         <View>
           <Chrono
-            duration={10}
+            duration={30}
             onFinish={() => {
               setStep(2)
               setWin(false)

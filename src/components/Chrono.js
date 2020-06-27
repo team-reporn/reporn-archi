@@ -7,9 +7,11 @@ export default class Chrono extends React.Component {
         super(props)
         this.state = {
             timer: null,
-            timerLeft: this.props.duration
+            timerLeft: this.props.duration,
+            sound: null
         }
-        if (this.state.timer > 20) {
+        if (this.props.duration > 20) {
+            console.log('oui')
             this.playSound()
         }
         this.startTimer()
@@ -28,6 +30,7 @@ export default class Chrono extends React.Component {
         if (this.state.timerLeft <= 0) {
             clearInterval(this.state.timer)
             this.setState({timer: null})
+            this.state.sound.shouldPlay = false
             this.props.onFinish()
             //this.setState({step: 2, win: false})
         }
@@ -35,7 +38,7 @@ export default class Chrono extends React.Component {
 
     playSound = ()=> {
         try {
-            const { sound: soundObject, status } = Audio.Sound.createAsync(
+            this.state.sound = Audio.Sound.createAsync(
               require('../assets/sound/Timer.wav'),
               { shouldPlay: true }
             );
