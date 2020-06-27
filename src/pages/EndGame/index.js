@@ -104,10 +104,16 @@ export default ({ navigation, setBackGround }) => {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../../assets/img/pictos/Bon.png')}
-        style={styles.image}
-      />
+      <View style={styles.image}>
+        <Image
+          style={styles.picto}
+          source={
+            success
+              ? require('../../assets/img/pictos/Bon.png')
+              : require('../../assets/img/pictos/Mauvais.png')
+          }
+        />
+      </View>
       <TitleAnswer content={success ? 'BIeN JOuÉ !' : 'ou Pas !'} />
       <TitleAnswer2
         content={questions[gameIndex].content}
@@ -146,9 +152,21 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%',
   },
   button: {
-    marginTop: 150,
+    marginTop: 100,
     marginLeft: 200,
+    zIndex: -1,
+  },
+  image: {
+    width: '100%',
+    marginBottom: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  picto: {
+    width: 80,
+    height: 80,
   },
 })

@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '76%',
-    height: 180,
+    height: 200,
   },
   text: {
     fontFamily: 'DIN_Regular',
