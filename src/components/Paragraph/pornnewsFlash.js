@@ -71,9 +71,10 @@ export default class PornnewsFlash extends React.Component {
 const styles = StyleSheet.create({
   main: {
     // position: 'absolute',
-    height: '100%',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    marginTop: -40,
   },
   content: {
     position: 'absolute',
