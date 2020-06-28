@@ -4,6 +4,7 @@ import useSocket from "../../App/Socket/useSocket";
 import { Button, ButtonContainer } from "../../components/Button";
 import BoiteMouchoir from '../Roles/BoiteMouchoir'
 import NextBtn from "../../components/btn/NextBtn";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 let Futur = ({ navigation }) => {
   const [pressed, setPressed] = useState(false);
@@ -28,9 +29,11 @@ let Futur = ({ navigation }) => {
               }}
             />
           </ButtonContainer>
-          <Image style={{position: "absolute", bottom: 0}} source={require('../../assets/Mouchoirs/On.png')}               onPress={() => {
+          <TouchableWithoutFeedback onPress={() => {
                 setPressed(true);
-              }}/>
+              }}>
+          <Image style={{position: "absolute", bottom: 0}} source={require('../../assets/Mouchoirs/On.png')}/>
+          </TouchableWithoutFeedback>
         </>
       ) : (
         <>

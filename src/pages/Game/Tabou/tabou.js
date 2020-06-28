@@ -126,59 +126,53 @@ const Tabou = (props) => {
       )
     }
   } else {
-    if (step == 0) {
-      return (
-        <View>
+    return(
+    <View>
+      {step == 0 && (
+        <>
           <Text>Tu fait partie de l'équipe Gang Bang</Text>
           <Text>A toi de faire deviner un mot</Text>
           <Button
             title=">"
             onPress={() => {
-              setStep(1)
+              setStep(1);
             }}
           />
-        </View>
-      )
-    } else if (step == 1) {
-      return (
-        <View>
+        </>
+      )}
+      {step > 0 && (
+        <>
           <Chrono
-            duration={30}
-            onFinish={() => {
-              setStep(2)
-              setWin(false)
-            }}
+            duration={step == 1 ? 30 : 0}
+            onFinish={
+              step == 1
+                ? () => {
+                    setStep(2);
+                    setWin(false);
+                  }
+                : () => {}
+            }
           />
-          <Title1 onRight content={'Devine le safe word'} />
+          {step == 1 ? (
+            <Title1 onRight content={"Devine le safe word"} />
+          ) : (
+            <TitleWithContent>
+              <P1>Valide le safe word</P1>
+              <Input />
+            </TitleWithContent>
+          )}
           <MainBtn
             content="Trouvé !"
             onPress={() => {
-              setStep(2)
-              setWin(true)
+              setStep(2);
+              setWin(true);
             }}
           />
-        </View>
-      )
-    } else if (step == 2) {
-      return (
-        <View>
-          <Chrono duration={0} onFinish={() => {}} />
-          <TitleWithContent>
-            <P1>Valide le safe word</P1>
-            <Input />
-          </TitleWithContent>
-          <MainBtn
-            content="Trouvé !"
-            onPress={() => {
-              setStep(2)
-              setWin(true)
-            }}
-          />
-        </View>
-      )
-    }
+        </>
+      )}
+    </View>)
   }
-}
+};
 
 const styles = StyleSheet.create({
   din: { fontFamily: 'DIN' },
