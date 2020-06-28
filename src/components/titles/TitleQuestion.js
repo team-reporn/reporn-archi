@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   taille1: {
-    width: '90%',
+    width: '60%',
     paddingLeft: 50,
     paddingTop: 0,
   },

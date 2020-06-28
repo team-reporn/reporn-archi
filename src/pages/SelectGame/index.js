@@ -21,10 +21,10 @@ let getRoutesFromGameName = ({ game }) => {
     case 'cultureQ':
       return {
         route: 'Quizz',
-        title: 'Culture Q',
+        title: 'Cul.ture Q',
         subContent: 'Petite question de culture point G',
         consigne: 'Caresse la bonne réponse',
-        background: require('../../assets/img/backgrounds/Question1.png'),
+        background: require('../../assets/img/backgrounds/Question_culture.png'),
       }
       break
 
@@ -32,7 +32,7 @@ let getRoutesFromGameName = ({ game }) => {
       return {
         route: 'ActeurX',
         title: 'Qui...?',
-        subContent: null,
+        subContent: 'les apparences peuvent être trompeuses',
         consigne: 'Touche la bonne réponse',
         background: require('../../assets/img/backgrounds/Qui.png'),
       }
@@ -41,9 +41,10 @@ let getRoutesFromGameName = ({ game }) => {
     case 'ouEst':
       return {
         route: 'Wiwaldo',
-        title: 'Le sextoy le plus cheap ?',
+        title: 'Où est...?',
+        subContent: 'Le sextoy le plus cheap ?',
         consigne: 'Touche la bonne réponse',
-        background: require('../../assets/img/backgrounds/Wiwaldo.png'),
+        background: require('../../assets/img/backgrounds/Question_ou.png'),
       }
       break
 
@@ -93,10 +94,9 @@ export default ({ navigation, setBackGround }) => {
           style={{
             alignItems: 'center',
             justifyContent: 'center',
-            top: -100,
           }}
         >
-          <View style={{ marginBottom: -80, zIndex: 2 }}>
+          <View style={{ marginTop: -30, zIndex: 2 }}>
             <Chrono duration={1} onFinish={() => {}} />
           </View>
           <BigTitle

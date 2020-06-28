@@ -22,6 +22,7 @@ const BigTitle = ({
 }) => {
   Promise.all([Font.loadAsync(customFonts)]).then(setLoaded.bind(this))
   let lastFont = isLoaded && !!'maim' ? 'maim' : 'null'
+  let lastFontDIN = isLoaded && !!'DIN' ? 'DIN' : 'null'
 
   return (
     <View
@@ -32,10 +33,10 @@ const BigTitle = ({
           justifyContent: 'center',
           alignItems: 'center',
           width: '100%',
-          marginTop: 60,
+          marginTop: 50,
         }}
       >
-        <Image
+        {/* <Image
           source={require('../../assets/img/scotch/Question.png')}
           style={{
             resizeMode: 'stretch',
@@ -43,8 +44,14 @@ const BigTitle = ({
             height: 153,
             transform: [{ translateX: -50 }],
           }}
-        />
-        <View style={{ position: 'absolute' }}>
+        /> */}
+        <View
+          style={{
+            position: 'absolute',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           {upperContent ? (
             <Text
               style={[
@@ -66,7 +73,13 @@ const BigTitle = ({
           {subContent ? (
             <Text
               style={[
-                { color: 'white', fontSize: 15, marginTop: 20 },
+                {
+                  color: 'white',
+                  fontSize: 15,
+                  marginTop: 5,
+                  width: '60%',
+                  textAlign: 'center',
+                },
                 styles[lastFont],
               ]}
             >
@@ -82,7 +95,7 @@ const BigTitle = ({
             width: '100%',
             justifyContent: 'center',
             alignItems: 'center',
-            marginTop: -20,
+            marginTop: 50,
             transform: [{ rotate: '-10deg' }],
           }}
         >
@@ -95,10 +108,12 @@ const BigTitle = ({
               {
                 color: 'white',
                 fontSize: 15,
-                marginTop: 20,
+                marginTop: 30,
                 position: 'absolute',
+                textTransform: 'uppercase',
+                letterSpacing: 1.5,
               },
-              styles[lastFont],
+              styles[lastFontDIN],
             ]}
           >
             {consigne ? consigne : ''}
@@ -111,9 +126,10 @@ const BigTitle = ({
 
 const styles = StyleSheet.create({
   maim: { fontFamily: 'MaimDisfigured' },
+  DIN: { fontFamily: 'DIN' },
   null: {},
   image: {
-    width: '80%',
+    width: 312,
     height: 73,
   },
 })
