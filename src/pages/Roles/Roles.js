@@ -12,7 +12,7 @@ import useSocket from "../../App/Socket/useSocket";
 
 // import { Button, ButtonContainer } from "../../components/Button";
 import TitleWithContent from "../../components/titles/TitleWithContent";
-import { P1, P2 } from "../../components/Paragraph/Paragraph";
+import { P1, P2, P3 } from "../../components/Paragraph/Paragraph";
 import { H3, H2 } from "../../components/headers/Headers";
 import NextButton from "../../components/btn/NextBtn.js";
 
@@ -58,12 +58,35 @@ let Roles = ({ navigation, setBackGround }) => {
         <>
           <View style={rolesStyles.title}>
             <TitleWithContent onRight>
-              <P1 font={"maim"} color={"white"}>
-                Tire {3 - pressCount} mouchoir
-              </P1>
-              <P2 font={"maim"} color={"white"}>
-                pour découvrir ton personnage
-              </P2>
+              {/* <View
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  left: -70,
+                }}
+              >
+                <P1 font={"maim"} color={"white"}>
+                  SECOUE TON TELEPHONE
+                </P1>
+                <P3 font={"maim"} color={"white"}>
+                  POUR FINIR
+                </P3>
+              </View> */}
+              <View
+                style={{
+                  justifyContent: "center",
+                  alignItems: "center",
+                  left: -70,
+                }}
+              >
+                <P1 font={"maim"} color={"white"}>
+                  Tire {3 - pressCount} mouchoir{`${pressCount < 2 ? "s" : ""}`}
+                </P1>
+                <P2 font={"maim"} color={"white"}>
+                  pour découvrir ton personnage
+                </P2>
+              </View>
+              <View />
             </TitleWithContent>
           </View>
         </>

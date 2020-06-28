@@ -26,19 +26,43 @@ let Home = ({ navigation }) => {
     <View style={styles.container}>
       <Image source={require("../../assets/Logo.png")} style={styles.logo} />
       <TitleWithContent onRight>
-        <View style={{ width: "100%", alignItems: "center" }}>
-          <P1 font={"maim"} color={"white"}>
-            Partie de jambes
-          </P1>
-          <P1 font={"maim"} color={"white"}>
-            en l'air
-          </P1>
+        <View
+          style={{
+            width: "100%",
+            alignItems: "center",
+            lineHeight: 2,
+            left: -70,
+          }}
+        >
+          <View
+            styles={{
+              top: 100,
+              // backgroundColor: "violet",
+              position: "relative",
+            }}
+          >
+            <P1 font={"maim"} color={"white"}>
+              Partie de jambes
+            </P1>
+          </View>
+          <View
+            styles={{
+              top: 100,
+
+              // backgroundColor: "violet",
+              position: "relative",
+            }}
+          >
+            <P1 font={"maim"} color={"white"}>
+              en l'air
+            </P1>
+          </View>
         </View>
         <View />
       </TitleWithContent>
       <View style={styles.btn1}>
         <MainBtn
-          content="Create a Room"
+          content="CRÉER UNE ROOM"
           rotation1
           onPress={() => {
             createRoom();
@@ -50,7 +74,7 @@ let Home = ({ navigation }) => {
       </View>
       <View style={styles.btn2}>
         <MainBtn
-          content="Join a Room"
+          content="REJOINDRE UNE ROOM"
           style={styles.btn2}
           rotation2
           onPress={() => {

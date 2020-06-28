@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   white: { color: 'white' },
   blue: { color: '#0C09D7' },
   maim: { fontFamily: 'MaimDisfigured' },
-  din: { fontFamily: 'DIN' },
+  din: { fontFamily: 'DIN', letterSpacing:2 },
   null: {},
 })
 

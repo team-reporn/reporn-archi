@@ -133,7 +133,7 @@ export default () => {
                         back
                         title={
                           <P1 font={"maim"} color={"blue"}>
-                            {game.theme}
+                            {game.theme} 0{game.round.laps}/04
                           </P1>
                         }
                       />
@@ -161,7 +161,7 @@ export default () => {
                       back
                       title={
                         <P1 font={"maim"} color={"blue"}>
-                          {game.theme}
+                          {game.theme} 0{game.round.laps}/04
                         </P1>
                       }
                     />
@@ -205,7 +205,7 @@ export default () => {
                       back
                       title={
                         <P1 font={"maim"} color={"blue"}>
-                          {game.theme}
+                          {game.theme} 0{game.round.laps}/04
                         </P1>
                       }
                     />
@@ -288,7 +288,15 @@ export default () => {
                     style={styles.background}
                   >
                     <View style={styles.header}>
-                      <MainHeader />
+                      <MainHeader
+                        param
+                        back
+                        title={
+                          <P1 font={"maim"} color={"blue"}>
+                            {game.theme} 0{game.round.laps}/04
+                          </P1>
+                        }
+                      />
                     </View>
                     <View style={styles.content}>
                       <EndGame {...props} setBackGround={setBackGround} />
