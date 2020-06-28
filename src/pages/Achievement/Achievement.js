@@ -11,9 +11,20 @@ import TitleWithContent from '../../components/titles/TitleWithContent'
 import { P1, P2, P3 } from '../../components/Paragraph/Paragraph'
 import Input from '../../components/forms/Input.js'
 
+import * as Font from "expo-font";
+
+let customFonts = {
+  MaimDisfigured: require("../../assets/fonts/MainDisfigured/MaimDisfigured.ttf"),
+  DIN: require("../../assets/fonts/Din/bold/D-DIN-Bold.ttf"),
+};
+
 let Achievement = ({ navigation }) => {
   const { character, roomInfo } = useSocket();
   const [step, setStep] = useState(0)
+  
+  Promise.all([Font.loadAsync(customFonts)]).then(setLoaded.bind(this));
+  let lastFont = isLoaded && !!"din" ? "din" : "null";
+
   if (roomInfo.role == "owner") {
     if (step == 0) {
       return (
@@ -40,15 +51,15 @@ let Achievement = ({ navigation }) => {
           <View style={{justifyContent: "center", alignItems: "center", zIndex: 2, transform:[{rotate: '-9deg'}]}}>
             <Image source={require('../../assets/img/scotch/Bleu.png')}/>
             <View style={{position: "absolute"}}>
-              <Text style={{textAlign: "center", color: "white"}}>Masseuse</Text>
-              <Text style={{textAlign: "center", color: "white"}}>Retour sur tes performances</Text>
+              <Text style={[{textAlign: "center", color: "white"}, styles[lastFont]]}>Masseuse</Text>
+              <Text style={[{textAlign: "center", color: "white"}, styles[lastFont]]}>Retour sur tes performances</Text>
             </View>
           </View>
           <View style={{justifyContent: 'center', alignItems: "center", transform: [{translateY: -100}, {scale: 0.8}]}}>
             <Image style={{transform:[{rotate: '-9deg'}]}} source={require('../../assets/img/scotch/Feuille.png')}/>
             <View style={{position: "absolute", flexDirection: "row", alignItems: "center"}}>
               <Image style={{transform:[{rotate: '9deg'}]}} source={require('../../assets/img/stat/Petit.png')} />
-              <Text>Le plus rapide</Text>
+              <Text style={styles[lastFont]}>Le plus rapide</Text>
             </View>
           </View>
           <View style={{alignItems: "center", marginTop: -200, transform: [{scale: 0.6}]}}>
@@ -73,7 +84,7 @@ let Achievement = ({ navigation }) => {
             <Image style={{transform: [{rotate: '12deg'}]}} source={require('../../assets/img/stat/Tall.png')} />
             <View style={{justifyContent: "center", alignItems: "center", transform: [{rotate: '-12deg'}]}}>
               <Image source={require('../../assets/img/scotch/Awards.png')}/>
-              <Text style={{position: "absolute", color: 'white'}}>BlaBla</Text>
+              <Text style={[{position: "absolute", color: 'white'}, styles[lastFont]]}>BlaBla</Text>
             </View>
           </View>
           {/* <Text>retour sur tes Performance</Text>
@@ -90,15 +101,15 @@ let Achievement = ({ navigation }) => {
           <View style={{justifyContent: "center", alignItems: "center", zIndex: 2, transform:[{rotate: '-9deg'}]}}>
             <Image source={require('../../assets/img/scotch/Bleu.png')}/>
             <View style={{position: "absolute"}}>
-              <Text style={{textAlign: "center", color: "white"}}>Masseuse</Text>
-              <Text style={{textAlign: "center", color: "white"}}>Retour sur tes performances</Text>
+              <Text style={[{textAlign: "center", color: "white"}, styles[lastFont]]}>Masseuse</Text>
+              <Text style={[{textAlign: "center", color: "white"}, styles[lastFont]]}>Retour sur tes performances</Text>
             </View>
           </View>
           <View style={{justifyContent: 'center', alignItems: "center", transform: [{translateY: -100}, {scale: 0.8}]}}>
             <Image style={{transform:[{rotate: '-9deg'}]}} source={require('../../assets/img/scotch/Feuille.png')}/>
             <View style={{position: "absolute", flexDirection: "row", alignItems: "center"}}>
               <Image style={{transform:[{rotate: '9deg'}]}} source={require('../../assets/img/stat/Petit.png')} />
-              <Text>Le plus rapide</Text>
+              <Text style={styles[lastFont]}>Le plus rapide</Text>
             </View>
           </View>
           <View style={{alignItems: "center", marginTop: -200, transform: [{scale: 0.6}]}}>
@@ -116,5 +127,10 @@ let Achievement = ({ navigation }) => {
     }
   }
 };
+
+const styles = StyleSheet.create({
+  din: { fontFamily: "DIN" },
+  null: {},
+});
 
 export default Achievement;
