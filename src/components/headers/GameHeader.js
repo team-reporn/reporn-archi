@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
   main: {
     width: '100%',
     height: 150,
-    backgroundColor: 'red',
   },
   bg: {
     height: '100%',

@@ -3,7 +3,7 @@ import { View, ImageBackground, StyleSheet, Text, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { P1, P2, P3 } from "../components/Paragraph/Paragraph";
+import { P1, PHeader, P3 } from "../components/Paragraph/Paragraph";
 
 import Socket from "./Socket";
 import useSocket from "./Socket/useSocket";
@@ -45,40 +45,6 @@ export default () => {
             headerShown: false,
           }}
         >
-                    <Stack.Screen name="Tabou">
-            {(props) => {
-              return (
-                <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
-                  style={styles.background}
-                >
-                  <View style={styles.header}>
-                    <MainHeader />
-                  </View>
-                  <View style={styles.content}>
-                    <Tabou {...props} />
-                  </View>
-                </ImageBackground>
-              );
-            }}
-          </Stack.Screen>
-                    <Stack.Screen name="Achievement">
-            {(props) => {
-              return (
-                <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
-                  style={styles.background}
-                >
-                  <View style={styles.header}>
-                    <MainHeader />
-                  </View>
-                  <View style={styles.content}>
-                    <Achievement {...props} />
-                  </View>
-                </ImageBackground>
-              );
-            }}
-          </Stack.Screen>
           <Stack.Screen name="Home">
             {(props) => {
               return (
@@ -166,9 +132,9 @@ export default () => {
                         param
                         back
                         title={
-                          <P1 font={"maim"} color={"blue"}>
+                          <PHeader font={"maim"} color={"blue"}>
                             {game.theme} 0{game.round.laps}/04
-                          </P1>
+                          </PHeader>
                         }
                       />
                     </View>
@@ -194,9 +160,9 @@ export default () => {
                       param
                       back
                       title={
-                        <P1 font={"maim"} color={"blue"}>
+                        <PHeader font={"maim"} color={"blue"}>
                           {game.theme} 0{game.round.laps}/04
-                        </P1>
+                        </PHeader>
                       }
                     />
                   </View>
@@ -222,9 +188,9 @@ export default () => {
                       param
                       back
                       title={
-                        <P1 font={"maim"} color={"blue"}>
+                        <PHeader font={"maim"} color={"blue"}>
                           {game.theme} 0{game.round.laps}/04
-                        </P1>
+                        </PHeader>
                       }
                     />
                   </View>
@@ -252,9 +218,9 @@ export default () => {
                         param
                         back
                         title={
-                          <P1 font={"maim"} color={"blue"}>
+                          <PHeader font={"maim"} color={"blue"}>
                             {game.theme}
-                          </P1>
+                          </PHeader>
                         }
                       />
                     </View>
@@ -310,9 +276,9 @@ export default () => {
                         param
                         back
                         title={
-                          <P1 font={"maim"} color={"blue"}>
+                          <PHeader font={"maim"} color={"blue"}>
                             {game.theme} 0{game.round.laps}/04
-                          </P1>
+                          </PHeader>
                         }
                       />
                     </View>
@@ -391,6 +357,40 @@ export default () => {
                   </View>
                   <View style={styles.content}>
                     <Wiwaldo {...props} />
+                  </View>
+                </ImageBackground>
+              );
+            }}
+          </Stack.Screen>
+          <Stack.Screen name="Tabou">
+            {(props) => {
+              return (
+                <ImageBackground
+                  source={require("../assets/img/backgrounds/Home.png")}
+                  style={styles.background}
+                >
+                  <View style={styles.header}>
+                    <MainHeader />
+                  </View>
+                  <View style={styles.content}>
+                    <Tabou {...props} />
+                  </View>
+                </ImageBackground>
+              );
+            }}
+          </Stack.Screen>
+          <Stack.Screen name="Achievement">
+            {(props) => {
+              return (
+                <ImageBackground
+                  source={require("../assets/img/backgrounds/Home.png")}
+                  style={styles.background}
+                >
+                  <View style={styles.header}>
+                    <MainHeader />
+                  </View>
+                  <View style={styles.content}>
+                    <Achievement {...props} />
                   </View>
                 </ImageBackground>
               );

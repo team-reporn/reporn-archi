@@ -97,9 +97,11 @@ let Roles = ({ navigation, setBackGround }) => {
               <H3 font={"maim"} color={"white"}>
                 tu es ...
               </H3>
-              <H2 font={"maim"} color={"white"}>
-                {character.cardRole && character.cardRole.job}
-              </H2>
+              <View style={{ marginTop: -14 }}>
+                <H2 font={"maim"} color={"white"}>
+                  {character.cardRole && character.cardRole.job}
+                </H2>
+              </View>
             </TitleWithContent>
           </View>
         </>

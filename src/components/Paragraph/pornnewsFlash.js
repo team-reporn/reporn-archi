@@ -5,7 +5,7 @@ import { AppLoading } from "expo";
 import * as Font from "expo-font";
 
 let customFonts = {
-  DIN_Regular: require("../../assets/fonts/Din/regular/D-DIN.ttf"),
+  DIN_Regular: require("../../assets/fonts/D-DIN.otf"),
   MaimDisfigured: require("../../assets/fonts/MainDisfigured/MaimDisfigured.ttf"),
   DIN_Bold: require("../../assets/fonts/Din/bold/D-DIN-Bold.ttf"),
 };
@@ -35,16 +35,23 @@ export default class PornnewsFlash extends React.Component {
     if (this.state.fontsLoaded) {
       return (
         <View style={styles.main}>
-          <TouchableOpacity
-            onPress={() => {
-              this.setState({ show: !this.state.show });
+          <View
+            style={{
+              position: "relative",
+              zIndex: 1000,
             }}
           >
-            <Image
-              style={styles.picto}
-              source={require("../../assets/img/pictos/Flash.png")}
-            />
-          </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                this.setState({ show: !this.state.show });
+              }}
+            >
+              <Image
+                style={styles.picto}
+                source={require("../../assets/img/pictos/Flash.png")}
+              />
+            </TouchableOpacity>
+          </View>
           {this.state.show && (
             <View style={styles.content}>
               <Image
@@ -84,26 +91,28 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   picto: {
-    width: 90,
-    height: 90,
+    width: 60,
+    height: 60,
   },
   textCtn: {
     position: "absolute",
-    marginTop: 100,
+    marginTop: 25,
     padding: "5%",
   },
   title: {
     fontFamily: "MaimDisfigured",
     color: "white",
     textAlign: "center",
-    fontSize: 25,
-    marginBottom: 30,
+    fontSize: 20,
+    marginBottom: 10,
   },
   text: {
     fontFamily: "DIN_Regular",
     color: "white",
+    // fontWeight: "100",
+    fontWeight: "bold",
     textAlign: "left",
-    fontSize: 15,
+    fontSize: 13,
     marginBottom: 13,
   },
   text2: {
@@ -114,7 +123,8 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 350,
-    resizeMode: "stretch",
+    height: 360,
+    resizeMode: "contain",
+    marginTop: -80,
   },
 });

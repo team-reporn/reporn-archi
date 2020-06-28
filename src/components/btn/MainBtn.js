@@ -1,12 +1,12 @@
-import React from 'react'
-import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import { AppLoading } from 'expo'
-import * as Font from 'expo-font'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
+import React from "react";
+import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { AppLoading } from "expo";
+import * as Font from "expo-font";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 let customFonts = {
-  DIN_Regular: require('../../assets/fonts/Din/bold/D-DIN-Bold.ttf'),
-}
+  DIN_Regular: require("../../assets/fonts/Din/bold/D-DIN-Bold.ttf"),
+};
 
 export default class MainBtn extends React.Component {
   constructor(props) {
@@ -97,7 +97,9 @@ const styles = StyleSheet.create({
   text: {
     position: "absolute",
     fontFamily: "DIN_Regular",
-    letterSpacing: 2
+    letterSpacing: 1.5,
+    textTransform: "uppercase",
+    fontSize: 14,
   },
   textBlue: {
     color: "blue",

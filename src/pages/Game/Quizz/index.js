@@ -32,7 +32,7 @@ const Quiz = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TitleQuestion content={question.question} />
+      <TitleQuestion taille1 content={question.question} />
       <View style={styles.buttons}>
         <MainBtn
           content={question.answers[0].text}

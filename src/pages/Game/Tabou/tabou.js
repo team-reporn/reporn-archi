@@ -7,12 +7,12 @@ import {
 } from "../../../components/Button";
 import useSocket from "../../../App/Socket/useSocket";
 
-import { View, Text, Button, Image, StyleSheet } from 'react-native'
-import Chrono from '../../../components/Chrono'
-import Title1 from '../../../components/titles/Title1'
-import MainBtn from '../../../components/btn/MainBtn'
-import NextBtn from '../../../components/btn/NextBtn'
-import BigTitle from '../../../components/titles/BigTitle'
+import { View, Text, Button, Image, StyleSheet } from "react-native";
+import Chrono from "../../../components/Chrono";
+import Title1 from "../../../components/titles/Title1";
+import MainBtn from "../../../components/btn/MainBtn";
+import NextBtn from "../../../components/btn/NextBtn";
+import BigTitle from "../../../components/titles/BigTitle";
 
 import * as Font from "expo-font";
 import TitleWithContent from "../../../components/titles/TitleWithContent";
@@ -70,13 +70,13 @@ const Tabou = (props) => {
     return result;
   };
 
-  if (roomInfo.role !== 'owner') {
+  if (roomInfo.role !== "owner") {
     if (step == 0) {
       return (
         <View
           style={{
-            alignItems: 'center',
-            justifyContent: 'center',
+            alignItems: "center",
+            justifyContent: "center",
             top: -100,
           }}
         >
@@ -86,12 +86,14 @@ const Tabou = (props) => {
           <BigTitle
             content="Gang Bang"
             upperContent="Tu fait partie de l'équipe"
-            consigne='Fait deviner le mot'
+            consigne="Fait deviner le mot"
           />
           <View style={{ marginTop: 100 }}>
-          <NextBtn             onPress={() => {
-              setStep(1)
-            }} />
+            <NextBtn
+              onPress={() => {
+                setStep(1);
+              }}
+            />
           </View>
         </View>
       );
@@ -139,51 +141,52 @@ const Tabou = (props) => {
       );
     }
   } else {
-    return(
-    <View>
-      {step == 0 && (
-        <>
-          <Text>Tu fait partie de l'équipe Gang Bang</Text>
-          <Text>A toi de faire deviner un mot</Text>
-          <Button
-            title=">"
-            onPress={() => {
-              setStep(1);
-            }}
-          />
-        </>
-      )}
-      {step > 0 && (
-        <>
-          <Chrono
-            duration={step == 1 ? 30 : 0}
-            onFinish={
-              step == 1
-                ? () => {
-                    setStep(2);
-                    setWin(false);
-                  }
-                : () => {}
-            }
-          />
-          {step == 1 ? (
-            <Title1 onRight content={"Devine le safe word"} />
-          ) : (
-            <TitleWithContent>
-              <P1>Valide le safe word</P1>
-              <Input />
-            </TitleWithContent>
-          )}
-          <MainBtn
-            content="Trouvé !"
-            onPress={() => {
-              setStep(2);
-              setWin(true);
-            }}
-          />
-        </>
-      )}
-    </View>)
+    return (
+      <View>
+        {step == 0 && (
+          <>
+            <Text>Tu fait partie de l'équipe Gang Bang</Text>
+            <Text>A toi de faire deviner un mot</Text>
+            <Button
+              title=">"
+              onPress={() => {
+                setStep(1);
+              }}
+            />
+          </>
+        )}
+        {step > 0 && (
+          <>
+            <Chrono
+              duration={step == 1 ? 30 : 0}
+              onFinish={
+                step == 1
+                  ? () => {
+                      setStep(2);
+                      setWin(false);
+                    }
+                  : () => {}
+              }
+            />
+            {step == 1 ? (
+              <Title1 onRight content={"Devine le safe word"} />
+            ) : (
+              <TitleWithContent>
+                <P1>Valide le safe word</P1>
+                <Input />
+              </TitleWithContent>
+            )}
+            <MainBtn
+              content="Trouvé !"
+              onPress={() => {
+                setStep(2);
+                setWin(true);
+              }}
+            />
+          </>
+        )}
+      </View>
+    );
   }
 };
 

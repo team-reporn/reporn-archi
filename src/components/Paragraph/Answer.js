@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   main: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: -25,
+    marginTop: -45,
     // zIndex: -1,
     width: '100%',
   },

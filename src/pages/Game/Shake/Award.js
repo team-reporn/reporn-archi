@@ -41,28 +41,38 @@ let Award = ({ setStep }) => {
               marginTop: 25,
             }}
           >
-            <TitleWithContent onRight>
+            <TitleWithContent dark onRight>
               <P1 font={"maim"} color={"white"}>
-                LE RYTHME
+                Le RYTHMe
               </P1>
-              <P1 font={"maim"} color={"white"}>
-                DANS LA PEAU
-              </P1>
+              <View style={{ marginTop: -10 }}>
+                <P1 font={"maim"} color={"white"}>
+                  DANS LA PeAU
+                </P1>
+              </View>
             </TitleWithContent>
           </View>
         </View>
       </View>
       <View
         style={{
-          flex: 1,
+          flex: 1.5,
           alignItems: "flex-end",
         }}
       >
-        <NextButton
-          onPress={() => {
-            setStep(3);
+        <View
+          style={{
+            flex: 1,
+            alignItems: "flex-end",
+            padding: 10,
           }}
-        />
+        >
+          <NextButton
+            onPress={() => {
+              setStep(3);
+            }}
+          />
+        </View>
       </View>
     </View>
   );
