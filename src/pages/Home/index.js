@@ -15,6 +15,7 @@ import TitleWithContent from "../../components/titles/TitleWithContent";
 import Title1 from "../../components/titles/Title1";
 import MainBtn from "../../components/btn/MainBtn";
 import { P1, P2, P3 } from "../../components/Paragraph/Paragraph";
+import PornNews from "../../components/PornNews"
 
 let Home = ({ navigation }) => {
   const { initializeSocket, createRoom, setRoomInfo } = useSocket();
@@ -60,6 +61,7 @@ let Home = ({ navigation }) => {
           }}
         />
       </View>
+      <PornNews/>
     </View>
   );
 };

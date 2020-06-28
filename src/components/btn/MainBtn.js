@@ -55,9 +55,9 @@ export default class MainBtn extends React.Component {
 
     if (this.state.fontsLoaded) {
       return (
-        <View>
+        <View style={rotation}>
           <TouchableWithoutFeedback
-            style={[styles.main, rotation]}
+            style={[styles.main]}
             onPress={this.props.onPress}
             onPressIn={() => {
               this.setState({ pressed: true });
