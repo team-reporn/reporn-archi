@@ -13,6 +13,12 @@ let customFonts = {
   DIN: require("../../assets/fonts/Din/bold/D-DIN-Bold.ttf"),
 };
 
+let isLoaded = false;
+
+let setLoaded = () => {
+  isLoaded = true;
+};
+
 let Futur = ({ navigation }) => {
   const [pressed, setPressed] = useState(false);
   const { character } = useSocket();
@@ -29,9 +35,9 @@ let Futur = ({ navigation }) => {
         <>
           <View style={{justifyContent: "center", alignItems: "center", height: "100%"}}>
             <Image source={require('../../assets/img/scotch/Bleu.png')} />
-            <Text style={[{position:"absolute"}, styles[lastFont]]}>tire le mouchoir pour découvrir ton avenir</Text>
+            <Text style={[{position:"absolute", color: "white"}, styles[lastFont]]}>tire le mouchoir pour découvrir ton avenir</Text>
           </View>
-          <ButtonContainer>
+          {/* <ButtonContainer>
             <Button
               key="decouvre l'avenir"
               text="decouvre l'avenir"
@@ -39,11 +45,11 @@ let Futur = ({ navigation }) => {
                 setPressed(true);
               }}
             />
-          </ButtonContainer>
+          </ButtonContainer> */}
           <TouchableWithoutFeedback onPress={() => {
                 setPressed(true);
               }}>
-          <Image style={{position: "absolute", bottom: 0}} source={require('../../assets/Mouchoirs/On.png')}/>
+          <Image style={{}} source={require('../../assets/Mouchoirs/On.png')}/>
           </TouchableWithoutFeedback>
         </>
       ) : (

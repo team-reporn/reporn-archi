@@ -30,7 +30,7 @@ let setLoaded = () => {
   isLoaded = true;
 };
 
-const Tabou = (props, {navigation}) => {
+const Tabou = ({navigation, props}) => {
   const { roomInfo, getRoomInfo, setRoomInfo, startGame } = useSocket();
 
   const [step, setStep] = useState(0);
