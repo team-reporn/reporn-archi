@@ -63,8 +63,9 @@ playSound3 = ()=> {
           <View style={rolesStyles.boiteMouchoirArrow}>
             <Image
               style={{
-                width: 50,
-                height: 50,
+                width: 30,
+                height: 30,
+                marginTop: -50,
                 transform: [{ rotate: "90deg" }],
               }}
               source={require("../../assets/img/headers/retourIco.png")}

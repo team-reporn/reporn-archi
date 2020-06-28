@@ -58,11 +58,11 @@ const styles = StyleSheet.create({
   },
   icon1: {
     marginLeft: 10,
-    marginTop: 25,
+    marginTop: 15,
   },
   icon2: {
     marginRight: 10,
-    marginTop: 25,
+    marginTop: 15,
     right: 0,
   },
 });
@@ -104,7 +104,7 @@ let ParamBtn = ({}) => {
       <View
         style={{
           flex: 1,
-          backgroundColor: "transparent",
+          
           justifyContent: "center",
         }}
       >

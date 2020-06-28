@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
   text: {
     position: "absolute",
     fontFamily: "DIN_Regular",
+    letterSpacing: 2
   },
   textBlue: {
     color: "blue",

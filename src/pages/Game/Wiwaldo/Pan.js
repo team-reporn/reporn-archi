@@ -202,7 +202,6 @@ const styles = StyleSheet.create({
     height: windowHeight*1.5,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "cyan",
   },
   draggable: {
     width: "80%",

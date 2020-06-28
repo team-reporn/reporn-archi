@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: -25,
-    zIndex: -1,
+    // zIndex: -1,
     width: '100%',
   },
   image: {

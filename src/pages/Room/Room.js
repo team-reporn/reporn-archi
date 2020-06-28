@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { Button, ButtonContainer } from "../../components/Button";
 import useSocket from "../../App/Socket/useSocket";
-import {Audio} from 'expo-av'
+import { Audio } from "expo-av";
 
 import Title1 from "../../components/titles/Title1";
 import TitleWithContent from "../../components/titles/TitleWithContent";
@@ -29,24 +29,28 @@ let Room = ({ navigation }) => {
     return () => clearInterval(roomInterval);
   }, [roomInfo]);
 
-  playSoundHardcore = ()=> {
+  playSoundHardcore = () => {
     try {
-        const { sound: soundObject, status } = Audio.Sound.createAsync(
-          require('../../assets/sound/niveau_hardcore_1.wav'),
-          { shouldPlay: true }
-        );
-      } catch (error) {
-      }
-}
-playSoundMS = ()=> {
-  try {
-      const { sound: soundObject, status } = Audio.Sound.createAsync(
-        require('../../assets/sound/niveau_mainstream.wav'),
+      const {
+        sound: soundObject,
+        status,
+      } = Audio.Sound.createAsync(
+        require("../../assets/sound/niveau_hardcore_1.wav"),
         { shouldPlay: true }
       );
-    } catch (error) {
-    }
-}
+    } catch (error) {}
+  };
+  playSoundMS = () => {
+    try {
+      const {
+        sound: soundObject,
+        status,
+      } = Audio.Sound.createAsync(
+        require("../../assets/sound/niveau_mainstream.wav"),
+        { shouldPlay: true }
+      );
+    } catch (error) {}
+  };
 
   return (
     <View
@@ -63,7 +67,7 @@ playSoundMS = ()=> {
       >
         <TitleWithContent onRight>
           <P1 font={"maim"} color={"white"}>
-            NUMERO DE LA ROOM
+            numÉro de la room
           </P1>
           <View />
         </TitleWithContent>
@@ -106,8 +110,22 @@ playSoundMS = ()=> {
             </View>
           </TitleWithContent>
           <MainBtn bold content="SOFT VANILLA" rotation2 />
-          <MainBtn bold content="REGULAR MAINSTREAM" onPress={()=>{playSoundMS()}} rotation1 />
-          <MainBtn bold content="HARDCORE" onPress={()=>{playSoundHardcore()}} rotation3 />
+          <MainBtn
+            bold
+            content="REGULAR MAINSTREAM"
+            onPress={() => {
+              playSoundMS();
+            }}
+            rotation1
+          />
+          <MainBtn
+            bold
+            content="HARDCORE"
+            onPress={() => {
+              playSoundHardcore();
+            }}
+            rotation3
+          />
         </View>
       </View>
       {roomInfo.role == "owner" ? (
@@ -137,6 +155,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     top: -50,
+    left:20,
   },
 
   bg: {

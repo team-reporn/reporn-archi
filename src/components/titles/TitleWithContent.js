@@ -1,35 +1,34 @@
 import React from "react";
 import { View, StyleSheet, Image, Text, Slider } from "react-native";
-import { Dimensions } from 'react-native';
-const windowWidth = Dimensions.get('window').width;
-const windowHeight = Dimensions.get('window').height;
+import { Dimensions } from "react-native";
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 // import ColorBlending from 'gl-react-color-blending';
 
 let customFonts = {
-  MaimDisfigured: require('../../assets/fonts/MainDisfigured/MaimDisfigured.ttf'),
-}
-
+  MaimDisfigured: require("../../assets/fonts/MainDisfigured/MaimDisfigured.ttf"),
+};
 
 export default class TitleWithContent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
     this.bg = this.props.dark
-      ? require("../../assets/img/title/TitreLargeNoir.png")
-      : require("../../assets/img/title/TitreLargeBleu.png");
+      ? require("../../assets/img/scotch/Noir.png")
+      : require("../../assets/img/scotch/Bleu.png");
   }
 
   state = {
     fontsLoaded: false,
-  }
+  };
 
   async _loadFontsAsync() {
-    await Font.loadAsync(customFonts)
-    this.setState({ fontsLoaded: true })
+    await Font.loadAsync(customFonts);
+    this.setState({ fontsLoaded: true });
   }
 
   componentDidMount() {
-    this._loadFontsAsync()
+    this._loadFontsAsync();
   }
 
   render() {
@@ -42,15 +41,24 @@ export default class TitleWithContent extends React.Component {
             {{uri: '../../assets/img/title/TitreLargeBleu.png'}}
         </ColorBlending> */}
         <Image
-          opacity={0.5}
+          // opacity={0.5}
           style={{
-            width: `${(this.props.children.length || 1.5) * 60}%`,
-            height: (this.props.children.length || 1) * 60,
+            width: `${this.props.children.length > 1 ? 120 : 110}%`,
+            height: this.props.children.length > 1 ? 100 : 75,
+            // width: `${(this.props.children.length || 1.5) * 60}%`,
+            // height: (this.props.children.length || 1) * 45,
             resizeMode: "stretch",
           }}
           source={this.bg}
         ></Image>
-        <View style={this.props.onRight ? styles.textOnLeft : styles.text}>
+        <View
+          style={[
+            this.props.onRight ? styles.textOnLeft : styles.text,
+            {
+              width: "100%",
+            },
+          ]}
+        >
           {this.props.children}
         </View>
       </View>
@@ -63,7 +71,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
-    left: 90,
+    left: 70,
   },
   textOnLeft: {
     color: "white",
@@ -77,7 +85,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   text: {
-    fontFamily: 'MaimDisfigured',
+    fontFamily: "MaimDisfigured",
     color: "white",
     position: "absolute",
     width: "100%",

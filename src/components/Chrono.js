@@ -9,19 +9,19 @@ let customFonts = {
 }
 
 export default class Chrono extends React.Component {
-    constructor (props) {
-        super(props)
-        this.state = {
-            timer: null,
-            timerLeft: this.props.duration,
-            sound: null
-        }
-        if (this.props.duration > 20) {
-            console.log('oui')
-            this.playSound()
-        }
-        this.startTimer()
+  constructor(props) {
+    super(props);
+    this.state = {
+      timer: null,
+      timerLeft: this.props.duration,
+      sound: {},
+    };
+    if (this.props.duration > 20) {
+      console.log("oui");
+      this.playSound();
     }
+    this.startTimer();
+  }
 
     state = {
         fontsLoaded: false,
@@ -55,16 +55,25 @@ export default class Chrono extends React.Component {
         }
     }
 
-    playSound = ()=> {
-        try {
-            this.state.sound = Audio.Sound.createAsync(
-              require('../assets/sound/Timer.wav'),
-              { shouldPlay: true }
-            );
-          } catch (error) {
-          }
+  timerCheck = () => {
+    this.setState({ timerLeft: this.state.timerLeft - 1 });
+    if (this.state.timerLeft <= 0) {
+      clearInterval(this.state.timer);
+      this.setState({ timer: null });
+      this.state.sound.shouldPlay = false;
+      this.props.onFinish();
+      //this.setState({step: 2, win: false})
     }
+  };
 
+  playSound = () => {
+    try {
+      this.state.sound = Audio.Sound.createAsync(
+        require("../assets/sound/Timer.wav"),
+        { shouldPlay: true }
+      );
+    } catch (error) {}
+  };
 
     render() {
         if (this.state.fontsLoaded) {
