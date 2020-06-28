@@ -45,40 +45,6 @@ export default () => {
             headerShown: false,
           }}
         >
-                    <Stack.Screen name="Tabou">
-            {(props) => {
-              return (
-                <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
-                  style={styles.background}
-                >
-                  <View style={styles.header}>
-                    <MainHeader />
-                  </View>
-                  <View style={styles.content}>
-                    <Tabou {...props} />
-                  </View>
-                </ImageBackground>
-              );
-            }}
-          </Stack.Screen>
-                    <Stack.Screen name="Achievement">
-            {(props) => {
-              return (
-                <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
-                  style={styles.background}
-                >
-                  <View style={styles.header}>
-                    <MainHeader />
-                  </View>
-                  <View style={styles.content}>
-                    <Achievement {...props} />
-                  </View>
-                </ImageBackground>
-              );
-            }}
-          </Stack.Screen>
           <Stack.Screen name="Home">
             {(props) => {
               return (
@@ -167,7 +133,7 @@ export default () => {
                         back
                         title={
                           <P1 font={"maim"} color={"blue"}>
-                            {game.theme} 0{game.round.laps}/04
+                            {game.theme}
                           </P1>
                         }
                       />
@@ -195,7 +161,7 @@ export default () => {
                       back
                       title={
                         <P1 font={"maim"} color={"blue"}>
-                          {game.theme} 0{game.round.laps}/04
+                          {game.theme}
                         </P1>
                       }
                     />
@@ -207,7 +173,23 @@ export default () => {
               );
             }}
           </Stack.Screen>
-
+          <Stack.Screen name="Tabou">
+            {(props) => {
+              return (
+                <ImageBackground
+                  source={require("../assets/img/backgrounds/Home.png")}
+                  style={styles.background}
+                >
+                  <View style={styles.header}>
+                    <MainHeader />
+                  </View>
+                  <View style={styles.content}>
+                    <Tabou {...props} />
+                  </View>
+                </ImageBackground>
+              );
+            }}
+          </Stack.Screen>
           <Stack.Screen name="ActeurX">
             {(props) => {
               const { game, character } = useSocket();
@@ -223,7 +205,7 @@ export default () => {
                       back
                       title={
                         <P1 font={"maim"} color={"blue"}>
-                          {game.theme} 0{game.round.laps}/04
+                          {game.theme}
                         </P1>
                       }
                     />
@@ -306,15 +288,7 @@ export default () => {
                     style={styles.background}
                   >
                     <View style={styles.header}>
-                      <MainHeader
-                        param
-                        back
-                        title={
-                          <P1 font={"maim"} color={"blue"}>
-                            {game.theme} 0{game.round.laps}/04
-                          </P1>
-                        }
-                      />
+                      <MainHeader />
                     </View>
                     <View style={styles.content}>
                       <EndGame {...props} setBackGround={setBackGround} />
@@ -342,7 +316,23 @@ export default () => {
               );
             }}
           </Stack.Screen>
-
+          <Stack.Screen name="Achievement">
+            {(props) => {
+              return (
+                <ImageBackground
+                  source={require("../assets/img/backgrounds/Home.png")}
+                  style={styles.background}
+                >
+                  <View style={styles.header}>
+                    <MainHeader />
+                  </View>
+                  <View style={styles.content}>
+                    <Achievement {...props} />
+                  </View>
+                </ImageBackground>
+              );
+            }}
+          </Stack.Screen>
           <Stack.Screen name="Futur">
             {(props) => {
               return (

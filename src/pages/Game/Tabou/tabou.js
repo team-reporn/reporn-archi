@@ -30,7 +30,7 @@ let setLoaded = () => {
   isLoaded = true;
 };
 
-const Tabou = (props) => {
+const Tabou = (props, {navigation}) => {
   const { roomInfo, getRoomInfo, setRoomInfo, startGame } = useSocket();
 
   const [step, setStep] = useState(0);
@@ -70,7 +70,7 @@ const Tabou = (props) => {
     return result;
   };
 
-  if (roomInfo.role !== 'owner') {
+  if (roomInfo.role == 'owner') {
     if (step == 0) {
       return (
         <View
@@ -89,7 +89,8 @@ const Tabou = (props) => {
             consigne='Fait deviner le mot'
           />
           <View style={{ marginTop: 100 }}>
-          <NextBtn             onPress={() => {
+          <NextBtn 
+            onPress={() => {
               setStep(1)
             }} />
           </View>
@@ -103,6 +104,9 @@ const Tabou = (props) => {
             onFinish={() => {
               setStep(1);
               setWin(false);
+              navigation.navigate('EndGame', {
+                title: 'EndGame',
+              })
             }}
           />
           <Title1
@@ -133,6 +137,9 @@ const Tabou = (props) => {
             onPress={() => {
               setStep(1);
               setWin(true);
+              navigation.navigate('EndGame', {
+                title: 'EndGame',
+              })
             }}
           />
         </View>
@@ -143,14 +150,28 @@ const Tabou = (props) => {
     <View>
       {step == 0 && (
         <>
-          <Text>Tu fait partie de l'équipe Gang Bang</Text>
-          <Text>A toi de faire deviner un mot</Text>
-          <Button
-            title=">"
-            onPress={() => {
-              setStep(1);
-            }}
+        <View
+          style={{
+            alignItems: 'center',
+            justifyContent: 'center',
+            top: -100,
+          }}
+        >
+          <View style={{ marginBottom: -80, zIndex: 2 }}>
+            <Chrono duration={1} onFinish={() => {}} />
+          </View>
+          <BigTitle
+            content="Gang Bang"
+            upperContent="Tu fait partie de l'équipe"
+            consigne='Devine le mot'
           />
+          <View style={{ marginTop: 100 }}>
+          <NextBtn 
+            onPress={() => {
+              setStep(1)
+            }} />
+          </View>
+        </View>
         </>
       )}
       {step > 0 && (
@@ -162,6 +183,9 @@ const Tabou = (props) => {
                 ? () => {
                     setStep(2);
                     setWin(false);
+                    navigation.navigate('EndGame', {
+                      title: 'EndGame',
+                    })
                   }
                 : () => {}
             }
@@ -179,6 +203,9 @@ const Tabou = (props) => {
             onPress={() => {
               setStep(2);
               setWin(true);
+              navigation.navigate('EndGame', {
+                title: 'EndGame',
+              })
             }}
           />
         </>

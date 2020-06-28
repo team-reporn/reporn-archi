@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 import useSocket from "../../App/Socket/useSocket";
 import { Button, ButtonContainer } from "../../components/Button";
 
@@ -10,8 +10,6 @@ import * as Font from 'expo-font'
 import TitleWithContent from '../../components/titles/TitleWithContent'
 import { P1, P2, P3 } from '../../components/Paragraph/Paragraph'
 import Input from '../../components/forms/Input.js'
-
-import * as Font from "expo-font";
 
 let customFonts = {
   MaimDisfigured: require("../../assets/fonts/MainDisfigured/MaimDisfigured.ttf"),
