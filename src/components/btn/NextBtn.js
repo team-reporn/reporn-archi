@@ -36,7 +36,6 @@ export default class NextBtn extends React.Component {
           }}
           onPress={this.onPress}
         >
-          <Text>meh</Text>
           <Image
             style={styles.image}
             source={require("../../assets/img/btn/Suivant.png")}
