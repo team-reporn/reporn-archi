@@ -58,13 +58,28 @@ export default class MainBtn extends React.Component {
         <View style={rotation}>
           <TouchableWithoutFeedback
             style={[styles.main]}
-            onPress={this.props.onPress}
-            onPressIn={() => {
-              this.setState({ pressed: true });
-            }}
-            onPressOut={() => {
-              this.setState({ pressed: false });
-            }}
+            onPress={
+              this.props.select
+                ? () => {
+                    this.setState({ pressed: !this.state.pressed });
+                    !!this.props.onPress && this.props.onPress();
+                  }
+                : this.props.onPress
+            }
+            onPressIn={
+              this.props.select
+                ? () => {}
+                : () => {
+                    this.setState({ pressed: true });
+                  }
+            }
+            onPressOut={
+              this.props.select
+                ? () => {}
+                : () => {
+                    this.setState({ pressed: false });
+                  }
+            }
           >
             <ImageBtn
               pressed={this.state.pressed}

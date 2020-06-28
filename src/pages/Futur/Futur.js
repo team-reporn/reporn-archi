@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import useSocket from "../../App/Socket/useSocket";
 import { Button, ButtonContainer } from "../../components/Button";
-import BoiteMouchoir from '../Roles/BoiteMouchoir'
+import BoiteMouchoir from "../Roles/BoiteMouchoir";
 import NextBtn from "../../components/btn/NextBtn";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
@@ -11,6 +11,11 @@ import * as Font from "expo-font";
 let customFonts = {
   MaimDisfigured: require("../../assets/fonts/MainDisfigured/MaimDisfigured.ttf"),
   DIN: require("../../assets/fonts/Din/bold/D-DIN-Bold.ttf"),
+};
+let isLoaded = false;
+
+let setLoaded = () => {
+  isLoaded = true;
 };
 
 let Futur = ({ navigation }) => {
@@ -27,9 +32,17 @@ let Futur = ({ navigation }) => {
     <View>
       {!pressed ? (
         <>
-          <View style={{justifyContent: "center", alignItems: "center", height: "100%"}}>
-            <Image source={require('../../assets/img/scotch/Bleu.png')} />
-            <Text style={[{position:"absolute"}, styles[lastFont]]}>tire le mouchoir pour découvrir ton avenir</Text>
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100%",
+            }}
+          >
+            <Image source={require("../../assets/img/scotch/Bleu.png")} />
+            <Text style={[{ position: "absolute" }, styles[lastFont]]}>
+              tire le mouchoir pour découvrir ton avenir
+            </Text>
           </View>
           <ButtonContainer>
             <Button
@@ -40,26 +53,42 @@ let Futur = ({ navigation }) => {
               }}
             />
           </ButtonContainer>
-          <TouchableWithoutFeedback onPress={() => {
-                setPressed(true);
-              }}>
-          <Image style={{position: "absolute", bottom: 0}} source={require('../../assets/Mouchoirs/On.png')}/>
+          <TouchableWithoutFeedback
+            onPress={() => {
+              setPressed(true);
+            }}
+          >
+            <Image
+              style={{ position: "absolute", bottom: 0 }}
+              source={require("../../assets/Mouchoirs/On.png")}
+            />
           </TouchableWithoutFeedback>
         </>
       ) : (
         <>
-        <View style={{justifyContent: "center", alignItems: "center", height: "100%"}}>
-          <Image source={require('../../assets/Mouchoirs/Categorie.png')} />
-          <View style={{position: "absolute"}}>
-            <Text style={styles[lastFont]}>je vois, je vois</Text>
-            <Text style={styles[lastFont]}>{character.futur}</Text>
+          <View
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100%",
+            }}
+          >
+            <Image source={require("../../assets/Mouchoirs/Categorie.png")} />
+            <View style={{ position: "absolute" }}>
+              <Text style={styles[lastFont]}>je vois, je vois</Text>
+              <Text style={styles[lastFont]}>{character.futur}</Text>
+            </View>
           </View>
-        </View>
 
-          <NextBtn onPress={() => {
-                navigation.navigate("PlayAgain");
-              }}/>
-        <Image style={{position: "absolute", bottom: 0}} source={require('../../assets/Mouchoirs/Off.png')}/>
+          <NextBtn
+            onPress={() => {
+              navigation.navigate("PlayAgain");
+            }}
+          />
+          <Image
+            style={{ position: "absolute", bottom: 0 }}
+            source={require("../../assets/Mouchoirs/Off.png")}
+          />
         </>
       )}
     </View>

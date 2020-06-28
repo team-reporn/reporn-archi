@@ -37,12 +37,16 @@ const PHeader = ({ children, color, font }) => {
     </Text>
   );
 };
-const P3 = ({ children, color, font }) => {
+const P3 = ({ children, color, font, textTransform }) => {
   Promise.all([Font.loadAsync(customFonts)]).then(setLoaded.bind(this));
   let lastFont = isLoaded && !!font ? font : "null";
 
   return (
-    <Text style={[styles[color], styles.p3, styles[lastFont]]}>{children}</Text>
+    <Text
+      style={[styles[color], styles.p3, styles[lastFont], styles[textTransform]]}
+    >
+      {children}
+    </Text>
   );
 };
 
@@ -56,6 +60,7 @@ const styles = StyleSheet.create({
   maim: { fontFamily: "MaimDisfigured" },
   din: { fontFamily: "DIN", letterSpacing: 2 },
   null: {},
+  upperCase: { textTransform: "uppercase" },
 });
 
 export { P1, P2, P3, PHeader };

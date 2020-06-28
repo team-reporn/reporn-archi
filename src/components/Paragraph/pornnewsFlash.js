@@ -5,7 +5,7 @@ import { AppLoading } from "expo";
 import * as Font from "expo-font";
 
 let customFonts = {
-  DIN_Regular: require("../../assets/fonts/D-DIN.otf"),
+  DINDIN: require("../../assets/fonts/Din/regular/D-DIN.ttf"),
   MaimDisfigured: require("../../assets/fonts/MainDisfigured/MaimDisfigured.ttf"),
   DIN_Bold: require("../../assets/fonts/Din/bold/D-DIN-Bold.ttf"),
 };
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   text: {
-    fontFamily: "DIN_Regular",
+    fontFamily: "DINDIN",
     color: "white",
     // fontWeight: "100",
     fontWeight: "bold",
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     marginBottom: 13,
   },
   text2: {
-    fontFamily: "DIN_Regular",
+    fontFamily: "DINDIN",
     color: "white",
     textAlign: "left",
     fontSize: 13,

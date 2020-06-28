@@ -109,8 +109,10 @@ let Room = ({ navigation }) => {
               </P2>
             </View>
           </TitleWithContent>
-          <MainBtn bold content="SOFT VANILLA" rotation2 />
+
+          <MainBtn select bold content="SOFT VANILLA" rotation2 />
           <MainBtn
+            select
             bold
             content="REGULAR MAINSTREAM"
             onPress={() => {
@@ -119,6 +121,7 @@ let Room = ({ navigation }) => {
             rotation1
           />
           <MainBtn
+            select
             bold
             content="HARDCORE"
             onPress={() => {
@@ -155,7 +158,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     top: -50,
-    left:20,
+    left: 20,
   },
 
   bg: {

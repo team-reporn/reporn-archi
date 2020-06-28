@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     main: {
         justifyContent: "center",
         alignItems: "center",
-        width: 250
+        width: "80%"
     },
     img: {
         width: "100%",

@@ -4,10 +4,9 @@ import { AppLoading } from "expo";
 import * as Font from "expo-font";
 
 let customFonts = {
-  DIN_Regular: require("../../assets/fonts/D-DINJeanmichel.ttf"),
+  DINDIN: require("../../assets/fonts/Din/regular/D-DIN.ttf"),
   DIN_Bold: require("../../assets/fonts/Din/bold/D-DIN-Bold.ttf"),
 };
-
 export default class TitleQuestion extends React.Component {
   constructor(props) {
     super(props);
@@ -59,7 +58,7 @@ const styles = StyleSheet.create({
     height: 75,
   },
   text: {
-    fontFamily: "DIN_Regular",
+    fontFamily: "DINDIN",
     textAlign: "center",
     textTransform: "uppercase",
     fontSize: 15,

@@ -59,11 +59,9 @@ const Tabou = (props) => {
 
     for (let i = 0; i < wordList[word].forbidenWords.length; i++) {
       result.push(
-        <Text
-          style={[{ textAlign: "center", color: "blue" }, styles[lastFont]]}
-        >
+        <P3 textTransform={"upperCase"} font={"din"} color={"blue"}>
           {wordList[word].forbidenWords[i]}
-        </Text>
+        </P3>
       );
     }
 
@@ -80,7 +78,7 @@ const Tabou = (props) => {
             top: -100,
           }}
         >
-          <View style={{ marginBottom: -80, zIndex: 2 }}>
+          <View style={{ marginTop: 130, marginBottom: -105, zIndex: 2 }}>
             <Chrono duration={1} onFinish={() => {}} />
           </View>
           <BigTitle
@@ -99,44 +97,110 @@ const Tabou = (props) => {
       );
     } else if (step == 1) {
       return (
-        <View>
-          <Chrono
-            duration={30}
-            onFinish={() => {
-              setStep(1);
-              setWin(false);
-            }}
-          />
-          <Title1
-            onRight
-            content={"Fait deviner le mot : " + wordList[word].answer}
-          />
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItem: "center",
+          }}
+        >
+          <View style={{ marginTop: 60, marginBottom: -40, zIndex: 2 }}>
+            <Chrono
+              duration={30}
+              onFinish={() => {
+                setStep(1);
+                setWin(false);
+              }}
+            />
+          </View>
           <View
             style={{
-              display: "flex",
+              width: "100%",
               justifyContent: "center",
               alignItems: "center",
-              transform: [{ translateX: 20 }, { translateY: -20 }],
-              zIndex: -1,
+              zIndex: 2,
             }}
           >
-            <Image source={require("../../../assets/img/scotch/Feuille.png")} />
-            <View style={{ position: "absolute", top: 30 }}>
-              <Text
-                style={[{ color: "blue", marginBottom: 30 }, styles[lastFont]]}
-              >
-                Sans utiliser les mots :
-              </Text>
-              {renderForbidenWords()}
+            <View
+              style={{
+                width: "80%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <TitleWithContent>
+                <View
+                  style={{
+                    width: "100%",
+                    alignItems: "center",
+                    lineHeight: 2,
+                  }}
+                >
+                  <P3 font={"maim"} color={"white"}>
+                    Fait deviner le mot :
+                  </P3>
+                  <P1 font={"maim"} color={"white"}>
+                    {wordList[word].answer}
+                  </P1>
+                </View>
+              </TitleWithContent>
             </View>
           </View>
-          <MainBtn
-            content="Trouvé !"
-            onPress={() => {
-              setStep(1);
-              setWin(true);
+          <View
+            style={{
+              flex: 1,
+              width: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: -40,
             }}
-          />
+          >
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                zIndex: -1,
+                width: "80%",
+                height: "80%",
+              }}
+            >
+              <Image
+                style={{ resizeMode: "contain", width: "100%", height: "90%" }}
+                source={require("../../../assets/img/scotch/Tabou.png")}
+              />
+              <View style={{ position: "absolute", top: 60 }}>
+                <View
+                  style={{
+                    marginBottom: 20,
+                  }}
+                >
+                  <P2 font={"din"} color={"blue"}>
+                    Sans utiliser les mots :
+                  </P2>
+                </View>
+                <View
+                  style={{
+                    alignItems: "center",
+                  }}
+                >
+                  {renderForbidenWords()}
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            style={{
+              marginBottom: 80,
+            }}
+          >
+            <MainBtn
+              content="Trouvé !"
+              onPress={() => {
+                setStep(1);
+                setWin(true);
+              }}
+            />
+          </View>
         </View>
       );
     }
