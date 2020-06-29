@@ -9,14 +9,14 @@ import Chrono from '../../components/Chrono'
 let getRoutesFromGameName = ({ game }) => {
   switch (game) {
     case 'tabou':
-    // return {
-    //   route: "Tabou",
-    //   title: "Safe Word",
-    //   subContent: "Aide ton partenaire à se souvenir de votre safe word",
-    //   consigne: "L'un fait deviner un mot à l'autre",
-    // background: require("../../assets/img/backgrounds/Question1.png"),
-    // };
-    // break;
+      return {
+        route: 'Tabou',
+        title: 'Safe Word',
+        subContent: 'Aide ton partenaire à se souvenir de votre safe word',
+        consigne: "L'un fait deviner un mot à l'autre",
+        background: require('../../assets/img/backgrounds/Tabou&Scotch.png'),
+      }
+      break
 
     case 'cultureQ':
       return {

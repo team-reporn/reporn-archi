@@ -49,9 +49,10 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   image: {
-    width: '89%',
+    width: '95%',
     height: 85,
     transform: [{ rotate: '10deg' }],
+    resizeMode:"contain"
   },
   text: {
     fontFamily: 'MaimDisfigured',

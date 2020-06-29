@@ -83,7 +83,7 @@ export default class Chrono extends React.Component {
             style={{ transform: [{ scale: 0.5 }] }}
             source={require('../assets/img/scotch/Chrono.png')}
           ></Image>
-          <Text style={styles.text}>{this.state.timerLeft}:00:00</Text>
+          <Text style={styles.text}>00:00:{this.state.timerLeft}</Text>
         </View>
       )
     } else {
@@ -97,13 +97,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     transform: [{ rotate: '-9deg' }],
-    width: 165,
-    height: 63,
   },
   text: {
     color: 'white',
     position: 'absolute',
     fontFamily: 'vcr',
-    fontSize: 20,
   },
 })

@@ -145,6 +145,7 @@ let TitleContainer = ({ children }) => {
           zIndex: 10,
           justifyContent: "center",
           alignItems: "center",
+          marginTop:-20
         }}
       >
         {children}
@@ -153,7 +154,7 @@ let TitleContainer = ({ children }) => {
         style={{
           position: "absolute",
           width: "100%",
-          height: 150,
+          height: 120,
         }}
       >
         <Image

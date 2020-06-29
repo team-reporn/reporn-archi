@@ -7,12 +7,12 @@ import {
 } from "../../../components/Button";
 import useSocket from "../../../App/Socket/useSocket";
 
-import { View, Text, Button, Image, StyleSheet } from 'react-native'
-import Chrono from '../../../components/Chrono'
-import Title1 from '../../../components/titles/Title1'
-import MainBtn from '../../../components/btn/MainBtn'
-import NextBtn from '../../../components/btn/NextBtn'
-import BigTitle from '../../../components/titles/BigTitle'
+import { View, Text, Button, Image, StyleSheet } from "react-native";
+import Chrono from "../../../components/Chrono";
+import Title1 from "../../../components/titles/Title1";
+import MainBtn from "../../../components/btn/MainBtn";
+import NextBtn from "../../../components/btn/NextBtn";
+import BigTitle from "../../../components/titles/BigTitle";
 
 import * as Font from "expo-font";
 import TitleWithContent from "../../../components/titles/TitleWithContent";
@@ -30,8 +30,14 @@ let setLoaded = () => {
   isLoaded = true;
 };
 
-const Tabou = (props) => {
-  const { roomInfo, getRoomInfo, setRoomInfo, startGame } = useSocket();
+const Tabou = ({ navigation, props, setBackGround }) => {
+  const {
+    roomInfo,
+    getRoomInfo,
+    setRoomInfo,
+    startGame,
+    setSuccess,
+  } = useSocket();
 
   const [step, setStep] = useState(0);
   const [win, setWin] = useState(false);
@@ -59,73 +65,137 @@ const Tabou = (props) => {
 
     for (let i = 0; i < wordList[word].forbidenWords.length; i++) {
       result.push(
-        <Text
-          style={[{ textAlign: "center", color: "blue" }, styles[lastFont]]}
-        >
+        <P3 textTransform={"upperCase"} font={"din"} color={"blue"}>
           {wordList[word].forbidenWords[i]}
-        </Text>
+        </P3>
       );
     }
 
     return result;
   };
 
-  if (roomInfo.role !== 'owner') {
+  if (roomInfo.role != "owner") {
+    setBackGround(require("../../../assets/img/backgrounds/Groupe1.png"));
     if (step == 0) {
       return (
         <View
           style={{
-            alignItems: 'center',
-            justifyContent: 'center',
+            alignItems: "center",
+            justifyContent: "center",
             top: -100,
           }}
         >
-          <View style={{ marginBottom: -80, zIndex: 2 }}>
+          <View style={{ marginTop: 130, marginBottom: -105, zIndex: 2 }}>
             <Chrono duration={1} onFinish={() => {}} />
           </View>
           <BigTitle
             content="Gang Bang"
             upperContent="Tu fait partie de l'équipe"
-            consigne='Fait deviner le mot'
+            consigne="Fait deviner le mot"
           />
           <View style={{ marginTop: 100 }}>
-          <NextBtn             onPress={() => {
-              setStep(1)
-            }} />
+            <NextBtn
+              onPress={() => {
+                setStep(1);
+              }}
+            />
           </View>
         </View>
       );
     } else if (step == 1) {
       return (
-        <View>
-          <Chrono
-            duration={30}
-            onFinish={() => {
-              setStep(1);
-              setWin(false);
-            }}
-          />
-          <Title1
-            onRight
-            content={"Fait deviner le mot : " + wordList[word].answer}
-          />
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItem: "center",
+          }}
+        >
+          <View style={{ marginTop: 60, marginBottom: -40, zIndex: 2 }}>
+            <Chrono
+              duration={30}
+              onFinish={() => {
+                setStep(1);
+                setWin(false);
+                navigation.navigate("EndGame", {
+                  title: "EndGame",
+                });
+              }}
+            />
+          </View>
           <View
             style={{
-              display: "flex",
+              width: "100%",
               justifyContent: "center",
               alignItems: "center",
-              transform: [{ translateX: 20 }, { translateY: -20 }],
-              zIndex: -1,
+              zIndex: 2,
             }}
           >
-            <Image source={require("../../../assets/img/scotch/Feuille.png")} />
-            <View style={{ position: "absolute", top: 30 }}>
-              <Text
-                style={[{ color: "blue", marginBottom: 30 }, styles[lastFont]]}
-              >
-                Sans utiliser les mots :
-              </Text>
-              {renderForbidenWords()}
+            <View
+              style={{
+                width: "80%",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <TitleWithContent>
+                <View
+                  style={{
+                    width: "100%",
+                    alignItems: "center",
+                    lineHeight: 2,
+                  }}
+                >
+                  <P3 font={"maim"} color={"white"}>
+                    Fait deviner le mot :
+                  </P3>
+                  <P1 font={"maim"} color={"white"}>
+                    {wordList[word].answer}
+                  </P1>
+                </View>
+              </TitleWithContent>
+            </View>
+          </View>
+          <View
+            style={{
+              flex: 1,
+              width: "100%",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: -40,
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+                zIndex: -1,
+                width: "80%",
+                height: "80%",
+              }}
+            >
+              <Image
+                style={{ resizeMode: "contain", width: "100%", height: "90%" }}
+                source={require("../../../assets/img/scotch/Tabou.png")}
+              />
+              <View style={{ position: "absolute", top: 60 }}>
+                <View
+                  style={{
+                    marginBottom: 20,
+                  }}
+                >
+                  <P2 font={"din"} color={"blue"}>
+                    Sans utiliser les mots :
+                  </P2>
+                </View>
+                <View
+                  style={{
+                    alignItems: "center",
+                  }}
+                >
+                  {renderForbidenWords()}
+                </View>
+              </View>
             </View>
           </View>
           <MainBtn
@@ -133,28 +203,28 @@ const Tabou = (props) => {
             onPress={() => {
               setStep(1);
               setWin(true);
+              navigation.navigate("EndGame", {
+                title: "EndGame",
+              });
             }}
           />
         </View>
       );
     }
   } else {
-    return(
-    <View>
-      {step == 0 && (
-        <>
-          <Text>Tu fait partie de l'équipe Gang Bang</Text>
-          <Text>A toi de faire deviner un mot</Text>
-          <Button
-            title=">"
-            onPress={() => {
-              setStep(1);
-            }}
-          />
-        </>
-      )}
-      {step > 0 && (
-        <>
+    setBackGround(require("../../../assets/img/backgrounds/Groupe2.png"));
+    return (
+      <View
+        style={{
+          flex: 1,
+        }}
+      >
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+          }}
+        >
           <Chrono
             duration={step == 1 ? 30 : 0}
             onFinish={
@@ -162,28 +232,139 @@ const Tabou = (props) => {
                 ? () => {
                     setStep(2);
                     setWin(false);
+                    navigation.navigate("EndGame", {
+                      title: "EndGame",
+                    });
                   }
                 : () => {}
             }
           />
-          {step == 1 ? (
-            <Title1 onRight content={"Devine le safe word"} />
-          ) : (
-            <TitleWithContent>
-              <P1>Valide le safe word</P1>
-              <Input />
-            </TitleWithContent>
-          )}
+        </View>
+        <View
+          style={{
+            flex: 2,
+            justifyContent: "flex-end",
+          }}
+        >
+          <TitleWithContent onRight>
+            <View
+              style={{
+                width: "100%",
+                alignItems: "center",
+                lineHeight: 2,
+                left: -70,
+                marginTop: -15,
+              }}
+            >
+              <View
+                styles={{
+                  top: 100,
+                  position: "relative",
+                }}
+              >
+                <P1 font={"maim"} color={"white"}>
+                  Valide le safe word
+                </P1>
+              </View>
+            </View>
+            <View />
+          </TitleWithContent>
+        </View>
+        <View
+          style={{
+            flex: 2,
+            justifyContent: "flex-start",
+            alignItems: "center",
+            marginTop: -40,
+          }}
+        >
+          <Input
+            placeholder="Safe Word"
+            onChangeText={() => {
+              setSuccess(true);
+            }}
+            defaultValue={""}
+          />
+        </View>
+
+        <View
+          style={{
+            flex: 1,
+          }}
+        >
           <MainBtn
             content="Trouvé !"
             onPress={() => {
               setStep(2);
               setWin(true);
+              navigation.navigate("EndGame", {
+                title: "EndGame",
+              });
             }}
           />
-        </>
-      )}
-    </View>)
+        </View>
+      </View>
+      // <View>
+      //   {/* {step == 0 && (
+      //     <>
+      //       <View
+      //         style={{
+      //           alignItems: "center",
+      //           justifyContent: "center",
+      //           top: -100,
+      //         }}
+      //       >
+      //         <View style={{ marginBottom: -80, zIndex: 2 }}>
+      //           <Chrono duration={1} onFinish={() => {}} />
+      //         </View>
+      //         <BigTitle
+      //           content="Gang Bang"
+      //           upperContent="Tu fait partie de l'équipe"
+      //           consigne="Devine le mot"
+      //         />
+      //         <View style={{ marginTop: 100 }}>
+      //           <NextBtn
+      //             onPress={() => {
+      //               setStep(1);
+      //             }}
+      //           />
+      //         </View>
+      //       </View>
+      //     </>
+      //   )}
+      //   {step > 0 && ( */}
+      //   <Chrono
+      //     duration={step == 1 ? 30 : 0}
+      //     onFinish={
+      //       step == 1
+      //         ? () => {
+      //             setStep(2);
+      //             setWin(false);
+      //             navigation.navigate("EndGame", {
+      //               title: "EndGame",
+      //             });
+      //           }
+      //         : () => {}
+      //     }
+      //   />
+
+      //   <TitleWithContent>
+      //     <P1>Valide le safe word</P1>
+      //     <Input />
+      //   </TitleWithContent>
+      //   <MainBtn
+      //     content="Trouvé !"
+      //     onPress={() => {
+      //       setStep(2);
+      //       setWin(true);
+      //       navigation.navigate("EndGame", {
+      //         title: "EndGame",
+      //       });
+      //     }}
+      //   />
+      //   {/* )} */}
+      // </View>
+    );
   }
 };
 

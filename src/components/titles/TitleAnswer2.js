@@ -4,10 +4,9 @@ import { AppLoading } from "expo";
 import * as Font from "expo-font";
 
 let customFonts = {
-  DIN_Regular: require("../../assets/fonts/Din/regular/D-DIN.ttf"),
+  DINDIN: require("../../assets/fonts/Din/regular/D-DIN.ttf"),
   DIN_Bold: require("../../assets/fonts/Din/bold/D-DIN-Bold.ttf"),
 };
-
 export default class TitleQuestion extends React.Component {
   constructor(props) {
     super(props);
@@ -51,19 +50,22 @@ const styles = StyleSheet.create({
     width: "100%",
     zIndex: 10,
     marginRight: 25,
+    // backgroundColor:"green",
+    marginTop: -15,
   },
   image: {
     width: "89%",
     height: 75,
   },
   text: {
-    fontFamily: "DIN_Regular",
+    fontFamily: "DINDIN",
     textAlign: "center",
     textTransform: "uppercase",
     fontSize: 15,
     color: "#0F0EDD",
     position: "absolute",
-    paddingBottom: 15,
+    paddingBottom: 28,
+    paddingTop: 12,
   },
   text2: {
     fontFamily: "DIN_Bold",
@@ -72,6 +74,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#0F0EDD",
     position: "absolute",
-    paddingTop: 25,
+    paddingTop: 12,
+    width: "60%",
   },
 });

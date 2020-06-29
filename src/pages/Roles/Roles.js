@@ -35,14 +35,14 @@ let Roles = ({ navigation, setBackGround }) => {
       console.log(
         "meeeeee",
         character.cardRole.job,
-        character.cardRole.job == "Masseure.se"
+        character.cardRole.job == "Masseur.se"
       );
       if (pressCount >= 3) {
         console.log("aefezbhfr");
         if (character.cardRole.job == "Plombier.e") {
           setBackGround(require("../../assets/img/backgrounds/Plombier.png"));
         }
-        if (character.cardRole.job == "Masseure.se") {
+        if (character.cardRole.job == "Masseur.se") {
           setBackGround(require("../../assets/img/backgrounds/Masseur.png"));
         }
       }
@@ -97,9 +97,11 @@ let Roles = ({ navigation, setBackGround }) => {
               <H3 font={"maim"} color={"white"}>
                 tu es ...
               </H3>
-              <H2 font={"maim"} color={"white"}>
-                {character.cardRole && character.cardRole.job}
-              </H2>
+              <View style={{ marginTop: -14 }}>
+                <H2 font={"maim"} color={"white"}>
+                  {character.cardRole && character.cardRole.job}
+                </H2>
+              </View>
             </TitleWithContent>
           </View>
         </>

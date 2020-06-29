@@ -5,7 +5,7 @@ import { Accelerometer } from "expo-sensors";
 
 import useSocket from "../../../App/Socket/useSocket";
 import TitleWithContent from "../../../components/titles/TitleWithContent";
-import { P1, P2, P3 } from "../../../components/Paragraph/Paragraph";
+import { P1, P2, P3, PHeader } from "../../../components/Paragraph/Paragraph";
 import NextButton from "../../../components/btn/NextBtn.js";
 
 import { GLView, Asset } from "expo-gl";
@@ -37,31 +37,46 @@ let ShakeVue = ({ navigation, setBackGround }) => {
       >
         <View
           style={{
-            marginTop: -100,
             justifyContent: "center",
             alignItems: "center",
             transform: [{ rotate: "-5deg" }],
+            marginTop: 60,
+            marginBottom: 30,
           }}
         >
+          <Text>{character.cardRole.genre}</Text>
           <TitleWithContent onRight>
             {character.cardRole.genre == "h" && (
               <View style={{ justifyContent: "center", alignItems: "center" }}>
                 <P1 font={"maim"} color={"white"}>
-                  SECOUE TON TELEPHONE
+                  SeCOUe TON TeLePHONe
                 </P1>
-                <P3 font={"maim"} color={"white"}>
+                <PHeader font={"maim"} color={"white"}>
                   POUR FINIR
-                </P3>
+                </PHeader>
               </View>
             )}
             {character.cardRole.genre == "f" && (
-              <View style={{ justifyContent: "center", alignItems: "center" }}>
-                <P1 font={"maim"} color={"white"}>
-                  CARESSE TON ECRAN
-                </P1>
-                <P3 font={"maim"} color={"white"}>
-                  POUR FINIR
-                </P3>
+              <View
+                style={{
+                  justifyContent: "left",
+                  alignItems: "left",
+                }}
+              >
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                    width: "55%",
+                  }}
+                >
+                  <P1 font={"maim"} color={"white"}>
+                    CAReSSe TON ÉCRAN
+                  </P1>
+                  <PHeader font={"maim"} color={"white"}>
+                    pour finir
+                  </PHeader>
+                </View>
               </View>
             )}
           </TitleWithContent>

@@ -16,7 +16,7 @@ const questions = [
       'Sextoy et censure, une histoire qui dure. La pornographie mainstream a tendance à vulgariser les sextoys comme des objets malsains. Pourtant que ça soit en seul.le ou avec votre partenaire, il y en a pour tous les goûts, tous les plaisirs.',
   },
   {
-    content: 'enfait... ',
+    // content: 'enfait... ',
     content2: 'tous ces acteurs sont connus pour leur vidéos #amateur',
     paragraph:
       'Avec le succès fulgurant du #Amateur, les “anonymes” ne sont plus les seuls à profiter de ce label. On parle aujourd’hui de vidéos Pro-Am et AmatUer.',
@@ -33,7 +33,7 @@ const questions = [
   },
   {
     content: 'le safe word est',
-    content2: 'mot',
+    content2: 'Sodomie',
     paragraph:
       'Cette pratique alors vue comme hardcore il y a quelques années, est aujourd’hui banalisée et est fréquemment associée à la catégorie amateur.',
     pornews:
