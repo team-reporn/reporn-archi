@@ -153,6 +153,7 @@ export default () => {
                             style={{
                               alignItems: 'center',
                               justifyContent: 'center',
+                              marginTop: 30,
                             }}
                           >
                             <PHeader font={'maim'} color={'blue'}>
@@ -191,6 +192,7 @@ export default () => {
                           style={{
                             alignItems: 'center',
                             justifyContent: 'center',
+                            marginTop: 30,
                           }}
                         >
                           <PHeader font={'maim'} color={'blue'}>
@@ -245,6 +247,7 @@ export default () => {
                           style={{
                             alignItems: 'center',
                             justifyContent: 'center',
+                            marginTop: 30,
                           }}
                         >
                           <PHeader font={'maim'} color={'blue'}>
@@ -283,7 +286,7 @@ export default () => {
                         title={
                           <View
                             style={{
-                              marginTop: 10,
+                              marginTop: 30,
                               alignItems: 'center',
                               justifyContent: 'center',
                             }}
@@ -354,6 +357,7 @@ export default () => {
                             style={{
                               alignItems: 'center',
                               justifyContent: 'center',
+                              marginTop: 30,
                             }}
                           >
                             <PHeader font={'maim'} color={'blue'}>
@@ -468,6 +472,7 @@ export default () => {
                             style={{
                               alignItems: 'center',
                               justifyContent: 'center',
+                              marginTop: 30,
                             }}
                           >
                             <PHeader font={'maim'} color={'blue'}>

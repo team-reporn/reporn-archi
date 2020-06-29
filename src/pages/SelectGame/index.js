@@ -96,7 +96,7 @@ export default ({ navigation, setBackGround }) => {
             justifyContent: 'center',
           }}
         >
-          <View style={{ marginTop: -30, zIndex: 2 }}>
+          <View style={{ marginTop: -45, zIndex: 2 }}>
             <Chrono duration={1} onFinish={() => {}} />
           </View>
           <BigTitle
