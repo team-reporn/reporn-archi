@@ -4,7 +4,7 @@ import useSocket from "../../../App/Socket/useSocket";
 
 import TitleQuestion from "../../../components/titles/TitleQuestion";
 import MainBtn from "../../../components/btn/MainBtn";
-
+import Chrono from "../../../components/Chrono";
 import culture from "../../../contents/cultureData";
 
 const styles = StyleSheet.create({
@@ -32,16 +32,16 @@ const Quiz = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Chrono
-        duration={30}
-        onFinish={() => {
-          setStep(1);
-          setWin(false);
-          navigation.navigate("EndGame", {
-            title: "EndGame",
-          });
-        }}
-      />
+      <View style={{ backgroundColor: "red", flex: 1, marginBottom:-30 }}>
+        <Chrono
+          duration={3}
+          onFinish={() => {
+            navigation.navigate("EndGame", {
+              title: "EndGame",
+            });
+          }}
+        />
+      </View>
       <TitleQuestion taille1 content={question.question} />
       <View style={styles.buttons}>
         <MainBtn

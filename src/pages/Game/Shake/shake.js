@@ -114,7 +114,7 @@ let ShakeVue = ({ navigation, setBackGround }) => {
           }}
         >
           <Chrono
-            duration={3}
+            duration={30}
             onFinish={() => {
               setStep(2);
               if (character.cardRole.genre == "h") {
