@@ -25,7 +25,7 @@ let getAnswerfromGame = ({ game }) => {
       break
 
     case 'cultureQ':
-      return QuestionIndex ? 0 : 3
+      return QuestionIndex ? 3 : 0
       break
 
     case 'acteurX':

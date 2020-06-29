@@ -15,12 +15,14 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true
-    },
     "android": {
       "package": "com.gobelins.reporn",
       "versionCode": 1
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.gobelins.reporn",
+      "buildNumber": "1.0.0"
     }
   }
 }
