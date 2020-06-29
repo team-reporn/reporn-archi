@@ -35,14 +35,14 @@ let Roles = ({ navigation, setBackGround }) => {
       console.log(
         "meeeeee",
         character.cardRole.job,
-        character.cardRole.job == "Masseure.se"
+        character.cardRole.job == "Masseur.se"
       );
       if (pressCount >= 3) {
         console.log("aefezbhfr");
         if (character.cardRole.job == "Plombier.e") {
           setBackGround(require("../../assets/img/backgrounds/Plombier.png"));
         }
-        if (character.cardRole.job == "Masseure.se") {
+        if (character.cardRole.job == "Masseur.se") {
           setBackGround(require("../../assets/img/backgrounds/Masseur.png"));
         }
       }

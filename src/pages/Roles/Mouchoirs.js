@@ -24,7 +24,7 @@ let Mouchoirs = ({ count, cardRole }) => {
           />
           <View style={{ position: "absolute" }}>
             <P2 font={"maim"} color={"blue"}>
-              {cardRole.genre}
+              {cardRole.genre == "f" ? "femme" : "homme"}
             </P2>
           </View>
         </View>

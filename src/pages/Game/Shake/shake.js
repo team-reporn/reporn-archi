@@ -44,11 +44,12 @@ let ShakeVue = ({ navigation, setBackGround }) => {
             marginBottom: 30,
           }}
         >
+          <Text>{character.cardRole.genre}</Text>
           <TitleWithContent onRight>
             {character.cardRole.genre == "h" && (
               <View style={{ justifyContent: "center", alignItems: "center" }}>
                 <P1 font={"maim"} color={"white"}>
-                  SECOUE TON TELEPHONE
+                  SeCOUe TON TeLePHONe
                 </P1>
                 <PHeader font={"maim"} color={"white"}>
                   POUR FINIR

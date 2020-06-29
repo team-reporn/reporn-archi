@@ -33,7 +33,7 @@ const questions = [
   },
   {
     content: 'le safe word est',
-    content2: 'mot',
+    content2: 'Sodomie',
     paragraph:
       'Cette pratique alors vue comme hardcore il y a quelques années, est aujourd’hui banalisée et est fréquemment associée à la catégorie amateur.',
     pornews:

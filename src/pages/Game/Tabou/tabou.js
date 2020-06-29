@@ -30,8 +30,14 @@ let setLoaded = () => {
   isLoaded = true;
 };
 
-const Tabou = (props) => {
-  const { roomInfo, getRoomInfo, setRoomInfo, startGame } = useSocket();
+const Tabou = ({ navigation, props, setBackGround }) => {
+  const {
+    roomInfo,
+    getRoomInfo,
+    setRoomInfo,
+    startGame,
+    setSuccess,
+  } = useSocket();
 
   const [step, setStep] = useState(0);
   const [win, setWin] = useState(false);
@@ -68,7 +74,8 @@ const Tabou = (props) => {
     return result;
   };
 
-  if (roomInfo.role !== "owner") {
+  if (roomInfo.role != "owner") {
+    setBackGround(require("../../../assets/img/backgrounds/Groupe1.png"));
     if (step == 0) {
       return (
         <View
@@ -110,6 +117,9 @@ const Tabou = (props) => {
               onFinish={() => {
                 setStep(1);
                 setWin(false);
+                navigation.navigate("EndGame", {
+                  title: "EndGame",
+                });
               }}
             />
           </View>
@@ -188,68 +198,172 @@ const Tabou = (props) => {
               </View>
             </View>
           </View>
-          <View
-            style={{
-              marginBottom: 80,
+          <MainBtn
+            content="Trouvé !"
+            onPress={() => {
+              setStep(1);
+              setWin(true);
+              navigation.navigate("EndGame", {
+                title: "EndGame",
+              });
             }}
-          >
-            <MainBtn
-              content="Trouvé !"
-              onPress={() => {
-                setStep(1);
-                setWin(true);
-              }}
-            />
-          </View>
+          />
         </View>
       );
     }
   } else {
+    setBackGround(require("../../../assets/img/backgrounds/Groupe2.png"));
     return (
-      <View>
-        {step == 0 && (
-          <>
-            <Text>Tu fait partie de l'équipe Gang Bang</Text>
-            <Text>A toi de faire deviner un mot</Text>
-            <Button
-              title=">"
-              onPress={() => {
-                setStep(1);
+      <View
+        style={{
+          flex: 1,
+        }}
+      >
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+          }}
+        >
+          <Chrono
+            duration={step == 1 ? 30 : 0}
+            onFinish={
+              step == 1
+                ? () => {
+                    setStep(2);
+                    setWin(false);
+                    navigation.navigate("EndGame", {
+                      title: "EndGame",
+                    });
+                  }
+                : () => {}
+            }
+          />
+        </View>
+        <View
+          style={{
+            flex: 2,
+            justifyContent: "flex-end",
+          }}
+        >
+          <TitleWithContent onRight>
+            <View
+              style={{
+                width: "100%",
+                alignItems: "center",
+                lineHeight: 2,
+                left: -70,
+                marginTop: -15,
               }}
-            />
-          </>
-        )}
-        {step > 0 && (
-          <>
-            <Chrono
-              duration={step == 1 ? 30 : 0}
-              onFinish={
-                step == 1
-                  ? () => {
-                      setStep(2);
-                      setWin(false);
-                    }
-                  : () => {}
-              }
-            />
-            {step == 1 ? (
-              <Title1 onRight content={"Devine le safe word"} />
-            ) : (
-              <TitleWithContent>
-                <P1>Valide le safe word</P1>
-                <Input />
-              </TitleWithContent>
-            )}
-            <MainBtn
-              content="Trouvé !"
-              onPress={() => {
-                setStep(2);
-                setWin(true);
-              }}
-            />
-          </>
-        )}
+            >
+              <View
+                styles={{
+                  top: 100,
+                  position: "relative",
+                }}
+              >
+                <P1 font={"maim"} color={"white"}>
+                  Valide le safe word
+                </P1>
+              </View>
+            </View>
+            <View />
+          </TitleWithContent>
+        </View>
+        <View
+          style={{
+            flex: 2,
+            justifyContent: "flex-start",
+            alignItems: "center",
+            marginTop: -40,
+          }}
+        >
+          <Input
+            placeholder="Safe Word"
+            onChangeText={() => {
+              setSuccess(true);
+            }}
+            defaultValue={""}
+          />
+        </View>
+
+        <View
+          style={{
+            flex: 1,
+          }}
+        >
+          <MainBtn
+            content="Trouvé !"
+            onPress={() => {
+              setStep(2);
+              setWin(true);
+              navigation.navigate("EndGame", {
+                title: "EndGame",
+              });
+            }}
+          />
+        </View>
       </View>
+      // <View>
+      //   {/* {step == 0 && (
+      //     <>
+      //       <View
+      //         style={{
+      //           alignItems: "center",
+      //           justifyContent: "center",
+      //           top: -100,
+      //         }}
+      //       >
+      //         <View style={{ marginBottom: -80, zIndex: 2 }}>
+      //           <Chrono duration={1} onFinish={() => {}} />
+      //         </View>
+      //         <BigTitle
+      //           content="Gang Bang"
+      //           upperContent="Tu fait partie de l'équipe"
+      //           consigne="Devine le mot"
+      //         />
+      //         <View style={{ marginTop: 100 }}>
+      //           <NextBtn
+      //             onPress={() => {
+      //               setStep(1);
+      //             }}
+      //           />
+      //         </View>
+      //       </View>
+      //     </>
+      //   )}
+      //   {step > 0 && ( */}
+      //   <Chrono
+      //     duration={step == 1 ? 30 : 0}
+      //     onFinish={
+      //       step == 1
+      //         ? () => {
+      //             setStep(2);
+      //             setWin(false);
+      //             navigation.navigate("EndGame", {
+      //               title: "EndGame",
+      //             });
+      //           }
+      //         : () => {}
+      //     }
+      //   />
+
+      //   <TitleWithContent>
+      //     <P1>Valide le safe word</P1>
+      //     <Input />
+      //   </TitleWithContent>
+      //   <MainBtn
+      //     content="Trouvé !"
+      //     onPress={() => {
+      //       setStep(2);
+      //       setWin(true);
+      //       navigation.navigate("EndGame", {
+      //         title: "EndGame",
+      //       });
+      //     }}
+      //   />
+      //   {/* )} */}
+      // </View>
     );
   }
 };
