@@ -101,7 +101,10 @@ let ShakeVue = ({ navigation, setBackGround }) => {
           <Chrono
             duration={3}
             onFinish={() => {
-              setStep(2);
+              // setStep(2);
+              navigation.navigate('Achievement', {
+                title: 'Achievement',
+              })
               if (character.cardRole.genre == "h") {
                 setBackGround(require("./Award.png"));
               }
@@ -114,12 +117,12 @@ let ShakeVue = ({ navigation, setBackGround }) => {
       </View>
     );
   }
-  if (step == 2) {
-    return <Award setStep={setStep} />;
-  }
-  if (step == 3) {
-    return <Exploit navigation={navigation} setBackGround={setBackGround} />;
-  }
+  // if (step == 2) {
+  //   return <Award setStep={setStep} />;
+  // }
+  // if (step == 3) {
+  //   return <Exploit navigation={navigation} setBackGround={setBackGround} />;
+  // }
 };
 
 export default ShakeVue;

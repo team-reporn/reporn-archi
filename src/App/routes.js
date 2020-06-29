@@ -45,24 +45,6 @@ export default () => {
             headerShown: false,
           }}
         >
-                    <Stack.Screen name="Futur">
-            {(props) => {
-              return (
-                <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
-                  style={styles.background}
-                >
-                  <View style={styles.header}>
-                    <MainHeader />
-                  </View>
-                  <View style={styles.content}>
-                    <Futur {...props} />
-                  </View>
-                </ImageBackground>
-              );
-            }}
-          </Stack.Screen>
-          
           <Stack.Screen name="Home">
             {(props) => {
               return (

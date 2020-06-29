@@ -16,6 +16,12 @@ let customFonts = {
   DIN: require("../../assets/fonts/Din/bold/D-DIN-Bold.ttf"),
 };
 
+let isLoaded = false;
+
+let setLoaded = () => {
+  isLoaded = true;
+};
+
 let Achievement = ({ navigation }) => {
   const { character, roomInfo } = useSocket();
   const [step, setStep] = useState(0)
