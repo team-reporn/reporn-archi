@@ -1,40 +1,40 @@
-import React, { useState } from "react";
-import { View, ImageBackground, StyleSheet, Text, Button } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import React, { useState } from 'react'
+import { View, ImageBackground, StyleSheet, Text, Button } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
-import { P1, PHeader, P3 } from "../components/Paragraph/Paragraph";
+import { P1, PHeader, P3 } from '../components/Paragraph/Paragraph'
 
-import Socket from "./Socket";
-import useSocket from "./Socket/useSocket";
+import Socket from './Socket'
+import useSocket from './Socket/useSocket'
 
-import Room from "../pages/Room";
-import JoinRoom from "../pages/JoinRoom";
+import Room from '../pages/Room'
+import JoinRoom from '../pages/JoinRoom'
 
-import Home from "../pages/Home";
-import Login from "../pages/Login";
-import SelectGame from "../pages/SelectGame";
-import EndGame from "../pages/EndGame";
+import Home from '../pages/Home'
+import Login from '../pages/Login'
+import SelectGame from '../pages/SelectGame'
+import EndGame from '../pages/EndGame'
 
-import Roles from "../pages/Roles";
-import Theme from "../pages/Theme";
-import Achievement from "../pages/Achievement";
-import Futur from "../pages/Futur";
-import PlayAgain from "../pages/PlayAgain";
+import Roles from '../pages/Roles'
+import Theme from '../pages/Theme'
+import Achievement from '../pages/Achievement'
+import Futur from '../pages/Futur'
+import PlayAgain from '../pages/PlayAgain'
 
-import Quizz from "../pages/Game/Quizz";
-import Tabou from "../pages/Game/Tabou";
-import Shake from "../pages/Game/Shake";
-import Wiwaldo from "../pages/Game/Wiwaldo";
-import ActeurX from "../pages/Game/ActeurX";
+import Quizz from '../pages/Game/Quizz'
+import Tabou from '../pages/Game/Tabou'
+import Shake from '../pages/Game/Shake'
+import Wiwaldo from '../pages/Game/Wiwaldo'
+import ActeurX from '../pages/Game/ActeurX'
 
-import GameHeader from "../components/headers/GameHeader";
-import MainHeader from "../components/headers/MainHeader";
+import GameHeader from '../components/headers/GameHeader'
+import MainHeader from '../components/headers/MainHeader'
 
-const Stack = createStackNavigator();
-let caresse = require("../pages/Game/Shake/OffCaresse.png");
-let off = require("../pages/Game/Shake/Off.png");
-const backgrounds = { caresse, off };
+const Stack = createStackNavigator()
+let caresse = require('../pages/Game/Shake/OffCaresse.png')
+let off = require('../pages/Game/Shake/Off.png')
+const backgrounds = { caresse, off }
 
 export default () => {
   return (
@@ -49,7 +49,7 @@ export default () => {
             {(props) => {
               return (
                 <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
+                  source={require('../assets/img/backgrounds/Home.png')}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -60,7 +60,7 @@ export default () => {
                     <Home {...props} />
                   </View>
                 </ImageBackground>
-              );
+              )
             }}
           </Stack.Screen>
           {/* <Stack.Screen name="Achievement">
@@ -84,7 +84,7 @@ export default () => {
             {(props) => {
               return (
                 <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
+                  source={require('../assets/img/backgrounds/Home.png')}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -94,14 +94,14 @@ export default () => {
                     <Login {...props} />
                   </View>
                 </ImageBackground>
-              );
+              )
             }}
           </Stack.Screen>
           <Stack.Screen name="Room">
             {(props) => {
               return (
                 <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
+                  source={require('../assets/img/backgrounds/Home.png')}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -111,14 +111,14 @@ export default () => {
                     <Room {...props} />
                   </View>
                 </ImageBackground>
-              );
+              )
             }}
           </Stack.Screen>
           <Stack.Screen name="JoinRoom">
             {(props) => {
               return (
                 <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
+                  source={require('../assets/img/backgrounds/Home.png')}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -128,16 +128,16 @@ export default () => {
                     <JoinRoom {...props} />
                   </View>
                 </ImageBackground>
-              );
+              )
             }}
           </Stack.Screen>
           <Stack.Screen name="SelectGame">
             {(props) => {
               let Comp = () => {
-                const { game, character } = useSocket();
+                const { game, character } = useSocket()
                 const [background, setBackGround] = useState(
-                  require("../assets/img/backgrounds/Home.png")
-                );
+                  require('../assets/img/backgrounds/Home.png')
+                )
 
                 return (
                   <ImageBackground
@@ -156,10 +156,10 @@ export default () => {
                               marginTop: 30,
                             }}
                           >
-                            <PHeader font={"maim"} color={"blue"}>
+                            <PHeader font={'maim'} color={'blue'}>
                               {`${game.theme} 0${game.round.laps}/06`}
                             </PHeader>
-                            <PHeader font={"maim"} color={"blue"}>
+                            <PHeader font={'maim'} color={'blue'}>
                               {`${game.game}`}
                             </PHeader>
                           </View>
@@ -170,17 +170,17 @@ export default () => {
                       <SelectGame {...props} setBackGround={setBackGround} />
                     </View>
                   </ImageBackground>
-                );
-              };
-              return <Comp />;
+                )
+              }
+              return <Comp />
             }}
           </Stack.Screen>
           <Stack.Screen name="Quizz">
             {(props) => {
-              const { game } = useSocket();
+              const { game } = useSocket()
               return (
                 <ImageBackground
-                  source={require("../assets/img/backgrounds/Question1.png")}
+                  source={require('../assets/img/backgrounds/Question1.png')}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -195,10 +195,10 @@ export default () => {
                             marginTop: 30,
                           }}
                         >
-                          <PHeader font={"maim"} color={"blue"}>
+                          <PHeader font={'maim'} color={'blue'}>
                             {`${game.theme} 0${game.round.laps}/06`}
                           </PHeader>
-                          <PHeader font={"maim"} color={"blue"}>
+                          <PHeader font={'maim'} color={'blue'}>
                             {`${game.game}`}
                           </PHeader>
                         </View>
@@ -209,14 +209,14 @@ export default () => {
                     <Quizz {...props} />
                   </View>
                 </ImageBackground>
-              );
+              )
             }}
           </Stack.Screen>
           <Stack.Screen name="Futur">
             {(props) => {
               return (
                 <ImageBackground
-                  source={require("../assets/img/backgrounds/Au_Dela.png")}
+                  source={require('../assets/img/backgrounds/Au_Dela.png')}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -226,59 +226,59 @@ export default () => {
                     <Futur {...props} />
                   </View>
                 </ImageBackground>
-              );
+              )
             }}
           </Stack.Screen>
           <Stack.Screen name="ActeurX">
             {(props) => {
               let Comp = () => {
-                const { game, character } = useSocket();
+                const { game, character } = useSocket()
                 const [background, setBackGround] = useState(
-                  require("../assets/img/backgrounds/Home.png")
-                );
+                  require('../assets/img/backgrounds/Home.png')
+                )
 
-              return (
-                <ImageBackground
-                  source={require('../assets/img/backgrounds/Qui.png')}
-                  style={styles.background}
-                >
-                  <View style={styles.header}>
-                    <MainHeader
-                      param
-                      back
-                      title={
-                        <View
-                          style={{
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            marginTop: 30,
-                          }}
-                        >
-                          <PHeader font={'maim'} color={'blue'}>
-                            {`${game.theme} 0${game.round.laps}/06`}
-                          </PHeader>
-                          <PHeader font={'maim'} color={'blue'}>
-                            {`${game.game}`}
-                          </PHeader>
-                        </View>
-                      }
-                    />
-                  </View>
+                return (
+                  <ImageBackground
+                    source={require('../assets/img/backgrounds/Qui.png')}
+                    style={styles.background}
+                  >
+                    <View style={styles.header}>
+                      <MainHeader
+                        param
+                        back
+                        title={
+                          <View
+                            style={{
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              marginTop: 30,
+                            }}
+                          >
+                            <PHeader font={'maim'} color={'blue'}>
+                              {`${game.theme} 0${game.round.laps}/06`}
+                            </PHeader>
+                            <PHeader font={'maim'} color={'blue'}>
+                              {`${game.game}`}
+                            </PHeader>
+                          </View>
+                        }
+                      />
+                    </View>
 
                     <View style={styles.content}>
                       <ActeurX {...props} />
                     </View>
                   </ImageBackground>
-                );
-              };
-              return <Comp />;
+                )
+              }
+              return <Comp />
             }}
           </Stack.Screen>
           <Stack.Screen name="Shake">
             {(props) => {
               let Comp = () => {
-                const { game, character } = useSocket();
-                const [background, setBackGround] = useState(backgrounds.off);
+                const { game, character } = useSocket()
+                const [background, setBackGround] = useState(backgrounds.off)
 
                 return (
                   <ImageBackground
@@ -290,20 +290,9 @@ export default () => {
                         param
                         back
                         title={
-                          <View
-                            style={{
-                              marginTop: 30,
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                            }}
-                          >
-                            <PHeader font={"maim"} color={"blue"}>
-                              {`${game.theme} 0${game.round.laps}/06`}
-                            </PHeader>
-                            <PHeader font={"maim"} color={"blue"}>
-                              {`ho oui!`}
-                            </PHeader>
-                          </View>
+                          <P1 font={'maim'} color={'blue'}>
+                            {game.theme}
+                          </P1>
                         }
                       />
                     </View>
@@ -311,18 +300,18 @@ export default () => {
                       <Shake {...props} setBackGround={setBackGround} />
                     </View>
                   </ImageBackground>
-                );
-              };
-              return <Comp />;
+                )
+              }
+              return <Comp />
             }}
           </Stack.Screen>
           <Stack.Screen name="Roles">
             {(props) => {
               let Comp = () => {
-                const { game, character } = useSocket();
+                const { game, character } = useSocket()
                 const [background, setBackGround] = useState(
-                  require("../assets/img/backgrounds/Perso.png")
-                );
+                  require('../assets/img/backgrounds/Perso.png')
+                )
 
                 return (
                   <ImageBackground
@@ -336,18 +325,18 @@ export default () => {
                       <Roles {...props} setBackGround={setBackGround} />
                     </View>
                   </ImageBackground>
-                );
-              };
-              return <Comp />;
+                )
+              }
+              return <Comp />
             }}
           </Stack.Screen>
           <Stack.Screen name="EndGame">
             {(props) => {
               let Comp = () => {
-                const { game, character } = useSocket();
+                const { game, character } = useSocket()
                 const [background, setBackGround] = useState(
-                  require("../assets/img/backgrounds/Perso.png")
-                );
+                  require('../assets/img/backgrounds/Perso.png')
+                )
 
                 return (
                   <ImageBackground
@@ -366,10 +355,10 @@ export default () => {
                               marginTop: 30,
                             }}
                           >
-                            <PHeader font={"maim"} color={"blue"}>
+                            <PHeader font={'maim'} color={'blue'}>
                               {`${game.theme} 0${game.round.laps}/06`}
                             </PHeader>
-                            <PHeader font={"maim"} color={"blue"}>
+                            <PHeader font={'maim'} color={'blue'}>
                               {`${game.game}`}
                             </PHeader>
                           </View>
@@ -380,16 +369,16 @@ export default () => {
                       <EndGame {...props} setBackGround={setBackGround} />
                     </View>
                   </ImageBackground>
-                );
-              };
-              return <Comp />;
+                )
+              }
+              return <Comp />
             }}
           </Stack.Screen>
           <Stack.Screen name="Theme">
             {(props) => {
               return (
                 <ImageBackground
-                  source={require("../assets/backgrounds/Categorie.png")}
+                  source={require('../assets/backgrounds/Categorie.png')}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -399,14 +388,14 @@ export default () => {
                     <Theme {...props} />
                   </View>
                 </ImageBackground>
-              );
+              )
             }}
           </Stack.Screen>
           <Stack.Screen name="Achievement">
             {(props) => {
               return (
                 <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
+                  source={require('../assets/img/backgrounds/Home.png')}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -416,7 +405,7 @@ export default () => {
                     <Achievement {...props} />
                   </View>
                 </ImageBackground>
-              );
+              )
             }}
           </Stack.Screen>
 
@@ -424,7 +413,7 @@ export default () => {
             {(props) => {
               return (
                 <ImageBackground
-                  source={require("../assets/img/backgrounds/Home.png")}
+                  source={require('../assets/img/backgrounds/Home.png')}
                   style={styles.background}
                 >
                   <View style={styles.header}>
@@ -434,15 +423,15 @@ export default () => {
                     <PlayAgain {...props} />
                   </View>
                 </ImageBackground>
-              );
+              )
             }}
           </Stack.Screen>
           <Stack.Screen name="Wiwaldo">
             {(props) => {
-              const { game } = useSocket();
+              const { game } = useSocket()
               return (
                 <ImageBackground
-                  source={require("../assets/img/backgrounds/Wiwaldo.png")}
+                  source={require('../assets/img/backgrounds/Wiwaldo.png')}
                   style={styles.background}
                   resizeMode="cover"
                 >
@@ -453,16 +442,16 @@ export default () => {
                     <Wiwaldo {...props} />
                   </View>
                 </ImageBackground>
-              );
+              )
             }}
           </Stack.Screen>
           <Stack.Screen name="Tabou">
             {(props) => {
               let Comp = () => {
-                const { game, character } = useSocket();
+                const { game, character } = useSocket()
                 const [background, setBackGround] = useState(
-                  require("../assets/img/backgrounds/Tabou.png")
-                );
+                  require('../assets/img/backgrounds/Tabou.png')
+                )
 
                 return (
                   <ImageBackground
@@ -481,10 +470,10 @@ export default () => {
                               marginTop: 30,
                             }}
                           >
-                            <PHeader font={"maim"} color={"blue"}>
+                            <PHeader font={'maim'} color={'blue'}>
                               {`${game.theme} 0${game.round.laps}/06`}
                             </PHeader>
-                            <PHeader font={"maim"} color={"blue"}>
+                            <PHeader font={'maim'} color={'blue'}>
                               {`${game.game}`}
                             </PHeader>
                           </View>
@@ -495,24 +484,24 @@ export default () => {
                       <Tabou {...props} setBackGround={setBackGround} />
                     </View>
                   </ImageBackground>
-                );
-              };
-              return <Comp />;
+                )
+              }
+              return <Comp />
             }}
           </Stack.Screen>
         </Stack.Navigator>
       </Socket>
     </NavigationContainer>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    resizeMode: "cover",
-    justifyContent: "flex-start",
-    flexDirection: "column",
+    resizeMode: 'cover',
+    justifyContent: 'flex-start',
+    flexDirection: 'column',
   },
   content: { flex: 7 },
   header: { flex: 1 },
-});
+})
