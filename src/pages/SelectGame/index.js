@@ -14,7 +14,7 @@ let getRoutesFromGameName = ({ game }) => {
         title: "Safe Word",
         subContent: "Aide ton partenaire à se souvenir de votre safe word",
         consigne: "L'un fait deviner un mot à l'autre",
-        background: require("../../assets/img/backgrounds/Tabou&Scotch.png"),
+        background: require("../../assets/img/backgrounds/Groupe2.png"),
       };
       break;
 
@@ -34,7 +34,7 @@ let getRoutesFromGameName = ({ game }) => {
         title: "Qui...?",
         subContent: "les apparences peuvent être trompeuses",
         consigne: "Touche la bonne réponse",
-        background: require("../../assets/img/backgrounds/QuiScotch.png"),
+        background: require("../../assets/img/backgrounds/Pierre.png"),
       };
       break;
 
@@ -84,12 +84,12 @@ export default ({ navigation, setBackGround }) => {
   const { game } = useSocket();
   useEffect(() => {
     console.log(
-      "mehheehhe",
+      "mehheehazerty",
       game.game,
       getRoutesFromGameName({ game: game.game }).background
     );
     setBackGround(getRoutesFromGameName({ game: game.game }).background);
-  }, []);
+  }, [game.game]);
   return (
     <View style={styles.container}>
       {pressed ? (
