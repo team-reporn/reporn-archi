@@ -30,7 +30,7 @@ const Quiz = ({ navigation }) => {
     <View style={styles.container}>
       <View style={{ flex: 1, marginBottom: -30, marginTop: 50 }}>
         <Chrono
-          duration={10}
+          duration={20}
           onFinish={() => {
             navigation.navigate("EndGame", {
               title: "EndGame",

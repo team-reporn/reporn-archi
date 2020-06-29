@@ -102,7 +102,7 @@ export default ({ navigation, setBackGround }) => {
           }}
         >
           <View style={{ marginTop: -45, zIndex: 2 }}>
-            <Chrono duration={0} onFinish={() => {}} />
+            <Chrono duration={1} onFinish={() => {}} />
           </View>
           <BigTitle
             content={getRoutesFromGameName({ game: game.game }).title}

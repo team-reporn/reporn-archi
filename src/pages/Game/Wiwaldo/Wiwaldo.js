@@ -101,7 +101,7 @@ const Wiwaldo = ({ navigation }) => {
         }}
       >
         <Chrono
-          duration={10}
+          duration={15}
           onFinish={() => {
             navigation.navigate('EndGame', {
               title: 'EndGame',
