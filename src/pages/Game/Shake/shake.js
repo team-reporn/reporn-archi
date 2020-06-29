@@ -44,16 +44,27 @@ let ShakeVue = ({ navigation, setBackGround }) => {
             marginBottom: 30,
           }}
         >
-          <Text>{character.cardRole.genre}</Text>
           <TitleWithContent onRight>
             {character.cardRole.genre == "h" && (
-              <View style={{ justifyContent: "center", alignItems: "center" }}>
-                <P1 font={"maim"} color={"white"}>
-                  SeCOUe TON TeLePHONe
-                </P1>
-                <PHeader font={"maim"} color={"white"}>
-                  POUR FINIR
-                </PHeader>
+              <View
+                style={{
+                  justifyContent: "center",
+                  alignItems: "flex-left",
+                }}
+              >
+                <View
+                  style={{
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <P1 font={"maim"} color={"white"}>
+                    SeCOUe TON TeLePHONe
+                  </P1>
+                  <PHeader font={"maim"} color={"white"}>
+                    POUR FINIR
+                  </PHeader>
+                </View>
               </View>
             )}
             {character.cardRole.genre == "f" && (
@@ -101,7 +112,7 @@ let ShakeVue = ({ navigation, setBackGround }) => {
   if (step == 1) {
     return (
       <View style={{ flex: 1 }}>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, position: "relative", zIndex: -10 }}>
           <BasicScene character={character} />
         </View>
         <View
@@ -114,7 +125,7 @@ let ShakeVue = ({ navigation, setBackGround }) => {
           }}
         >
           <Chrono
-            duration={30}
+            duration={10}
             onFinish={() => {
               setStep(2);
               if (character.cardRole.genre == "h") {

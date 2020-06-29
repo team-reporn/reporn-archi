@@ -86,7 +86,7 @@ const Tabou = ({ navigation, props, setBackGround }) => {
           }}
         >
           <View style={{ marginTop: 130, marginBottom: -105, zIndex: 2 }}>
-            <Chrono duration={1} onFinish={() => {}} />
+            <Chrono duration={0} onFinish={() => {}} />
           </View>
           <BigTitle
             content="Gang Bang"

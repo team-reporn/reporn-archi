@@ -14,7 +14,7 @@ let getRoutesFromGameName = ({ game }) => {
         title: "Safe Word",
         subContent: "Aide ton partenaire à se souvenir de votre safe word",
         consigne: "L'un fait deviner un mot à l'autre",
-        background: require("../../assets/img/backgrounds/Groupe2.png"),
+        background: require("../../assets/img/backgrounds/Groupe2Scotch.png"),
       };
       break;
 
@@ -102,7 +102,7 @@ export default ({ navigation, setBackGround }) => {
           }}
         >
           <View style={{ marginTop: -45, zIndex: 2 }}>
-            <Chrono duration={1} onFinish={() => {}} />
+            <Chrono duration={0} onFinish={() => {}} />
           </View>
           <BigTitle
             content={getRoutesFromGameName({ game: game.game }).title}
