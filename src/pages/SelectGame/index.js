@@ -1,72 +1,72 @@
 // in this, define all games and select one randomly - On button go select go to Quiz
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
-import useSocket from "../../App/Socket/useSocket";
-import NextButton from "../../components/btn/NextBtn.js";
-import BigTitle from "../../components/titles/BigTitle";
-import Chrono from "../../components/Chrono";
+import React, { useState, useEffect } from 'react'
+import { View, StyleSheet, Text, Image } from 'react-native'
+import useSocket from '../../App/Socket/useSocket'
+import NextButton from '../../components/btn/NextBtn.js'
+import BigTitle from '../../components/titles/BigTitle'
+import Chrono from '../../components/Chrono'
 
 let getRoutesFromGameName = ({ game }) => {
   switch (game) {
-    case "tabou":
+    case 'tabou':
       return {
-        route: "Tabou",
-        title: "Safe Word",
-        subContent: "Aide ton partenaire à se souvenir de votre safe word",
+        route: 'Tabou',
+        title: 'Safe Word',
+        subContent: 'Aide ton partenaire à se souvenir de votre safe word',
         consigne: "L'un fait deviner un mot à l'autre",
         background: require("../../assets/img/backgrounds/Groupe2Scotch.png"),
       };
       break;
 
-    case "cultureQ":
+    case 'cultureQ':
       return {
-        route: "Quizz",
-        title: "Cul.ture Q",
-        subContent: "Petite question de culture point G",
-        consigne: "Caresse la bonne réponse",
-        background: require("../../assets/img/backgrounds/Question_culture.png"),
-      };
-      break;
+        route: 'Quizz',
+        title: 'Cul.ture Q',
+        subContent: 'Petite question de culture point G',
+        consigne: 'Caresse la bonne réponse',
+        background: require('../../assets/img/backgrounds/Question_culture.png'),
+      }
+      break
 
-    case "acteurX":
+    case 'acteurX':
       return {
-        route: "ActeurX",
-        title: "Qui...?",
-        subContent: "les apparences peuvent être trompeuses",
-        consigne: "Touche la bonne réponse",
-        background: require("../../assets/img/backgrounds/Pierre.png"),
-      };
-      break;
+        route: 'ActeurX',
+        title: 'Qui...?',
+        subContent: 'les apparences peuvent être trompeuses',
+        consigne: 'Touche la bonne réponse',
+        background: require('../../assets/img/backgrounds/Pierre.png'),
+      }
+      break
 
-    case "ouEst":
+    case 'ouEst':
       return {
-        route: "Wiwaldo",
-        title: "Où est...?",
-        subContent: "Le sextoy le plus cheap ?",
-        consigne: "Touche la bonne réponse",
-        background: require("../../assets/img/backgrounds/Question_ou.png"),
-      };
-      break;
+        route: 'Wiwaldo',
+        title: 'Où est...?',
+        subContent: 'Le sextoy le plus cheap ?',
+        consigne: 'Touche la bonne réponse',
+        background: require('../../assets/img/backgrounds/Question_ou.png'),
+      }
+      break
 
     default:
-      throw "non reconized game " + game;
-      break;
+      throw 'non reconized game ' + game
+      break
   }
-};
+}
 let Wait = ({ navigation, setPressed }) => {
-  const { progress, ready, game } = useSocket();
+  const { progress, ready, game } = useSocket()
   useEffect(() => {
-    ready();
-  }, []);
+    ready()
+  }, [])
 
   useEffect(() => {
     if (progress.start) {
-      setPressed(false);
+      setPressed(false)
       navigation.navigate(getRoutesFromGameName({ game: game.game }).route, {
         title: getRoutesFromGameName({ game: game.game }).title,
-      });
+      })
     }
-  }, [progress]);
+  }, [progress])
 
   return progress.start || false ? (
     <View>
@@ -76,20 +76,20 @@ let Wait = ({ navigation, setPressed }) => {
     <View>
       <Text>Waiting for everyone to be ready ...</Text>
     </View>
-  );
-};
+  )
+}
 
 export default ({ navigation, setBackGround }) => {
-  const [pressed, setPressed] = useState(false);
-  const { game } = useSocket();
+  const [pressed, setPressed] = useState(false)
+  const { game } = useSocket()
   useEffect(() => {
     console.log(
-      "mehheehazerty",
+      'mehheehazerty',
       game.game,
       getRoutesFromGameName({ game: game.game }).background
-    );
-    setBackGround(getRoutesFromGameName({ game: game.game }).background);
-  }, [game.game]);
+    )
+    setBackGround(getRoutesFromGameName({ game: game.game }).background)
+  }, [game.game])
   return (
     <View style={styles.container}>
       {pressed ? (
@@ -97,8 +97,8 @@ export default ({ navigation, setBackGround }) => {
       ) : (
         <View
           style={{
-            alignItems: "center",
-            justifyContent: "center",
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <View style={{ marginTop: -45, zIndex: 2 }}>
@@ -117,28 +117,28 @@ export default ({ navigation, setBackGround }) => {
               key="READY"
               text="I'm Ready !"
               onPress={() => {
-                setPressed(true);
+                setPressed(true)
               }}
             />
           </View>
         </View>
       )}
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
-    marginTop: "30%",
+    flexDirection: 'column',
+    marginTop: '30%',
   },
   background: {
     flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
+    resizeMode: 'cover',
+    justifyContent: 'center',
   },
   image: {
-    transform: [{ rotate: "22deg" }],
+    transform: [{ rotate: '22deg' }],
   },
-});
+})
