@@ -151,8 +151,9 @@ export default () => {
                         title={
                           <View
                             style={{
-                              alignItems: "center",
-                              justifyContent: "center",
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              marginTop: 30,
                             }}
                           >
                             <PHeader font={"maim"} color={"blue"}>
@@ -189,8 +190,9 @@ export default () => {
                       title={
                         <View
                           style={{
-                            alignItems: "center",
-                            justifyContent: "center",
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginTop: 30,
                           }}
                         >
                           <PHeader font={"maim"} color={"blue"}>
@@ -235,32 +237,33 @@ export default () => {
                   require("../assets/img/backgrounds/Home.png")
                 );
 
-                return (
-                  <ImageBackground
-                    source={require("../assets/img/backgrounds/QuiScotch.png")}
-                    style={styles.background}
-                  >
-                    <View style={styles.header}>
-                      <MainHeader
-                        param
-                        back
-                        title={
-                          <View
-                            style={{
-                              alignItems: "center",
-                              justifyContent: "center",
-                            }}
-                          >
-                            <PHeader font={"maim"} color={"blue"}>
-                              {`${game.theme} 0${game.round.laps}/06`}
-                            </PHeader>
-                            <PHeader font={"maim"} color={"blue"}>
-                              {`${game.game}`}
-                            </PHeader>
-                          </View>
-                        }
-                      />
-                    </View>
+              return (
+                <ImageBackground
+                  source={require('../assets/img/backgrounds/Qui.png')}
+                  style={styles.background}
+                >
+                  <View style={styles.header}>
+                    <MainHeader
+                      param
+                      back
+                      title={
+                        <View
+                          style={{
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            marginTop: 30,
+                          }}
+                        >
+                          <PHeader font={'maim'} color={'blue'}>
+                            {`${game.theme} 0${game.round.laps}/06`}
+                          </PHeader>
+                          <PHeader font={'maim'} color={'blue'}>
+                            {`${game.game}`}
+                          </PHeader>
+                        </View>
+                      }
+                    />
+                  </View>
 
                     <View style={styles.content}>
                       <ActeurX {...props} />
@@ -289,9 +292,9 @@ export default () => {
                         title={
                           <View
                             style={{
-                              marginTop: 10,
-                              alignItems: "center",
-                              justifyContent: "center",
+                              marginTop: 30,
+                              alignItems: 'center',
+                              justifyContent: 'center',
                             }}
                           >
                             <PHeader font={"maim"} color={"blue"}>
@@ -358,8 +361,9 @@ export default () => {
                         title={
                           <View
                             style={{
-                              alignItems: "center",
-                              justifyContent: "center",
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              marginTop: 30,
                             }}
                           >
                             <PHeader font={"maim"} color={"blue"}>
@@ -472,8 +476,9 @@ export default () => {
                         title={
                           <View
                             style={{
-                              alignItems: "center",
-                              justifyContent: "center",
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              marginTop: 30,
                             }}
                           >
                             <PHeader font={"maim"} color={"blue"}>

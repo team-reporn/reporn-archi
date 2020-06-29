@@ -102,5 +102,6 @@ const styles = StyleSheet.create({
     color: 'white',
     position: 'absolute',
     fontFamily: 'vcr',
+    fontSize: 20,
   },
 })

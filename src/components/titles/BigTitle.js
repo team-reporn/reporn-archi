@@ -33,7 +33,7 @@ const BigTitle = ({
           justifyContent: 'center',
           alignItems: 'center',
           width: '100%',
-          marginTop: 50,
+          marginTop: 10,
         }}
       >
         {/* <Image
@@ -95,7 +95,7 @@ const BigTitle = ({
             width: '100%',
             justifyContent: 'center',
             alignItems: 'center',
-            marginTop: 50,
+            marginTop: 60,
             transform: [{ rotate: '-10deg' }],
           }}
         >
