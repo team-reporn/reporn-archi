@@ -79,7 +79,6 @@ class BasicScene extends React.Component {
       locationY: 0,
     };
     this.interval;
-    console.log("\n cara \n\n cara \n\n cara \n\n cara \n ");
     this._subscribeToAccelerometer();
   }
   touchMoveHandler = (evt) => {
@@ -113,7 +112,7 @@ class BasicScene extends React.Component {
         if (this.state.speed > this.state.highestSpeed) {
           this.setState({ highestSpeed: this.state.speed });
         }
-        console.log(this.state.speed, Math.abs(newP - oldP) * 10);
+        // console.log(this.state.speed, Math.abs(newP - oldP) * 10);
       })
     );
   };

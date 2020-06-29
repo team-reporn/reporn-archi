@@ -29,16 +29,16 @@ const Quiz = ({ navigation }) => {
 
   const questions = culture;
   const question = questions[QuestionIndex ? (index = 1) : (index = 0)];
-
   return (
     <View style={styles.container}>
-      <View style={{ backgroundColor: "red", flex: 1, marginBottom:-30 }}>
+      <View style={{ backgroundColor: "red", flex: 1, marginBottom: -30 }}>
         <Chrono
-          duration={3}
+          duration={15}
           onFinish={() => {
-            navigation.navigate("EndGame", {
-              title: "EndGame",
-            });
+            !answered &&
+              navigation.navigate("EndGame", {
+                title: "EndGame",
+              });
           }}
         />
       </View>
@@ -51,6 +51,7 @@ const Quiz = ({ navigation }) => {
           onPress={() => {
             setQuestionIndex(true);
             setSuccess(question.answers[0].correct);
+            setAnswered(true);
             navigation.navigate("EndGame", {
               title: "EndGame",
             });
@@ -63,6 +64,7 @@ const Quiz = ({ navigation }) => {
           onPress={() => {
             setQuestionIndex(true);
             setSuccess(question.answers[1].correct);
+            setAnswered(true);
             navigation.navigate("EndGame", {
               title: "EndGame",
             });
@@ -75,6 +77,7 @@ const Quiz = ({ navigation }) => {
           onPress={() => {
             setQuestionIndex(true);
             setSuccess(question.answers[2].correct);
+            setAnswered(true);
             navigation.navigate("EndGame", {
               title: "EndGame",
             });
@@ -87,6 +90,7 @@ const Quiz = ({ navigation }) => {
           onPress={() => {
             setQuestionIndex(true);
             setSuccess(question.answers[3].correct);
+            setAnswered(true);
             navigation.navigate("EndGame", {
               title: "EndGame",
             });

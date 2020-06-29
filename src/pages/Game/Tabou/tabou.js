@@ -38,6 +38,7 @@ const Tabou = ({ navigation, props, setBackGround }) => {
     startGame,
     setSuccess,
   } = useSocket();
+  const [answered, setAnswered] = useState(false);
 
   const [step, setStep] = useState(0);
   const [win, setWin] = useState(false);
@@ -117,9 +118,10 @@ const Tabou = ({ navigation, props, setBackGround }) => {
               onFinish={() => {
                 setStep(1);
                 setWin(false);
-                navigation.navigate("EndGame", {
-                  title: "EndGame",
-                });
+                !answered &&
+                  navigation.navigate("EndGame", {
+                    title: "EndGame",
+                  });
               }}
             />
           </View>
@@ -203,6 +205,7 @@ const Tabou = ({ navigation, props, setBackGround }) => {
             onPress={() => {
               setStep(1);
               setWin(true);
+              setAnswered(false);
               navigation.navigate("EndGame", {
                 title: "EndGame",
               });
@@ -226,15 +229,17 @@ const Tabou = ({ navigation, props, setBackGround }) => {
           }}
         >
           <Chrono
-            duration={step == 1 ? 30 : 0}
+            duration={step == 1 ? 30 : 15}
             onFinish={
               step == 1
                 ? () => {
                     setStep(2);
                     setWin(false);
-                    navigation.navigate("EndGame", {
-                      title: "EndGame",
-                    });
+
+                    answered &&
+                      navigation.navigate("EndGame", {
+                        title: "EndGame",
+                      });
                   }
                 : () => {}
             }
@@ -297,6 +302,7 @@ const Tabou = ({ navigation, props, setBackGround }) => {
             onPress={() => {
               setStep(2);
               setWin(true);
+              setAnswered(false);
               navigation.navigate("EndGame", {
                 title: "EndGame",
               });

@@ -25,16 +25,17 @@ const styles = StyleSheet.create({
 
 const Quiz = ({ navigation }) => {
   const { setSuccess } = useSocket();
-
+  const [answered, setAnswered] = useState(false);
   return (
     <View style={styles.container}>
       <View style={{ flex: 1, marginBottom: -30, marginTop: 50 }}>
         <Chrono
           duration={20}
           onFinish={() => {
-            navigation.navigate("EndGame", {
-              title: "EndGame",
-            });
+            !answered &&
+              navigation.navigate("EndGame", {
+                title: "EndGame",
+              });
           }}
         />
       </View>
@@ -50,6 +51,7 @@ const Quiz = ({ navigation }) => {
         position1
         onPress={() => {
           setSuccess(true);
+          setAnswered(true);
           navigation.navigate("EndGame", {
             title: "EndGame",
           });
@@ -61,6 +63,7 @@ const Quiz = ({ navigation }) => {
         position2
         onPress={() => {
           setSuccess(true);
+          setAnswered(true);
           navigation.navigate("EndGame", {
             title: "EndGame",
           });

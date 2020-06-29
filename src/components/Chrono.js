@@ -1,79 +1,78 @@
-import React from 'react'
-import { View, StyleSheet, Image, Text } from 'react-native'
-import { Audio } from 'expo-av'
-import * as Font from 'expo-font'
-import { AppLoading } from 'expo'
+import React from "react";
+import { View, StyleSheet, Image, Text } from "react-native";
+import { Audio } from "expo-av";
+import * as Font from "expo-font";
+import { AppLoading } from "expo";
 
 let customFonts = {
-  vcr: require('../assets/fonts/VCR/VCR_OSD_MONO_1.001.ttf'),
-}
+  vcr: require("../assets/fonts/VCR/VCR_OSD_MONO_1.001.ttf"),
+};
 
 export default class Chrono extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       timer: null,
       timerLeft: this.props.duration,
       sound: {},
-    }
+    };
     if (this.props.duration > 20) {
-      console.log('oui')
-      this.playSound()
+      this.playSound();
     }
-    this.startTimer()
+    this.startTimer();
   }
 
   state = {
     fontsLoaded: false,
-  }
+  };
 
   async _loadFontsAsync() {
-    await Font.loadAsync(customFonts)
-    this.setState({ fontsLoaded: true })
+    await Font.loadAsync(customFonts);
+    this.setState({ fontsLoaded: true });
   }
 
   componentDidMount() {
-    this._loadFontsAsync()
+    this._loadFontsAsync();
   }
 
   startTimer = () => {
-    this.state.timer = setInterval(this.timerCheck, 1000)
-  }
+    this.state.timer = setInterval(this.timerCheck, 1000);
+  };
 
   componentWillUnmount() {
-    clearInterval(this.state.timer)
+    clearInterval(this.state.timer);
   }
 
   timerCheck = () => {
-    this.setState({ timerLeft: this.state.timerLeft - 1 })
+    this.setState({ timerLeft: this.state.timerLeft - 1 });
     if (this.state.timerLeft <= 0) {
-      clearInterval(this.state.timer)
-      this.setState({ timer: null })
+      clearInterval(this.state.timer);
+      this.setState({ timer: null });
       // this.state.sound.shouldPlay = false
-      this.props.onFinish()
+      this.props.onFinish();
       //this.setState({step: 2, win: false})
     }
-  }
+  };
 
   timerCheck = () => {
-    this.setState({ timerLeft: this.state.timerLeft - 1 })
+    this.setState({ timerLeft: this.state.timerLeft - 1 });
     if (this.state.timerLeft <= 0) {
-      clearInterval(this.state.timer)
-      this.setState({ timer: null })
-      this.state.sound.shouldPlay = false
-      this.props.onFinish()
+      clearInterval(this.state.timer);
+      this.setState({ timer: null });
+      this.state.sound.shouldPlay = false;
+      this.props.onFinish();
       //this.setState({step: 2, win: false})
     }
-  }
+  };
 
   playSound = () => {
     try {
       this.state.sound = Audio.Sound.createAsync(
-        require('../assets/sound/Timer.wav'),
+        require("../assets/sound/Timer.wav"),
         { shouldPlay: true }
-      )
+      );
     } catch (error) {}
-  }
+  };
 
   render() {
     if (this.state.fontsLoaded) {
@@ -81,27 +80,27 @@ export default class Chrono extends React.Component {
         <View style={styles.main}>
           <Image
             style={{ transform: [{ scale: 0.5 }] }}
-            source={require('../assets/img/scotch/Chrono.png')}
+            source={require("../assets/img/scotch/Chrono.png")}
           ></Image>
           <Text style={styles.text}>00:00:{this.state.timerLeft}</Text>
         </View>
-      )
+      );
     } else {
-      return <AppLoading />
+      return <AppLoading />;
     }
   }
 }
 
 const styles = StyleSheet.create({
   main: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    transform: [{ rotate: '-9deg' }],
+    justifyContent: "center",
+    alignItems: "center",
+    transform: [{ rotate: "-9deg" }],
   },
   text: {
-    color: 'white',
-    position: 'absolute',
-    fontFamily: 'vcr',
+    color: "white",
+    position: "absolute",
+    fontFamily: "vcr",
     fontSize: 20,
   },
-})
+});

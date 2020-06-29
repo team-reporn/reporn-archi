@@ -12,7 +12,7 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const Pan = ({ debug, children, limits }) => {
-  console.log(windowHeight*2)
+  // console.log(windowHeight*2)
   const [boundaries, setBoundaries] = useState(
     limits || { x: 60, y: 29, x0: -60, y0: -120 }
   );
@@ -54,7 +54,6 @@ const Pan = ({ debug, children, limits }) => {
     PanResponder.create({
       onMoveShouldSetPanResponder: () => true,
       onPanResponderGrant: () => {
-        console.log("graaaaant");
         if (hasMoved.current) {
           pan.setOffset({
             x: pan.x._value,
@@ -64,7 +63,6 @@ const Pan = ({ debug, children, limits }) => {
         hasMoved.current = false;
       },
       onPanResponderMove: (evt, gestureState) => {
-        console.log("move");
         hasMoved.current = true;
         dx.current = gestureState.dx;
         dy.current = gestureState.dy;
@@ -96,13 +94,11 @@ const Pan = ({ debug, children, limits }) => {
         if (tempMoveX.current > boundaries.x) {
           gestureState.dx = boundaries.x - totalMoveX.current;
         } else if (tempMoveX.current < boundaries.x0) {
-          console.log();
           gestureState.dx = boundaries.x0 - totalMoveX.current;
         }
         if (tempMoveY.current > boundaries.y) {
           gestureState.dy = boundaries.y - totalMoveY.current;
         } else if (tempMoveY.current < boundaries.y0) {
-          console.log();
           gestureState.dy = boundaries.y0 - totalMoveY.current;
         }
         Animated.event([
@@ -119,7 +115,6 @@ const Pan = ({ debug, children, limits }) => {
         // }
       },
       onPanResponderRelease: (evt, gestureState) => {
-        console.log("releaaase");
         if (hasMoved.current) {
           totalMoveX.current = totalMoveX.current + gestureState.dx;
           totalMoveY.current = totalMoveY.current + gestureState.dy;
@@ -197,9 +192,9 @@ const Pan = ({ debug, children, limits }) => {
 
 const styles = StyleSheet.create({
   container: {
-  //  flex: 1,
-    width: windowWidth*1.63,
-    height: windowHeight*1.5,
+    //  flex: 1,
+    width: windowWidth * 1.63,
+    height: windowHeight * 1.5,
     alignItems: "center",
     justifyContent: "center",
   },

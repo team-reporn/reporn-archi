@@ -19,7 +19,7 @@ let Room = ({ navigation }) => {
     const roomInterval = setInterval(() => {
       getRoomInfo();
     }, 5000);
-    console.log("setinterval", roomInfo);
+    // console.log("setinterval", roomInfo);
     if (roomInfo.roomId === "inexistant") {
       setRoomInfo({ roomId: null, numClients: null, role: null });
       navigation.navigate("Home", {

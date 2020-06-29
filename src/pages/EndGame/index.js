@@ -46,9 +46,7 @@ export default ({ navigation, setBackGround }) => {
   const { changeGame, game, setSuccess, success } = useSocket()
   gameIndex = getAnswerfromGame(game)
   useEffect(() => {
-    console.log('nieé', success, gameIndex)
     if (success) {
-      console.log('HU')
       if (gameIndex == 0) {
         setBackGround(require('../../assets/img/backgrounds/Question1Bon.png'))
       } else if (gameIndex == 1) {
@@ -56,11 +54,9 @@ export default ({ navigation, setBackGround }) => {
       } else if (gameIndex == 2) {
         setBackGround(require('../../assets/img/backgrounds/ActeurXBon.png'))
       } else if (gameIndex == 4) {
-        console.log('HE', gameIndex)
         setBackGround(require('../../assets/img/backgrounds/TabouBon.png'))
       }
     } else {
-      console.log('HA')
       if (gameIndex == 0) {
         setBackGround(
           require('../../assets/img/backgrounds/Question1Mauvais.png')
@@ -70,10 +66,8 @@ export default ({ navigation, setBackGround }) => {
           require('../../assets/img/backgrounds/WiwaldoMauvais.png')
         )
       } else if (gameIndex == 2) {
-        console.log('HE', gameIndex)
         setBackGround(require('../../assets/img/backgrounds/ActeurXBon.png'))
       } else if (gameIndex == 4) {
-        console.log('HE', gameIndex)
         setBackGround(require('../../assets/img/backgrounds/TabouMauvais.png'))
       }
     }

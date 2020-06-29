@@ -83,11 +83,11 @@ export default ({ navigation, setBackGround }) => {
   const [pressed, setPressed] = useState(false)
   const { game } = useSocket()
   useEffect(() => {
-    console.log(
-      'mehheehazerty',
-      game.game,
-      getRoutesFromGameName({ game: game.game }).background
-    )
+    // console.log(
+    //   'mehheehazerty',
+    //   game.game,
+    //   getRoutesFromGameName({ game: game.game }).background
+    // )
     setBackGround(getRoutesFromGameName({ game: game.game }).background)
   }, [game.game])
   return (
